@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.demo.entities.User;
-import com.example.demo.services.UserServices;
+import com.example.demo.entities.Asks;
+import com.example.demo.services.AsksServices;
 
 @RestControllerAdvice
-@RequestMapping(value = "/users")
-public class UserResources {
+@RequestMapping(value = "/asks")
+public class AsksResources {
 	@Autowired
-	private UserServices services;
+	private AsksServices services;
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
-		List<User> list = services.findAll();
+	public ResponseEntity<List<Asks>> findAll(){
+		List<Asks> list = services.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id){
-		User obj = services.findById(id);
+	public ResponseEntity<Asks> findById(@PathVariable Long id){
+		Asks obj = services.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }
