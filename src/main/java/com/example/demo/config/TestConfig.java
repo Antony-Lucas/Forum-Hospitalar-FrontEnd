@@ -10,9 +10,11 @@ import org.springframework.context.annotation.Profile;
 
 import com.example.demo.entities.Answers;
 import com.example.demo.entities.Asks;
+import com.example.demo.entities.Department;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.AnswersRepositories;
 import com.example.demo.repositories.AsksRepositories;
+import com.example.demo.repositories.DepartmentRepositories;
 import com.example.demo.repositories.UserRepositories;
 
 @Configuration
@@ -20,6 +22,9 @@ import com.example.demo.repositories.UserRepositories;
 public class TestConfig implements CommandLineRunner{
 	@Autowired
 	private UserRepositories userRepository;
+	
+	@Autowired
+	private DepartmentRepositories departmentRepository;
 	
 	@Autowired
 	private AsksRepositories askRepository;
@@ -32,18 +37,23 @@ public class TestConfig implements CommandLineRunner{
 		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "123456");
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "123456"); 
 		
-		Asks o1 = new Asks(null, Instant.parse("2019-06-20T19:53:07Z"), u1);
-		Asks o2 = new Asks(null, Instant.parse("2019-07-21T03:42:10Z"), u2);
-		Asks o3 = new Asks(null, Instant.parse("2019-07-22T15:21:22Z"), u1); 
+		Department d1 = new Department(null, "Anatomia Patológica");
+		Department d2 = new Department(null, "Banco de Sangue");
+		Department d3 = new Department(null, "Hemodiálise");
 		
-		Answers cat1 = new Answers(null, Instant.parse("2019-06-20T19:53:07Z"), "this.content.return1", o1);
-		Answers cat2 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "this.content.return2", o2);
-		Answers cat3 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "this.content.return3", o3); 
-
+		Asks o1 = new Asks(null, "Quanto à endocardite trombótica não bacteriana (ETNB)", Instant.parse("2019-06-20T19:53:07Z"), d1);
+		Asks o2 = new Asks(null, "Que forma de identificação é necessária para a doação de sangue?", Instant.parse("2019-07-21T03:42:10Z"), d2);
+		Asks o3 = new Asks(null, "Quais são os cuidados com a fístula antes e depois da hemodiálise?", Instant.parse("2019-07-22T15:21:22Z"), d3); 
+		
+		Answers cat1 = new Answers(null, Instant.parse("2019-06-20T19:53:07Z"), "A ETNB, ao contrário da endocardite infecciosa, apresenta formação vegetante única.", o1);
+		Answers cat2 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "Documento oficial com foto, por exemplo: Carteira de Identidade, Carteira Nacional de Habilitação, Carteira de Trabalho, Passaporte ou Carteira Profissional.", o2);
+		Answers cat3 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "A fístula é a ligação da artéria com a veia, que se dilata e cresce. No dia a dia, o cuidado deve ser não traumatizar aquele local, não bater, porque pode formar hematoma e comprimir a circulação", o3); 
+		Answers cat4 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "Outro cuidado é não deixar infeccionar. Por exemplo, o paciente não deve tirar sangue em laboratório no braço da fístula, pois sua finalidade específica é puncionar durante a diálise.", o3); 
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
+		departmentRepository.saveAll(Arrays.asList(d1, d2, d3));
 		askRepository.saveAll(Arrays.asList(o1,o2,o3));
-		answerRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		answerRepository.saveAll(Arrays.asList(cat1,cat2,cat3, cat4));
 	}
 
 }

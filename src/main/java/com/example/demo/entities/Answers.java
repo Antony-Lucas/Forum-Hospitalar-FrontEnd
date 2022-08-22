@@ -25,6 +25,7 @@ public class Answers implements Serializable{
 	private String content;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd'T'HH:mm:ss'Z'", timezone="GMT")
 	private Instant moment;
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "askId")
@@ -70,10 +71,6 @@ public class Answers implements Serializable{
 
 	public void setAsks(Asks asks) {
 		this.asks = asks;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
