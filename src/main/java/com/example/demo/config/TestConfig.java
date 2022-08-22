@@ -11,10 +11,12 @@ import org.springframework.context.annotation.Profile;
 import com.example.demo.entities.Answers;
 import com.example.demo.entities.Asks;
 import com.example.demo.entities.Department;
+import com.example.demo.entities.Modules;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.AnswersRepositories;
 import com.example.demo.repositories.AsksRepositories;
 import com.example.demo.repositories.DepartmentRepositories;
+import com.example.demo.repositories.ModulesRepositories;
 import com.example.demo.repositories.UserRepositories;
 
 @Configuration
@@ -22,6 +24,9 @@ import com.example.demo.repositories.UserRepositories;
 public class TestConfig implements CommandLineRunner{
 	@Autowired
 	private UserRepositories userRepository;
+	
+	@Autowired
+	private ModulesRepositories modulesRepository;
 	
 	@Autowired
 	private DepartmentRepositories departmentRepository;
@@ -37,9 +42,13 @@ public class TestConfig implements CommandLineRunner{
 		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "123456");
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "123456"); 
 		
-		Department d1 = new Department(null, "Anatomia Patológica");
-		Department d2 = new Department(null, "Banco de Sangue");
-		Department d3 = new Department(null, "Hemodiálise");
+		Modules m1 = new Modules(null, "Assistencial");
+		Modules m2 = new Modules(null, "SADT");
+		Modules m3 = new Modules(null, "Hotelaria");
+		
+		Department d1 = new Department(null, "Anatomia Patológica", m1);
+		Department d2 = new Department(null, "Banco de Sangue", m2);
+		Department d3 = new Department(null, "Hemodiálise", m3);
 		
 		Asks o1 = new Asks(null, "Quanto à endocardite trombótica não bacteriana (ETNB)", Instant.parse("2019-06-20T19:53:07Z"), d1);
 		Asks o2 = new Asks(null, "Que forma de identificação é necessária para a doação de sangue?", Instant.parse("2019-07-21T03:42:10Z"), d2);
@@ -51,6 +60,7 @@ public class TestConfig implements CommandLineRunner{
 		Answers cat4 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "Outro cuidado é não deixar infeccionar. Por exemplo, o paciente não deve tirar sangue em laboratório no braço da fístula, pois sua finalidade específica é puncionar durante a diálise.", o3); 
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
+		modulesRepository.saveAll(Arrays.asList(m1, m2, m3));
 		departmentRepository.saveAll(Arrays.asList(d1, d2, d3));
 		askRepository.saveAll(Arrays.asList(o1,o2,o3));
 		answerRepository.saveAll(Arrays.asList(cat1,cat2,cat3, cat4));

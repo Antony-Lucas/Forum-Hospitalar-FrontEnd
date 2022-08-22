@@ -37,12 +37,12 @@ public class Asks implements Serializable{
 		
 	}
 
-	public Asks(Long id, String content, Instant moment, Department clientment) {
+	public Asks(Long id, String content, Instant moment, Department client) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.moment = moment;
-		this.client = clientment;
+		this.client = client;
 	}
 
 	public Long getId() {
@@ -73,8 +73,8 @@ public class Asks implements Serializable{
 		return client;
 	}
 
-	public void setClient(Department clientment) {
-		this.client = clientment;
+	public void setClient(Department client) {
+		this.client = client;
 	}
 	
 	public List<Answers> getAnswers(){

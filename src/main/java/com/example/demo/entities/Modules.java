@@ -8,40 +8,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-@Table(name = "department")
-public class Department implements Serializable{
+@Table(name = "module")
+public class Modules implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nameDepartment;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "moduleId")
-	private Modules modules;
-
+	private String title;
 	
-	@OneToMany(mappedBy = "client")
-	private List<Asks> asks = new ArrayList<>();
+	@OneToMany(mappedBy="modules")
+	private List<Department> department = new ArrayList<>();
 	
-	public Department() {
+	public Modules() {
 		
 	}
-
-	public Department(Long id, String nameDepartment, Modules modules) {
+	
+	public Modules(Long id, String title) {
 		super();
 		this.id = id;
-		this.nameDepartment = nameDepartment;
-		this.modules = modules;
+		this.title = title;
 	}
 
 	public Long getId() {
@@ -52,24 +42,12 @@ public class Department implements Serializable{
 		this.id = id;
 	}
 
-	public String getNameDepartment() {
-		return nameDepartment;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setNameDepartment(String nameDepartment) {
-		this.nameDepartment = nameDepartment;
-	}
-	
-	public Modules getModules() {
-		return modules;
-	}
-
-	public void setModules(Modules modules) {
-		this.modules = modules;
-	}
-
-	public List<Asks> getAsks(){
-		return asks;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Override
@@ -78,6 +56,10 @@ public class Department implements Serializable{
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
+	}
+	
+	public List<Department> getDepartment(){
+		return department;
 	}
 
 	@Override
@@ -88,7 +70,7 @@ public class Department implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Department other = (Department) obj;
+		Modules other = (Modules) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -96,6 +78,4 @@ public class Department implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 }
