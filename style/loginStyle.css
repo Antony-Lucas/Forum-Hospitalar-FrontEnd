@@ -1,0 +1,54 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+*{
+    box-sizing: border-box;
+    font-family: "Inter";
+}
+
+body{
+    background-image: linear-gradient(to right, #02091B, #0C38A1);    
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.login-center{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h2{
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input{
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.login-button{
+    background-color: #93C82F;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+p, a{
+    color: #ffffff;
+    font-size: 8pt;
+}
