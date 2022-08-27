@@ -13,7 +13,7 @@ import com.example.demo.entities.Answers;
 import com.example.demo.services.AnswersServices;
 
 @RestControllerAdvice
-@RequestMapping(value = "/answers")
+@RequestMapping(value = "/modules/departments/asks/answers")
 public class AnswersResources {
 	@Autowired
 	private AnswersServices services;
