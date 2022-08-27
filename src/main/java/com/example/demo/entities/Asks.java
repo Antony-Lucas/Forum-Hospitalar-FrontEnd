@@ -27,7 +27,7 @@ public class Asks implements Serializable{
 	private Instant moment;
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "clientmentId")
+	@JoinColumn(name = "clientId")
 	private Department client;
 	
 	@OneToMany(mappedBy = "asks")
