@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Asks;
 import com.example.demo.repositories.AsksRepositories;
+import com.example.demo.services.exception.ResourceNotFoundException;
 
 @Service
 public class AsksServices {
@@ -20,6 +21,25 @@ public class AsksServices {
 	
 	public Asks findById(Long id) {
 		Optional<Asks> obj = askRepository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
+	}
+	
+	public Asks insert(Asks obj) {
+		return askRepository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		askRepository.deleteById(id);
+	}
+	
+	public Asks update(Long id, Asks obj) {
+		Asks entity = askRepository.getReferenceById(id);
+		updateData(entity, obj);
+		return askRepository.save(entity);
+	}
+	
+	public void updateData(Asks entity, Asks obj) {
+		entity.setContent(obj.getContent());
+		entity.setMoment(obj.getMoment());
 	}
 }
