@@ -46,6 +46,17 @@ h2{
     padding: 10px;
     margin-top: 5px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.login-forgotpass{
+    margin-top: 10px;
+}
+
+.login-or{
+    font-size: 7pt;
 }
 
 p, a{
