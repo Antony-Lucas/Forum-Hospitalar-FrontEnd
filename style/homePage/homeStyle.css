@@ -80,11 +80,21 @@ header{
 }
 
 section{
+    width: 100%;
+    height: 15vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+}
+
+.container{
+    display: grid;
+    margin-right: 40%;
+}
+
+.body-filter{
+    width: 40%;
+    position: fixed;
 }
 
 .body-content{
@@ -92,6 +102,8 @@ section{
     display: flex;
     flex-direction: column;
     justify-content: left;
+    position: fixed;
+    margin-top: 65px;
 }
 
 .body-field{
@@ -122,7 +134,7 @@ section{
   }
 
 .material-symbols-outlined{
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     border-bottom: solid 1px #ffffff;
     padding: 3px;
 }
@@ -136,11 +148,10 @@ section{
 }
 
 .body-items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 40% 40%;
+    grid-template-rows: auto;
+    width: 75%;
     margin-top: 50px;
     padding: 0;
 }
@@ -173,7 +184,7 @@ section{
 
 @media only screen and (max-width: 1240px){
     .body-content{
-        width: 50%;
+        width: 45%;
     }
 
     .body-items li:nth-child(3n+2){
@@ -187,6 +198,15 @@ section{
 }
 
 @media only screen and (max-width: 1024px){
+    .container{
+        margin-right: 45%;
+    }
+
+    .body-filter{
+        width: 45%;
+        position: fixed;
+    }
+
     .body-content{
         width: 50%;
     }
@@ -233,8 +253,17 @@ section{
 }
 
 @media only screen and (max-width: 730px){
+    .container{
+        margin-right: 55%;
+    }
+
+    .body-filter{
+        width: 55%;
+        position: fixed;
+    }
+
     .body-content{
-        width: 70%;
+        width: 80%;
     }
 
     .body-items{
@@ -242,8 +271,7 @@ section{
     }
 
     .body-items{
-        display: grid;
-        grid-template-columns: 100px 100px
+        grid-template-columns: 50% 50%
     }
 
     .body-items li{
