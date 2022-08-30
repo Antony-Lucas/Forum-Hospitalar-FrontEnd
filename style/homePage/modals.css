@@ -1,0 +1,166 @@
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #fff;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 50%;
+    height: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+@-webkit-keyframes animatetop{
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes animatetop{
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.close{
+    color: #00000083;
+    float: right;
+    font-size: 16pt;
+}
+
+.close:hover,
+.close:focus{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header{
+    padding: 2px 16px;
+    background-color: #ffffff;
+}
+
+.modal-header h2{
+    color: #000000;
+    font-size: 10pt;
+    font-weight: 700;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    padding: 2px 16px;
+    height: 80%;
+}
+
+.modal-body p{
+    font-size: 8pt;
+    color: #00000054;
+}
+
+.modal-label{
+    color: #00000090;
+    font-size: 10pt;
+    font-weight: 500;
+    margin-left: 4px;
+    margin-bottom: 8px;
+}
+
+.modal-input{
+    float: left;
+    color: #000000;
+    outline: none;
+    border: 0.4px solid #00000022;
+    border-radius: 5px;
+    padding: 7px;
+    padding-left: 15px;
+    width: 60%;
+}
+
+.modal-submit{
+    color: #ffffff;
+    font-size: 8pt;
+    background-color: #93C82F;
+    padding: 8px;
+    outline: none;
+    width: 8%;
+    position: absolute;
+    left: 88%;
+    top: 88%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1024px){
+    .modal-content{
+        width: 60%;
+    }
+
+    .modal-submit{
+        width: 10%;
+        left: 85%;
+        top: 88%;
+    }
+}
+
+@media only screen and (max-width: 930px){
+    .modal-content{
+        width: 70%;
+    }
+
+    .modal-input{
+        width: 70%;
+    }
+}
+
+
+@media only screen and (max-width: 820px){
+    .modal-submit{
+        width: 12%;
+        left: 83%;
+        top: 88%;
+    }
+}
+
+@media only screen and (max-width: 730px){
+    .modal-input{
+        width: 100%;
+    }
+
+    .modal-submit{
+        width: 15%;
+        left: 77%;
+        top: 88%;
+    }
+}

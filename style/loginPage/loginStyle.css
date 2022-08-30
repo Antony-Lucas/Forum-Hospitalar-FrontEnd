@@ -63,3 +63,7 @@ p, a{
     color: #ffffff;
     font-size: 8pt;
 }
+
+.login-register{
+    margin-bottom: 30px;
+}

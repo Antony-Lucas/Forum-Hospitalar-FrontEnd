@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../style/homePage/homeStyle.css">
+    <link rel="stylesheet" href="../style/homePage/modals.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
 </head>
 <body>
@@ -17,20 +18,104 @@
                 <img src="../assets/arrow_down.svg" alt="mais-opções" class="dropdown-arrow">
             </button>
             <div class="dropdown-content">
-                <a href="#">Meu Cadastro</a>
-                <a href="#">Alterar Senha</a>
-                <a href="../index.html">Sair</a>
+                <a href="#" id="myAccount">Meu cadastro</a>
+                <a href="../index.html" class="dropdown-exit">Sair</a>
             </div>
         </div>
     </header>
     <section>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Meu cadastro</h2>
+                </div>
+                <form class="modal-body">
+                    <h3 class="modal-label">Nome</h3>
+                    <input type="text" placeholder="Antony Lauan Lucas da Costa" class="modal-input">
+                    <h3 class="modal-label">Email</h3>
+                    <input type="email" placeholder="antonylucas4570@gmail.com" class="modal-input">
+                    <h3 class="modal-label">Senha</h3>
+                    <input type="password" class="modal-input">
+                    <h3 class="modal-label">Confirmar senha</h3>
+                    <input type="password" class="modal-input">
+                    <button type="submit" class="modal-submit">Salvar</button>
+                </form>
+            </div>
+        </div>
         <div class="body-content">
             <div class="body-field">
                 <span class="material-symbols-outlined">search</span>
                 <input type="search" class="body-searh">
             </div>
             <p class="body-modules">Módulos</p>
+
+            <ul class="body-items" id="departments">
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/patient (1).png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Atendimento</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/patient (3).png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Assistencial</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/patient (2).png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Apoio</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/patient (4).png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Controladoria</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/invoice.png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Faturamento</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/saving.png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Financeiro</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/management.png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Gerencial</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/clinic.png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Hotelaria</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/clinic (2).png" alt="icone-atendimento" class="body-items-icons">
+                        <p>SADT</p>
+                    </a>
+                </li>
+                <li class="department-item">
+                    <a href="#" class="body-item">
+                        <img src="../assets/main_icons/clinic (1).png" alt="icone-atendimento" class="body-items-icons">
+                        <p>Suprimentos</p>
+                        <span style="margin-left: 35px;"></span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
+    <script src="../javaScript/modal.js"></script>
+    <script src="../javaScript/searchbar.js"></script>
 </body>
 </html>
