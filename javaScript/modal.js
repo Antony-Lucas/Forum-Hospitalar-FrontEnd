@@ -1,5 +1,5 @@
 var modal = document.getElementById("myModal");
-var button = document.getElementById("myAccount");
+var button = document.getElementById("showModal");
 var span = document.getElementsByClassName("close")[0];
 
 button.onclick = function(){

@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+*{
+    box-sizing: border-box;
+    font-family: "Inter";
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-image: linear-gradient(to right,#02091B, #0C38A1);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    position: fixed;
+}
+
+section{
+    background-color: #00000019;
+    min-height: 100vh;
+}
+
+.header-menu{
+    padding: 10px;
+}
+
+.material-symbols-outlined{
+    color: #ffffff;
+    cursor: pointer;
+}
