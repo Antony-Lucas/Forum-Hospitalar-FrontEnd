@@ -154,6 +154,33 @@
 }
 
 @media only screen and (max-width: 730px){
+    .modal-content{
+        width: 100%;
+        height: 100%;
+    }
+
+    @-webkit-keyframes animatetop{
+        from{
+            bottom: -10px;
+            opacity: 0;
+        }
+        to{
+            top: 0;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes animatetop{
+        from{
+            bottom: -10px;
+            opacity: 0;
+        }
+        to{
+            top: 0;
+            opacity: 1;
+        }
+    }
+
     .modal-input{
         width: 100%;
     }

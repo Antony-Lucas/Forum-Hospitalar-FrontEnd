@@ -67,3 +67,9 @@ p, a{
 .login-register{
     margin-bottom: 25%;
 }
+
+@media only screen and (max-width: 730px){
+    .login-register{
+        margin-bottom: 30%;
+    }
+}

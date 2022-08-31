@@ -123,6 +123,11 @@ section{
     padding: 5px;
 }
 
+::placeholder{
+    color: #ffffff;
+    font-size: 10pt;
+}
+
 [type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
     appearance: none;
@@ -142,6 +147,7 @@ section{
 .body-modules{
     font-size: 8pt;
     text-align: left;
+    margin-top: 20px;
     padding-bottom: 5px;
     border-bottom: 3px solid #ffffffb4;
     width: 60px;

@@ -19,6 +19,9 @@ header{
 section{
     background-color: #00000019;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
 
 .header-menu{
@@ -65,9 +68,73 @@ section{
     color: #ffffff;
     padding: 0;
 }
+
 .material-symbols-outlined{
     color: #ffffff;
     cursor: pointer;
+}
+
+.body-content{
+    margin-top: 5%;
+    width: 98%;
+    background-color: #ffffff;
+}
+
+.body-content-header{
+    background-color: #000000c9;
+    width: 100%;
+    padding: 20px;
+}
+
+.body-content-header-title{
+    color: #ffffff;
+    font-size: 10pt;
+}
+
+.body-content-center{
+    padding: 20px;
+}
+
+.body-content-center-title{
+    font-size: 10pt;
+}
+
+.body-content-center-container-search{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 20px;
+}
+
+.body-content-center-container-search input{
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 20%;
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+.body-content-list{
+    list-style: none;
+}
+
+.body-content-list-item{
+    width: 10%;
+    font-size: 8pt;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: #000000b3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body-content-list-item span{
+    color: #000000b3;
+    font-size: 10px;
 }
 
 @media only screen and (max-width: 1240px){
