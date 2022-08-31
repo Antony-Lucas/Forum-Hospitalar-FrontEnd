@@ -67,3 +67,95 @@
     padding: 2px 16px;
     background-color: #ffffff;
 }
+
+.modal-body{
+    padding: 5px;
+    padding-top: 15px;
+}
+
+.modal-body a{
+    text-decoration: none;
+    color: #00000083;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-body a:nth-child(1){
+    border-radius: 5px;
+    background-color: #0000000b;
+}
+
+.modal-body a p{
+    font-size: 8pt;
+}
+
+.modal-body a span{
+    color: #00000083;
+    font-size: 10px;
+}
+
+@media only screen and (max-width: 1240px){
+    .modal-content{
+        width: 25%;
+        left: -38%;
+    }
+
+    @-webkit-keyframes animatetop{
+        from{
+            left: -80%;
+            opacity: 0;
+        }
+        to{
+            left: -38%;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes animatetop{
+        from{
+            left: -80%;
+            opacity: 0;
+        }
+        to{
+            left: -38%;
+            opacity: 1;
+        }
+    }
+}
+
+@media only screen and (max-width: 930px){
+    .modal-content{
+        width: 25%;
+    }
+}
+
+@media only screen and (max-width: 730px){
+    .modal-content{
+        width: 100%;
+        left: 0%;
+    }
+
+    @-webkit-keyframes animatetop{
+        from{
+            left: -80%;
+            opacity: 0;
+        }
+        to{
+            left: 0%;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes animatetop{
+        from{
+            left: -80%;
+            opacity: 0;
+        }
+        to{
+            left: 0%;
+            opacity: 1;
+        }
+    }
+}
