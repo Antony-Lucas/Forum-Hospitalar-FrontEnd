@@ -254,16 +254,16 @@ section{
 
 @media only screen and (max-width: 730px){
     .container{
-        margin-right: 55%;
+        margin-right: 70%;
     }
 
     .body-filter{
-        width: 55%;
+        width: 65%;
         position: fixed;
     }
 
     .body-content{
-        width: 80%;
+        width: 100%;
     }
 
     .body-items{
