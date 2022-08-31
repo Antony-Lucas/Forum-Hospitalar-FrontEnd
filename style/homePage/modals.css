@@ -165,7 +165,7 @@
             opacity: 0;
         }
         to{
-            top: 0;
+            bottom: 0;
             opacity: 1;
         }
     }
@@ -176,13 +176,14 @@
             opacity: 0;
         }
         to{
-            top: 0;
+            bottom: 0;
             opacity: 1;
         }
     }
 
     .modal-input{
         width: 100%;
+        height: 10%;
     }
 
     .modal-submit{
