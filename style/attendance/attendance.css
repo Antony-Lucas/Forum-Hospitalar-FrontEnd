@@ -75,9 +75,9 @@ section{
 }
 
 .body-content{
-    margin-top: 3%;
     width: 99%;
     background-color: #ffffff;
+    margin-top: 3.7rem;
 }
 
 .body-content-header{
@@ -139,27 +139,23 @@ section{
 }
 
 @media only screen and (max-width: 1680px){
-    .body-content{
-        margin-top: 6vh;
-    }
+    
 }
 
 @media only screen and (max-width: 1440px){
-    .body-content{
-        margin-top: 7vh;
-    }
+    
+}
+
+@media only screen and (max-width: 1366px){
+    
 }
 
 @media only screen and (max-width: 1024px){
-    .body-content{
-        margin-top: 7vh;
-    }
+    
 }
 
 @media only screen and (max-width: 930px){
-    .body-content{
-        margin-top: 55px;
-    }
+    
 }
 
 @media only screen and (max-width: 820px){
@@ -168,6 +164,15 @@ section{
 
 @media only screen and (max-width: 730px){
     .body-content{
-        margin-top: 55px;
+        margin-top: 3.4rem;
+    }
+
+    .body-content-center-container-search input{
+        width: 100%;
+    }
+
+    .body-content-list-item{
+        width: 50%;
+        margin-top: 5px;
     }
 }

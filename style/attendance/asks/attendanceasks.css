@@ -83,7 +83,7 @@ section{
 }
 
 .body-content{
-    margin-top: 3%;
+    margin-top: 3.7rem;
     width: 99%;
     background-color: #ffffff;
 }
@@ -91,17 +91,14 @@ section{
 .header{
     width: 100%;
     padding: 20px;
-    padding-left: 5px;
     display: flex;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
 }
 
 .header-container{
-    width: 10%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: stretch;
+    width: 30%;
+    display: inline-flex;
 }
 
 .header-container a span{
@@ -110,6 +107,7 @@ section{
 
 .header h3{
     font-size: 10pt;
+    margin-left: 8%;
 }
 
 .header-add{
@@ -119,8 +117,6 @@ section{
     padding: 8px;
     outline: none;
     width: 5%;
-    position: absolute;
-    left: 88%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -140,7 +136,6 @@ section{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 15px;
     padding-bottom: 20px;
 }
 
@@ -194,36 +189,63 @@ section{
     color: #336799;
 }
 
-@media only screen and (max-width: 1680px){
-    .body-content{
-        margin-top: 6vh;
+@media only screen and (max-width: 1200px){
+    .header-add{
+        width: 8%;
     }
-}
 
-@media only screen and (max-width: 1440px){
-    .body-content{
-        margin-top: 7vh;
+    .body-search input{
+        width: 30%;
     }
-}
 
-@media only screen and (max-width: 1024px){
-    .body-content{
-        margin-top: 7vh;
+    .ask-body-content{
+        width: 30%;
     }
 }
 
 @media only screen and (max-width: 930px){
-    .body-content{
-        margin-top: 55px;
+    .body-search input{
+        width: 35%;
+    }
+
+    .header-add{
+        width: 10%;
     }
 }
 
 @media only screen and (max-width: 820px){
-     
+    .body-content{
+        margin-top: 3.5rem;
+    }
+    
+    .ask-body-content{
+        width: 35%;
+    }
 }
 
 @media only screen and (max-width: 730px){
     .body-content{
-        margin-top: 55px;
+        width: 98%;    
+        margin-top: 3.4rem;
+    }
+
+    .header-container{
+        width: 80%;
+    }
+
+    .header-add{
+        width: 20%;
+    }
+
+    .body-search input{
+        width: 95%;
+    }
+
+    .ask-header-content{
+        margin-top: 8%;
+    }
+
+    .ask-body-content{
+        width: 80%;
     }
 }
