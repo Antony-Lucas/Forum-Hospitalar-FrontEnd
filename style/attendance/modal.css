@@ -8,7 +8,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .modal-content{
@@ -23,42 +23,84 @@
     border-right: 0.5px solid rgba(136, 136, 136, 0.371);
     width: 20%;
     height: 100%;
+    -webkit-animation-name: animateleft;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animateleft;
+    animation-duration: 0.4s;
+}
+
+.add-modal-content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+    top: 30%;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+    height: 20%;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
 }
 
-@-webkit-keyframes animatetop{
+@-webkit-keyframes animateleft{
     from{
         left: -80%;
         opacity: 0;
     }
     to{
         left: -40%;
+        opacity: 1;
+    }
+}
+
+@keyframes animateleft{
+    from{
+        left: -80%;
+        opacity: 0;
+    }
+    to{
+        left: -40%;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes animatetop{
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 30%;
         opacity: 1;
     }
 }
 
 @keyframes animatetop{
     from{
-        left: -80%;
+        top: 300px;
         opacity: 0;
     }
     to{
-        left: -40%;
+        top: 30%;
         opacity: 1;
     }
 }
 
-.close{
+.close, .addClose{
     color: #00000083;
     float: right;
     font-size: 16pt;
 }
 
 .close:hover,
-.close:focus{
+.close:focus,
+.addClose:hover,
+.addClose:focus{
     text-decoration: none;
     cursor: pointer;
 }
@@ -72,7 +114,7 @@
 }
 
 .modal-header h3{
-    font-size: 10pt;
+    font-size: 8pt;
 }
 
 .modal-body{

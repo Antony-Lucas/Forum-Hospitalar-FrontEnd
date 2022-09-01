@@ -79,13 +79,26 @@
             </div>
         </div>
 
+        <div id="addModal" class="modal">
+            <div class="add-modal-content">
+                <div class="modal-header">
+                    <h3>Adicionar uma pergunta</h3>
+                    <span class="addClose">&times;</span>
+                </div>
+                <form class="modal-body">
+                    <textarea name="" id="" cols="60" rows="3"></textarea>
+                    <button type="submit" class="modal-submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+
         <div class="body-content">
             <div class="header">
                 <div class="header-container">
                     <a href="../attendance.html"><span class="material-symbols-outlined">arrow_back</span></a>
                     <h3>Anatomia patológica</h3>
                 </div>
-                <button class="header-add">Adicionar</button>
+                <button class="header-add" id="showAddModal">Adicionar</button>
             </div>
             <div class="body">
                 <div class="body-search">
@@ -117,5 +130,6 @@
         </div>
     </section>
     <script src="../../../javaScript/modal.js"></script>
+    <script src="../../../javaScript/addModal.js"></script>
 </body>
 </html>
