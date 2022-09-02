@@ -32,15 +32,15 @@
 .add-modal-content{
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    justify-content: center;
     position: relative;
     top: 30%;
     background-color: #fefefe;
     margin: auto;
     padding: 10px;
     border-radius: 5px;
-    width: 40%;
-    height: 20%;
+    width: 500px;
+    height: 150px;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -122,6 +122,16 @@
     padding-top: 15px;
 }
 
+.add-modal-body{
+    padding: 5px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
 .modal-body a{
     text-decoration: none;
     color: #000000b3;
@@ -129,7 +139,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-   
 }
 
 .modal-body a:hover{
@@ -151,30 +160,95 @@
     font-size: 10px;
 }
 
+.add-modal-body textarea{
+    resize: none;
+    outline: none;
+    padding: 5px;
+    font-size: 8pt;
+    width: 95%;
+    border: none;
+    border-radius: 5px;
+}
+
+.add-modal-buttons{
+    width: 100%;
+    padding-top: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.add-modal-buttons-container{
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+.add-modal-submit span{
+    font-size: 23pt;
+    color: #00000065;
+}
+
+.add-modal-submit{
+    border: none;
+    background-color: #ffffff;
+}
+
 @media only screen and (max-width: 1240px){
     .modal-content{
         width: 25%;
         left: -38%;
     }
 
-    @-webkit-keyframes animatetop{
+    @-webkit-keyframes animateleft{
         from{
             left: -80%;
             opacity: 0;
         }
         to{
-            left: -38%;
+            left: -40%;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes animateleft{
+        from{
+            left: -80%;
+            opacity: 0;
+        }
+        to{
+            left: -40%;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes animatetop{
+        from{
+            top: -300px;
+            opacity: 0;
+        }
+        to{
+            top: 30%;
             opacity: 1;
         }
     }
     
     @keyframes animatetop{
         from{
-            left: -80%;
+            top: 300px;
             opacity: 0;
         }
         to{
-            left: -38%;
+            top: 30%;
             opacity: 1;
         }
     }
@@ -187,29 +261,64 @@
 }
 
 @media only screen and (max-width: 730px){
+    .add-modal-content{
+        width: 100%;
+        height: 25%;
+    }
+    
     .modal-content{
         width: 100%;
-        left: 0%;
+        left: 0;
     }
 
-    @-webkit-keyframes animatetop{
+    .add-modal-buttons-container{
+        width: 30%;
+    }
+
+    label{
+        padding-right: 15px;
+    }
+
+    @-webkit-keyframes animateleft{
         from{
             left: -80%;
             opacity: 0;
         }
         to{
-            left: 0%;
+            left: 0;
+            opacity: 1;
+        }
+    }
+    
+    @keyframes animateleft{
+        from{
+            left: -80%;
+            opacity: 0;
+        }
+        to{
+            left: 0;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes animatetop{
+        from{
+            top: -300px;
+            opacity: 0;
+        }
+        to{
+            top: 30%;
             opacity: 1;
         }
     }
     
     @keyframes animatetop{
         from{
-            left: -80%;
+            top: 300px;
             opacity: 0;
         }
         to{
-            left: 0%;
+            top: 30%;
             opacity: 1;
         }
     }

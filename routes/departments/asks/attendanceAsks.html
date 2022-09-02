@@ -82,12 +82,19 @@
         <div id="addModal" class="modal">
             <div class="add-modal-content">
                 <div class="modal-header">
-                    <h3>Adicionar uma pergunta</h3>
+                    <h3>Adicionar</h3>
                     <span class="addClose">&times;</span>
                 </div>
-                <form class="modal-body">
-                    <textarea name="" id="" cols="60" rows="3"></textarea>
-                    <button type="submit" class="modal-submit">Salvar</button>
+                <form class="add-modal-body">
+                    <textarea name="" id="" cols="60" rows="3" placeholder="Faça uma pergunta..."></textarea>
+                    <div class="add-modal-buttons">
+                        <div class="add-modal-buttons-container">
+                            <label for="image-button"><span class="material-symbols-outlined">photo_camera</span></label>
+                            <input type="file" accept="image/png, image/gif, image/jpeg" id="image-button" class="add-modal-image">
+                            
+                            <button type="submit" class="add-modal-submit"><span class="material-symbols-outlined">send</span></button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
