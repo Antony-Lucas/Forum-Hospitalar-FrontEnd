@@ -173,34 +173,37 @@
 .add-modal-buttons{
     width: 100%;
     padding-top: 5px;
+    padding-left: 50px;
     display: flex;
     justify-content: end;
     align-items: center;
 }
 
 .add-modal-buttons-container{
-    width: 25%;
+    width: 90%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-input[type="file"]{
-    display: none;
+.add-modal-image::-webkit-file-upload-button{
+    visibility: hidden;
 }
 
 label {
     cursor: pointer;
-}
-
-.add-modal-submit span{
-    font-size: 23pt;
-    color: #00000065;
+    margin-right: 20px;
 }
 
 .add-modal-submit{
     border: none;
     background-color: #ffffff;
+}
+
+.add-modal-submit span{
+    margin-right: 10px;
+    font-size: 23pt;
+    color: #00000065;
 }
 
 @media only screen and (max-width: 1240px){
@@ -271,8 +274,13 @@ label {
         left: 0;
     }
 
+    .add-modal-buttons{
+        padding-left: 0;
+        padding-right: 10px;
+    }
+
     .add-modal-buttons-container{
-        width: 30%;
+        width: 100%;
     }
 
     label{
