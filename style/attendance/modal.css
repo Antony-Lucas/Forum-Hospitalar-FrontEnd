@@ -40,7 +40,7 @@
     padding: 10px;
     border-radius: 5px;
     width: 500px;
-    height: 150px;
+    height: 170px;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -173,7 +173,7 @@
 .add-modal-buttons{
     width: 100%;
     padding-top: 5px;
-    padding-left: 50px;
+    padding-right: 5px;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -196,8 +196,15 @@ label {
 }
 
 .add-modal-submit{
+    color: #ffffff;
+    font-size: 8pt;
+    background-color: #93C82F;
+    padding: 8px;
+    outline: none;
+    width: 15%;
     border: none;
-    background-color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .add-modal-submit span{
