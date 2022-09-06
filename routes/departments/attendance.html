@@ -76,78 +76,195 @@
                 </div>
             </div>
         </div>
-
         <div class="body-content">
             <div class="body-content-header">
                 <h3 class="body-content-header-title">Atendimento</h3>
             </div>
-            <div class="body-content-center">
-                <h3 class="body-content-center-title">Departamentos</h3>
-                <div class="body-content-center-container">
-                    <div class="body-content-center-container-search">
-                        <input type="text" placeholder="&#x1F50E;&#xFE0E;" id="searchbar" onkeyup="search_departments()">
+            <div class="body-container">
+                <div class="body-content-center">
+                    <h3 class="body-content-center-title">Departamentos</h3>
+                    <div class="body-content-center-container">
+                        <ul class="body-content-list" id="departments">
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Anatomia Patológica</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Banco de Sangue</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Exames</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Hemodiálise</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Imunização</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Laboratório</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Quimioterapia</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Radioterapia</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="body-content-list-item">
+                                    <p>Transplantes</p>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="body-content-list" id="departments">
-                        <li>
-                            <a href="../departments/asks/attendanceAsks.html" class="body-content-list-item">
-                                <p>Anatomia Patológica</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Banco de Sangue</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Exames</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Hemodiálise</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Imunização</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Laboratório</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Quimioterapia</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Radioterapia</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="body-content-list-item">
-                                <p>Transplantes</p>
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </a>
-                        </li>
-                    </ul>
+                </div>
+                <div class="body-asks">
+                    <div id="addModal" class="modal">
+                        <div class="add-modal-content">
+                            <div class="modal-header">
+                                <h3>Adicionar</h3>
+                                <span class="addClose">&times;</span>
+                            </div>
+                            <form class="add-modal-body">
+                                <textarea name="" id="" cols="60" rows="3" placeholder="Faça uma pergunta..."></textarea>
+                                <div class="add-modal-buttons">
+                                    <div class="add-modal-buttons-container">
+                                        <input type="file" accept="image/png, image/gif, image/jpeg" id="image-button" class="add-modal-image">
+                                        <label for="image-button"><span class="material-symbols-outlined">photo_camera</span></label>
+                                        
+                                        <button type="submit" class="add-modal-submit">Publicar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="addModal" class="modal">
+                        <div class="add-modal-content">
+                            <div class="modal-header">
+                                <h3>Respostas</h3>
+                                <span class="addClose">&times;</span>
+                            </div>
+                            <form class="add-modal-body">
+                                <textarea name="" id="" cols="60" rows="3" placeholder="Faça uma pergunta..."></textarea>
+                                <div class="add-modal-buttons">
+                                    <div class="add-modal-buttons-container">
+                                        <input type="file" accept="image/png, image/gif, image/jpeg" id="image-button" class="add-modal-image">
+                                        <label for="image-button"><span class="material-symbols-outlined">photo_camera</span></label>
+                                        
+                                        <button type="submit" class="add-modal-submit">Publicar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="ask-content">
+                        <div class="ask-header">
+                            <div class="ask-header-container">
+                                <h3>Anatomia patológica</h3>
+                            </div>
+                            <a class="ask-header-add" id="showAddModal">Adicionar</a>
+                        </div>
+                        <div class="ask-body">
+                            <div class="ask-body-search">
+                                <input type="text" placeholder="&#x1F50E;&#xFE0E;" id="searchbar" onkeyup="search_departments()">
+                            </div>
+                            <p>Recentes</p>
+                            <div class="body-content-ask">
+                                <div class="ask-header-content">
+                                    <span class="material-symbols-outlined">account_circle</span>
+                                    <div class="ask-body-content">
+                                        <h4>Marcos Bruno</h4>
+                                        <p>Quais são os cuidados com a fístula antes e depois da hemodiálise?</p>
+                                        <p>25-08-2022</p>
+                                        <a href="#">Ver</a>
+                                        <a href="#" id="showModal">Responder</a>
+                                    </div>
+                                </div>
+                                <div class="ask-header-content">
+                                    <span class="material-symbols-outlined">account_circle</span>
+                                    <div class="ask-body-content">
+                                        <h4>Antony Lucas</h4>
+                                        <p>Outro cuidado é não deixar infeccionar. Por exemplo, o paciente não deve tirar sangue em laboratório no braço da fístula, pois sua finalidade específica é puncionar durante a diálise.</p>
+                                        <p>25-08-2022</p>
+                                        <a href="#">Ver</a>
+                                        <a href="#">Responder</a>
+                                    </div>
+                                </div>
+                                <div class="ask-header-content">
+                                    <span class="material-symbols-outlined">account_circle</span>
+                                    <div class="ask-body-content">
+                                        <h4>Marcos Bruno</h4>
+                                        <p>Quais são os cuidados com a fístula antes e depois da hemodiálise?</p>
+                                        <p>25-08-2022</p>
+                                        <a href="#">Ver</a>
+                                        <a href="#">Responder</a>
+                                    </div>
+                                </div>
+                                <div class="ask-header-content">
+                                    <span class="material-symbols-outlined">account_circle</span>
+                                    <div class="ask-body-content">
+                                        <h4>Antony Lucas</h4>
+                                        <p>Outro cuidado é não deixar infeccionar. Por exemplo, o paciente não deve tirar sangue em laboratório no braço da fístula, pois sua finalidade específica é puncionar durante a diálise.</p>
+                                        <p>25-08-2022</p>
+                                        <a href="#">Ver</a>
+                                        <a href="#">Responder</a>
+                                    </div>
+                                </div>
+                                <div class="ask-header-content">
+                                    <span class="material-symbols-outlined">account_circle</span>
+                                    <div class="ask-body-content">
+                                        <h4>Marcos Bruno</h4>
+                                        <p>Quais são os cuidados com a fístula antes e depois da hemodiálise?</p>
+                                        <p>25-08-2022</p>
+                                        <a href="#">Ver</a>
+                                        <a href="#">Responder</a>
+                                    </div>
+                                </div>
+                                <div class="ask-header-content">
+                                    <span class="material-symbols-outlined">account_circle</span>
+                                    <div class="ask-body-content">
+                                        <h4>Antony Lucas</h4>
+                                        <p>Outro cuidado é não deixar infeccionar. Por exemplo, o paciente não deve tirar sangue em laboratório no braço da fístula, pois sua finalidade específica é puncionar durante a diálise.</p>
+                                        <p>25-08-2022</p>
+                                        <a href="#">Ver</a>
+                                        <a href="#">Responder</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <script src="../../javaScript/modal.js"></script>
+    <script src="../../javaScript/addModal.js"></script>
+    <script src="../../javaScript/"></script>
     <script src="../../javaScript/searchbar.js"></script>
 </body>
 </html>
