@@ -42,9 +42,13 @@ public class AnswersServices {
 	}
 	
 	public Answers update(Long id, Answers obj) {
-		Answers entity = answerRepository.getReferenceById(id);
-		updateData(entity, obj);
-		return answerRepository.save(entity);
+		try {
+			Answers entity = answerRepository.getReferenceById(id);
+			updateData(entity, obj);
+			return answerRepository.save(entity);
+		}catch(RuntimeException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 	
 	public void updateData(Answers entity, Answers obj) {
