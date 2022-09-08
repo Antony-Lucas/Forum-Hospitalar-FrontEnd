@@ -58,12 +58,13 @@ public class TestConfig implements CommandLineRunner{
 		Answers cat2 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "Documento oficial com foto, por exemplo: Carteira de Identidade, Carteira Nacional de Habilitação, Carteira de Trabalho, Passaporte ou Carteira Profissional.", o2);
 		Answers cat3 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "A fístula é a ligação da artéria com a veia, que se dilata e cresce. No dia a dia, o cuidado deve ser não traumatizar aquele local, não bater, porque pode formar hematoma e comprimir a circulação", o3); 
 		Answers cat4 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "Outro cuidado é não deixar infeccionar. Por exemplo, o paciente não deve tirar sangue em laboratório no braço da fístula, pois sua finalidade específica é puncionar durante a diálise.", o3); 
+		Answers cat5 = new Answers(null, Instant.parse("2019-07-21T03:42:10Z"), "Quimioterapia é um tratamento que utiliza medicamentos para destruir as células doentes que formam um tumor ou se multiplicam desordenadamente. Estes medicamentos se misturam com o sangue e são levados a todas.", o3);
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		modulesRepository.saveAll(Arrays.asList(m1, m2, m3));
 		departmentRepository.saveAll(Arrays.asList(d1, d2, d3));
 		askRepository.saveAll(Arrays.asList(o1,o2,o3));
-		answerRepository.saveAll(Arrays.asList(cat1,cat2,cat3, cat4));
+		answerRepository.saveAll(Arrays.asList(cat1,cat2,cat3, cat4, cat5));
 	}
 
 }
