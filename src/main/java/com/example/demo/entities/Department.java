@@ -28,8 +28,7 @@ public class Department implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "moduleId")
 	private Modules modules;
-
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Asks> asks = new ArrayList<>();
 	

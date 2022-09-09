@@ -12,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "asks")
 public class Asks implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -25,11 +27,10 @@ public class Asks implements Serializable{
 	private String content;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone="GMT")
 	private Instant moment;
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "clientId")
 	private Department client;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "asks")
 	private List<Answers> answers = new ArrayList<>();
 	
