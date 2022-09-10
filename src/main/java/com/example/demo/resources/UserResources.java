@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.entities.User;
-import com.example.demo.repositories.UserRepositories;
 import com.example.demo.services.UserServices;
 
 @RestControllerAdvice
