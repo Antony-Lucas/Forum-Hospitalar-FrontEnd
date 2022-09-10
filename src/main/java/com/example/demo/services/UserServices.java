@@ -8,6 +8,9 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.User;
@@ -19,9 +22,21 @@ import com.example.demo.services.exception.ResourceNotFoundException;
 public class UserServices {
 	@Autowired
 	private UserRepositories userRepository;
+	
+	@Autowired
+	private final PasswordEncoder encoder;
+	
+	public UserServices(UserRepositories userRepository, PasswordEncoder encoder) {
+		this.userRepository = userRepository;
+		this.encoder = encoder;
+	}
 
 	public List<User> findAll() {
 		return userRepository.findAll();
+	}
+	
+	public Optional<User> findByName(String name){
+		return userRepository.findByName(name);
 	}
 	
 	public User findById(Long id) {
@@ -30,6 +45,7 @@ public class UserServices {
 	}
 	
 	public User insert(User obj) {
+		obj.setPassword(encoder.encode(obj.getPassword()));
 		return userRepository.save(obj);
 	}
 	
