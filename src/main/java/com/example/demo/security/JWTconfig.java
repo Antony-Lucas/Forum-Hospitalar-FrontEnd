@@ -41,7 +41,9 @@ public class JWTconfig {
 			.csrf()
 			.disable()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/login")
+			.antMatchers("/users/refreshtoken")
+			.permitAll()
+			.antMatchers(HttpMethod.POST, "/users")
 			.permitAll()
 			.anyRequest()
 			.authenticated()
@@ -61,4 +63,5 @@ public class JWTconfig {
 		source.registerCorsConfiguration("/**", corsConfiguration);
 		return source;
 	}
+	
 }

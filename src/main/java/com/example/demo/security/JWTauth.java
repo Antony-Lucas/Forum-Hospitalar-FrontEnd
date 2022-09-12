@@ -3,12 +3,15 @@ package com.example.demo.security;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,8 +25,9 @@ import com.example.demo.repositories.data.DetailUserData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JWTauth extends UsernamePasswordAuthenticationFilter{
-	public static final int TOKEN_EXPIRATION = 600_000;
-	public static final String TOKEN_PASSWORD = "6be446fa-0a90-4175-aed6-de4180b9893b"; 
+	public static final int TOKEN_EXPIRATION = 900_000;
+	public static final int REFRESH_TOKEN_EXPIRATION = 1800_000;
+	public static final String TOKEN_PASSWORD = "6be446fa-0a90-4175-aed6-de4180b9893b";
 	
 	private final AuthenticationManager authenticationManager;
 	
@@ -54,7 +58,15 @@ public class JWTauth extends UsernamePasswordAuthenticationFilter{
 			withSubject(userdata.getUsername())
 			.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
 			.sign(Algorithm.HMAC512(TOKEN_PASSWORD));
-		response.getWriter().write(token);
-		response.getWriter().flush();
+		String refresh_token = JWT.create().
+			withSubject(userdata.getUsername())
+			.withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
+			.sign(Algorithm.HMAC512(TOKEN_PASSWORD));
+		
+		Map<String, String> tokens = new HashMap<>();
+		tokens.put("access_token", token);
+		tokens.put("refresh_token", refresh_token);
+		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+		new ObjectMapper().writeValue(response.getOutputStream(), tokens);
 	}
 }

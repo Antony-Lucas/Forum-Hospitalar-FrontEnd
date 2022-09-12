@@ -1,11 +1,19 @@
 package com.example.demo.resources;
 
+import java.io.IOException;
 import java.net.URI;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,12 +27,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.demo.entities.User;
+import com.example.demo.security.JWTauth;
 import com.example.demo.services.UserServices;
+import com.example.demo.repositories.userServicesData;
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestControllerAdvice
 @RequestMapping(value = "/users")
 public class UserResources {
+	public static final String HEADER_ATRIBUTE = "Authorization";
+	public static final String ATRIBUTE_PREFIX = "Bearer ";
+	public static final int TOKEN_EXPIRATION = 900_000;
+	public static final int REFRESH_TOKEN_EXPIRATION = 1800_000;
+	public static final String TOKEN_PASSWORD = "6be446fa-0a90-4175-aed6-de4180b9893b";
+	
+	private userServicesData userservicesdata;
 	@Autowired
 	private UserServices services;
 	@Autowired
@@ -80,4 +104,42 @@ public class UserResources {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@GetMapping(value = "/users/refreshtoken")
+	public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws StreamWriteException, DatabindException, IOException{
+		String atribute = request.getHeader(HEADER_ATRIBUTE);
+		
+		if(atribute == null || !atribute.startsWith(ATRIBUTE_PREFIX)) {
+			try {
+				String token = atribute.replace(ATRIBUTE_PREFIX, "");
+				Algorithm algorithm = Algorithm.HMAC512(JWTauth.TOKEN_PASSWORD);
+				JWTVerifier jwtVerifier = JWT.require(algorithm).build();
+				DecodedJWT decodedJWT = jwtVerifier.verify(token);
+				String userName = decodedJWT.getSubject();
+				User user = userservicesdata.getUser(userName);
+				String access_token = JWT.create().
+						withSubject(user.getName())
+						.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
+						.sign(Algorithm.HMAC512(TOKEN_PASSWORD));
+					String refresh_token = JWT.create().
+						withSubject(user.getName())
+						.withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
+						.sign(algorithm);
+					
+					Map<String, String> tokens = new HashMap<>();
+					tokens.put("access_token", access_token);
+					tokens.put("refresh_token", refresh_token);
+					response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+					new ObjectMapper().writeValue(response.getOutputStream(), tokens);
+				return;
+			}catch (Exception e) {
+				response.setHeader("error", e.getMessage());
+				Map<String, String> error = new HashMap<>();
+				error.put("Error_message", e.getMessage());
+				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+				new ObjectMapper().writeValue(response.getOutputStream(), error);
+			}
+		}else {
+			throw new RuntimeException("RefreshToken missing");
+		}
+	}
 }
