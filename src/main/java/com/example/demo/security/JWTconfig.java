@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
@@ -41,7 +42,7 @@ public class JWTconfig {
 			.csrf()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/users/refreshtoken")
+			.antMatchers(HttpMethod.GET, "/refreshtoken")
 			.permitAll()
 			.antMatchers(HttpMethod.POST, "/users")
 			.permitAll()
@@ -50,6 +51,7 @@ public class JWTconfig {
 			.and()
 			.addFilter(new JWTauth(authenticationManager))
 			.addFilter(new JWTvalidate(authenticationManager))
+			.addFilterBefore(new JWTfilter(), UsernamePasswordAuthenticationFilter.class)
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		return http.build();
@@ -63,5 +65,4 @@ public class JWTconfig {
 		source.registerCorsConfiguration("/**", corsConfiguration);
 		return source;
 	}
-	
 }

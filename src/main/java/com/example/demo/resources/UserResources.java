@@ -104,11 +104,10 @@ public class UserResources {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@GetMapping(value = "/users/refreshtoken")
+	@GetMapping("/refreshtoken")
 	public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws StreamWriteException, DatabindException, IOException{
 		String atribute = request.getHeader(HEADER_ATRIBUTE);
-		
-		if(atribute == null || !atribute.startsWith(ATRIBUTE_PREFIX)) {
+		if(atribute != null && atribute.startsWith(ATRIBUTE_PREFIX)) {
 			try {
 				String token = atribute.replace(ATRIBUTE_PREFIX, "");
 				Algorithm algorithm = Algorithm.HMAC512(JWTauth.TOKEN_PASSWORD);
