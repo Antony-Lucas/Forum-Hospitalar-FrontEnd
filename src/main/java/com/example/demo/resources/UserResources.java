@@ -34,7 +34,6 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.demo.entities.User;
 import com.example.demo.security.JWTauth;
 import com.example.demo.services.UserServices;
-import com.example.demo.repositories.userServicesData;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,7 +47,7 @@ public class UserResources {
 	public static final int REFRESH_TOKEN_EXPIRATION = 1800_000;
 	public static final String TOKEN_PASSWORD = "6be446fa-0a90-4175-aed6-de4180b9893b";
 	
-	private userServicesData userservicesdata;
+	
 	@Autowired
 	private UserServices services;
 	@Autowired
@@ -104,32 +103,27 @@ public class UserResources {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@GetMapping("/refreshtoken")
+	@GetMapping("/token/refresh")
 	public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws StreamWriteException, DatabindException, IOException{
 		String atribute = request.getHeader(HEADER_ATRIBUTE);
 		if(atribute != null && atribute.startsWith(ATRIBUTE_PREFIX)) {
 			try {
-				String token = atribute.replace(ATRIBUTE_PREFIX, "");
+				String refresh_token = atribute.replace(ATRIBUTE_PREFIX, "");
 				Algorithm algorithm = Algorithm.HMAC512(JWTauth.TOKEN_PASSWORD);
 				JWTVerifier jwtVerifier = JWT.require(algorithm).build();
-				DecodedJWT decodedJWT = jwtVerifier.verify(token);
+				DecodedJWT decodedJWT = jwtVerifier.verify(refresh_token);
 				String userName = decodedJWT.getSubject();
-				User user = userservicesdata.getUser(userName);
 				String access_token = JWT.create().
-						withSubject(user.getName())
+						withSubject(userName)
 						.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
-						.sign(Algorithm.HMAC512(TOKEN_PASSWORD));
-					String refresh_token = JWT.create().
-						withSubject(user.getName())
-						.withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
+						.withIssuer(request.getRequestURL().toString())
 						.sign(algorithm);
 					
-					Map<String, String> tokens = new HashMap<>();
-					tokens.put("access_token", access_token);
-					tokens.put("refresh_token", refresh_token);
-					response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-					new ObjectMapper().writeValue(response.getOutputStream(), tokens);
-				return;
+				Map<String, String> tokens = new HashMap<>();
+				tokens.put("access_token", access_token);
+				tokens.put("refresh_token", refresh_token);
+				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+				new ObjectMapper().writeValue(response.getOutputStream(), tokens);
 			}catch (Exception e) {
 				response.setHeader("error", e.getMessage());
 				Map<String, String> error = new HashMap<>();

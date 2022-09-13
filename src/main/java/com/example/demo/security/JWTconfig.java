@@ -42,7 +42,7 @@ public class JWTconfig {
 			.csrf()
 			.disable()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.GET, "/refreshtoken")
+			.antMatchers(HttpMethod.GET, "/token/refresh")
 			.permitAll()
 			.antMatchers(HttpMethod.POST, "/users")
 			.permitAll()
