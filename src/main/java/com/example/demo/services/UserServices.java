@@ -37,6 +37,10 @@ public class UserServices {
 		return userRepository.findByName(name);
 	}
 	
+	public Optional<User> findByEmail(String email){
+		return userRepository.findByEmail(email);
+	}
+	
 	public User findById(Long id) {
 		Optional<User> obj = userRepository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));

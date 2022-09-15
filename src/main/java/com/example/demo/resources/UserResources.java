@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.auth0.jwt.JWT;
@@ -85,10 +87,20 @@ public class UserResources {
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> insert(@RequestBody User obj){
-		obj = services.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
+	public ResponseEntity<User> insert(@Validated @RequestBody User obj) throws Exception {
+		Optional<User> usernameEntry = services.findByName(obj.getName());
+		Optional<User> emailEntry = services.findByEmail(obj.getEmail());
+		if(usernameEntry.isPresent()){
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Este nome de usuário já está em uso");
+		}
+		if(emailEntry.isPresent()){
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Este endereço de email já está em uso");
+		}
+		else {
+			obj = services.insert(obj);
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+			return ResponseEntity.created(uri).body(obj);
+		}
 	}
 	
 	@DeleteMapping(value = "/{id}")
