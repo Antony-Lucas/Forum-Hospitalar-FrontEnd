@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.example.demo.config.GUIDconfig;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.data.DetailUserData;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,8 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JWTauth extends UsernamePasswordAuthenticationFilter{
 	public static final int TOKEN_EXPIRATION = 900_000;
 	public static final int REFRESH_TOKEN_EXPIRATION = 1800_000;
-	public static final String TOKEN_PASSWORD = "6be446fa-0a90-4175-aed6-de4180b9893b";
-	
 	private final AuthenticationManager authenticationManager;
 	
 	public JWTauth(AuthenticationManager authenticationManager) {
@@ -57,11 +56,11 @@ public class JWTauth extends UsernamePasswordAuthenticationFilter{
 		String token = JWT.create().
 			withSubject(userdata.getUsername())
 			.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
-			.sign(Algorithm.HMAC512(TOKEN_PASSWORD));
+			.sign(Algorithm.HMAC512(GUIDconfig.TOKEN_PASSWORD));
 		String refresh_token = JWT.create().
 			withSubject(userdata.getUsername())
 			.withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
-			.sign(Algorithm.HMAC512(TOKEN_PASSWORD));
+			.sign(Algorithm.HMAC512(GUIDconfig.TOKEN_PASSWORD));
 		
 		Map<String, String> tokens = new HashMap<>();
 		tokens.put("access_token", token);

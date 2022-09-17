@@ -33,8 +33,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.demo.config.GUIDconfig;
 import com.example.demo.entities.User;
-import com.example.demo.security.JWTauth;
 import com.example.demo.services.UserServices;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -47,8 +47,6 @@ public class UserResources {
 	public static final String ATRIBUTE_PREFIX = "Bearer ";
 	public static final int TOKEN_EXPIRATION = 900_000;
 	public static final int REFRESH_TOKEN_EXPIRATION = 1800_000;
-	public static final String TOKEN_PASSWORD = "6be446fa-0a90-4175-aed6-de4180b9893b";
-	
 	
 	@Autowired
 	private UserServices services;
@@ -121,7 +119,7 @@ public class UserResources {
 		if(atribute != null && atribute.startsWith(ATRIBUTE_PREFIX)) {
 			try {
 				String refresh_token = atribute.replace(ATRIBUTE_PREFIX, "");
-				Algorithm algorithm = Algorithm.HMAC512(JWTauth.TOKEN_PASSWORD);
+				Algorithm algorithm = Algorithm.HMAC512(GUIDconfig.TOKEN_PASSWORD);
 				JWTVerifier jwtVerifier = JWT.require(algorithm).build();
 				DecodedJWT decodedJWT = jwtVerifier.verify(refresh_token);
 				String userName = decodedJWT.getSubject();

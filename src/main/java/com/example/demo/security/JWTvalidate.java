@@ -15,6 +15,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.example.demo.config.GUIDconfig;
 
 public class JWTvalidate extends BasicAuthenticationFilter{
 	public static final String HEADER_ATRIBUTE = "Authorization";
@@ -42,7 +43,7 @@ public class JWTvalidate extends BasicAuthenticationFilter{
 	}
 	
 	private UsernamePasswordAuthenticationToken getAuthenticationToken(String token) {
-		String user = JWT.require(Algorithm.HMAC512(JWTauth.TOKEN_PASSWORD)).build().verify(token).getSubject();
+		String user = JWT.require(Algorithm.HMAC512(GUIDconfig.TOKEN_PASSWORD)).build().verify(token).getSubject();
 		if(user == null) {
 			return null;
 		}else {

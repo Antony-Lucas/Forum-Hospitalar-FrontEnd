@@ -19,6 +19,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.demo.config.GUIDconfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JWTfilter extends OncePerRequestFilter{
@@ -33,7 +34,7 @@ public class JWTfilter extends OncePerRequestFilter{
 			if(atribute != null && atribute.startsWith(JWTvalidate.ATRIBUTE_PREFIX)) {
 				try {
 					String token = atribute.substring(JWTvalidate.ATRIBUTE_PREFIX.length());
-					Algorithm algorithm = Algorithm.HMAC512(JWTauth.TOKEN_PASSWORD);
+					Algorithm algorithm = Algorithm.HMAC512(GUIDconfig.TOKEN_PASSWORD);
 					JWTVerifier jwtVerifier = JWT.require(algorithm).build();
 					DecodedJWT decodedJWT = jwtVerifier.verify(token);
 					String userName = decodedJWT.getSubject();
