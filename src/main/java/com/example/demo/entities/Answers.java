@@ -27,15 +27,19 @@ public class Answers implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "askId")
 	private Asks asks;
+	@ManyToOne
+	@JoinColumn(name = "answersId")
+	private User user;
 	
 	public Answers() {}
 	
-	public Answers(Long id, Instant moment, String content, Asks asks) {
+	public Answers(Long id, Instant moment, String content, Asks asks, User user) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.moment = moment;
 		this.asks = asks;
+		this.user = user;
 	}
 
 	public Long getId() {
@@ -68,6 +72,14 @@ public class Answers implements Serializable{
 
 	public void setAsks(Asks asks) {
 		this.asks = asks;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

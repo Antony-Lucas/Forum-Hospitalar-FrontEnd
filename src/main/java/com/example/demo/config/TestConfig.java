@@ -39,7 +39,7 @@ public class TestConfig implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "123456");
+		/*User u1 = new User(null, "Maria Brown", "maria@gmail.com", "123456");
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "123456"); 
 		
 		Modules m1 = new Modules(null, "Assistencial");
@@ -64,7 +64,7 @@ public class TestConfig implements CommandLineRunner{
 		modulesRepository.saveAll(Arrays.asList(m1, m2, m3));
 		departmentRepository.saveAll(Arrays.asList(d1, d2, d3));
 		askRepository.saveAll(Arrays.asList(o1,o2,o3));
-		answerRepository.saveAll(Arrays.asList(cat1,cat2,cat3, cat4, cat5));
+		answerRepository.saveAll(Arrays.asList(cat1,cat2,cat3, cat4, cat5));*/
 	}
 
 }

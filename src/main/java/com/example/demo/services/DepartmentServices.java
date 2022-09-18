@@ -12,14 +12,18 @@ import com.example.demo.repositories.DepartmentRepositories;
 @Service
 public class DepartmentServices {
 	@Autowired
-	private DepartmentRepositories userRepository;
+	private DepartmentRepositories departmentRepository;
 
 	public List<Department> findAll() {
-		return userRepository.findAll();
+		return departmentRepository.findAll();
 	}
 	
 	public Department findById(Long id) {
-		Optional<Department> obj = userRepository.findById(id);
+		Optional<Department> obj = departmentRepository.findById(id);
 		return obj.get();
+	}
+	
+	public Department insert(Department obj) {
+		return departmentRepository.save(obj);
 	}
 }

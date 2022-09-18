@@ -30,6 +30,9 @@ public class Asks implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "clientId")
 	private Department client;
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	private User user;
 	@JsonIgnore
 	@OneToMany(mappedBy = "asks")
 	private List<Answers> answers = new ArrayList<>();
@@ -38,12 +41,13 @@ public class Asks implements Serializable{
 		
 	}
 
-	public Asks(Long id, String content, Instant moment, Department client) {
+	public Asks(Long id, String content, Instant moment, Department client, User user) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.moment = moment;
 		this.client = client;
+		this.user = user;
 	}
 
 	public Long getId() {
@@ -78,6 +82,14 @@ public class Asks implements Serializable{
 		this.client = client;
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public List<Answers> getAnswers(){
 		return answers;
 	}
