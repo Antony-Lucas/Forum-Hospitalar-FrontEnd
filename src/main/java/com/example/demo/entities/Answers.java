@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "answers")
@@ -28,18 +29,19 @@ public class Answers implements Serializable{
 	@JoinColumn(name = "askId")
 	private Asks asks;
 	@ManyToOne
-	@JoinColumn(name = "answersId")
-	private User user;
+	@JoinColumn(name = "managementId")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private Management management;
 	
 	public Answers() {}
 	
-	public Answers(Long id, Instant moment, String content, Asks asks, User user) {
+	public Answers(Long id, Instant moment, String content, Asks asks, Management management) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.moment = moment;
 		this.asks = asks;
-		this.user = user;
+		this.management = management;
 	}
 
 	public Long getId() {
@@ -74,12 +76,12 @@ public class Answers implements Serializable{
 		this.asks = asks;
 	}
 	
-	public User getUser() {
-		return user;
+	public Management getmanagement() {
+		return management;
 	}
 	
-	public void setUser(User user) {
-		this.user = user;
+	public void setmanagement(Management management) {
+		this.management = management;
 	}
 
 	@Override

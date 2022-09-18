@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "asks")
@@ -31,8 +32,9 @@ public class Asks implements Serializable{
 	@JoinColumn(name = "clientId")
 	private Department client;
 	@ManyToOne
-	@JoinColumn(name = "userId")
-	private User user;
+	@JoinColumn(name = "manageId")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private Management management;
 	@JsonIgnore
 	@OneToMany(mappedBy = "asks")
 	private List<Answers> answers = new ArrayList<>();
@@ -41,13 +43,13 @@ public class Asks implements Serializable{
 		
 	}
 
-	public Asks(Long id, String content, Instant moment, Department client, User user) {
+	public Asks(Long id, String content, Instant moment, Department client, Management management) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.moment = moment;
 		this.client = client;
-		this.user = user;
+		this.management = management;
 	}
 
 	public Long getId() {
@@ -82,12 +84,12 @@ public class Asks implements Serializable{
 		this.client = client;
 	}
 	
-	public User getUser() {
-		return user;
+	public Management getmanagement() {
+		return management;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(Management management) {
+		this.management = management;
 	}
 
 	public List<Answers> getAnswers(){

@@ -1,16 +1,15 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,11 +30,8 @@ public class User implements Serializable{
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	@JsonIgnore
-	@OneToMany(mappedBy = "user")
-	private List<Asks> asks = new ArrayList<>();
-	@JsonIgnore
-	@OneToMany(mappedBy = "user")
-	private List<Answers> answers = new ArrayList<>();
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private Management management;
 	
 	public User() {};
 	
@@ -79,8 +75,8 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public List<Asks> getAsks() {
-		return asks;
+	public Management getManagement() {
+		return management;
 	}
 
 	@Override
