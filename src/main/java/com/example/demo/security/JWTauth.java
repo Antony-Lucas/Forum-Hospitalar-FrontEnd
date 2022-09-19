@@ -26,8 +26,8 @@ import com.example.demo.repositories.data.DetailUserData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JWTauth extends UsernamePasswordAuthenticationFilter{
-	public static final int TOKEN_EXPIRATION = 900_000;
-	public static final int REFRESH_TOKEN_EXPIRATION = 1800_000;
+	public static final int TOKEN_EXPIRATION = 1200_000;
+	public static final int REFRESH_TOKEN_EXPIRATION = 2800_000;
 	private final AuthenticationManager authenticationManager;
 	
 	public JWTauth(AuthenticationManager authenticationManager) {
