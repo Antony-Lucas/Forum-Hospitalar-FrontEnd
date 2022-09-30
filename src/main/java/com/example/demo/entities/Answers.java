@@ -26,6 +26,7 @@ public class Answers implements Serializable{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone="GMT")
 	private Instant moment;
 	@ManyToOne
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@JoinColumn(name = "askId")
 	private Asks asks;
 	@ManyToOne

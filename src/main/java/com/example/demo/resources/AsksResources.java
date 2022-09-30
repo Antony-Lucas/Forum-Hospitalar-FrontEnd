@@ -23,6 +23,7 @@ import com.example.demo.services.AsksServices;
 public class AsksResources {
 	@Autowired
 	private AsksServices services;
+	
 	@GetMapping
 	public ResponseEntity<List<Asks>> findAll(){
 		List<Asks> list = services.findAll();

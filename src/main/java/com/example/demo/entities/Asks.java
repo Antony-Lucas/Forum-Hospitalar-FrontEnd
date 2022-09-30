@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -26,19 +25,19 @@ public class Asks implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String content;
+	private String imageUrl;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone="GMT")
 	private Instant moment;
 	@ManyToOne
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@JoinColumn(name = "clientId")
 	private Department client;
 	@ManyToOne
 	@JoinColumn(name = "manageId")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Management management;
-	@JsonIgnore
 	@OneToMany(mappedBy = "asks")
 	private List<Answers> answers = new ArrayList<>();
-	
 	public Asks() {
 		
 	}
@@ -66,6 +65,14 @@ public class Asks implements Serializable{
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Instant getMoment() {
