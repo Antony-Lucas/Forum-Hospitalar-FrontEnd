@@ -33,7 +33,6 @@ public class JWTauth extends UsernamePasswordAuthenticationFilter{
 	public JWTauth(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
 	}
-	
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 		throws AuthenticationException {

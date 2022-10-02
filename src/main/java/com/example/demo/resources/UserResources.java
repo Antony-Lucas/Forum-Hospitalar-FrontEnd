@@ -17,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,11 +43,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestControllerAdvice
 @RequestMapping(value = "/users")
+@CrossOrigin
 public class UserResources {
 	public static final String HEADER_ATRIBUTE = "Authorization";
 	public static final String ATRIBUTE_PREFIX = "Bearer ";
-	public static final int TOKEN_EXPIRATION = 900_000;
-	public static final int REFRESH_TOKEN_EXPIRATION = 1800_000;
+	public static final int TOKEN_EXPIRATION = 1200_000;
+	public static final int REFRESH_TOKEN_EXPIRATION = 2800_000;
 	
 	@Autowired
 	private UserServices services;
