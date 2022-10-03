@@ -1,0 +1,1 @@
+const url = {url_auth:'http://localhost:8080'};
