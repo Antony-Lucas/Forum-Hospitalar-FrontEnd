@@ -23,39 +23,39 @@ async function req(){
         .then(response => response.json())
         .then(token => {
             _token = token.access_token;
-            let value = getCookie(_token);
-            if(value != "" && value != null){
-                createCookie("auth_tkn", value, 30);
-            }
-            return _token;
         });
-        console.log(_token);
+        alert(_token);
+        let user = getCookie("usr_tkn");
+        user = _token;
+        if (user != "" && user != null) {
+            setCookie("usr_tkn", user, 30);
+        }
     }catch(err){
         console.log(err);
     }
 }
 
-function createCookie(name, value, days){
+function setCookie(cname,cvalue,exdays) {
     const d = new Date();
-    d.setTime(d.getTime() + (days*24*60*60*1000));
-    let expires = "expires="+d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-
-function getCookie(cname){
+  
+function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
     }
     return "";
 }
-
+  
 req();
