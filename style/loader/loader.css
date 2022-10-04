@@ -1,0 +1,32 @@
+.loader{
+    border: 1.5px solid #ffffff;
+    border-radius: 50%;
+    border-top: 1.5px solid #f3f3f358;
+    margin-bottom: 20px;
+    visibility: hidden;
+    transition: 0.5s;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: hotReload 2s infinite linear;
+    animation: hotReload 1.5s infinite linear;
+}
+
+@-webkit-keyframes hotReload {
+    0%{
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes hotReload {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

@@ -24,7 +24,6 @@ async function req(){
         .then(token => {
             _token = token.access_token;
         });
-        alert(_token);
         let user = getCookie("usr_tkn");
         user = _token;
         if (user != "" && user != null) {

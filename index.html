@@ -5,20 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/loginPage/loginStyle.css">
+    <link rel="stylesheet" href="./style/loader/loader.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Knowbi</title>
 </head>
 <body>
     <div class="login-center">
-        <h2>Know<strong>BI</strong></h2>
-        <form class="login-form" action="">
-            <input class="login-input" type="text" placeholder="Nome de usuário">
-            <input class="login-input" type="password" placeholder="Senha">
-            <a href="./routes/home.html" class="login-button"><span>Entrar</span></a>
-        </form>
-        <a href="./routes/forgotPassword.html" class="login-forgotpass">Esqueci a senha</a>
-        <p class="login-or">OU</p>
-        <a href="./routes/createAccount.html" class="login-register">Cadastre-se</a>
+        <div class="login-top">
+            <div class="login-centralize">
+                <h2>Know<strong>BI</strong></h2>
+                <div id="loader" class="loader"></div>
+                <form class="login-form" action="">
+                    <input id="username" class="login-input" type="text" placeholder="Nome de usuário">
+                    <input id="password" class="login-input" type="password" placeholder="Senha">
+                    <a href="./routes/forgotPassword.html" class="login-cookies">Aviso de Cookies</a>
+                    <input id="mySubmit" class="login-button" type="submit" value="Entrar">
+                </form>
+            </div>
+        </div>
+        <div class="login-links">
+            <div class="login-error" id="error_empty_field">
+                <i class="material-icons" style="font-size: 15px;">error</i>
+                <p id="login-error-info">Informe usuário e senha</p>
+            </div>
+            <a href="./routes/forgotPassword.html" class="login-forgotpass">Esqueceu sua senha?</a>
+            <a href="./routes/createAccount.html" class="login-register">Cadastre-se</a>
+        </div>
     </div>
     <script src="./javaScript/API/auth.js"></script>
+    <script src="./javaScript/errors/loginErros.js"></script>
 </body>
 </html>
