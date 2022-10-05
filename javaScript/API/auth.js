@@ -1,17 +1,19 @@
-let url_api = 'http://localhost:8080';
+const url = 'http://localhost:8080';
+let button_submit = document.getElementById('mySubmit')
+
 let username = "AntonyLucas2";
 let password = "sim";
 var _token = null;
-var cookies = null;
 
 let headers = new Headers();
 headers.append('Content-Type', 'application/json');
 headers.append('Access-Control-Allow-Origin', '*');
 headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('Authorization', btoa(username + ":" + password));
-async function req(){
+
+button_submit.addEventListener('click', async function(){
     try{
-        await fetch(url_api + '/login', { 
+        await fetch(url + '/login', { 
             mode: "cors",
             method: 'POST',
             body: JSON.stringify({
@@ -24,6 +26,7 @@ async function req(){
         .then(token => {
             _token = token.access_token;
         });
+        alert("kkkkkkkkkkkkk");
         let user = getCookie("usr_tkn");
         user = _token;
         if (user != "" && user != null) {
@@ -32,7 +35,7 @@ async function req(){
     }catch(err){
         console.log(err);
     }
-}
+})
 
 function setCookie(cname,cvalue,exdays) {
     const d = new Date();
@@ -56,5 +59,3 @@ function getCookie(cname) {
     }
     return "";
 }
-  
-req();

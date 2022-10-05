@@ -83,6 +83,10 @@ h2{
     font-size: 8pt;
 }
 
+.login-input:focus{
+    outline: solid 1px #0066a1;
+}
+
 .login-cookies{
     margin-top: 3px;
 }
