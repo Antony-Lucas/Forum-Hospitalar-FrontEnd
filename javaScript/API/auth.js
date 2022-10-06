@@ -1,15 +1,19 @@
 const url = 'http://localhost:8080';
-let button_submit = document.getElementById('mySubmit')
 
-let username = "AntonyLucas2";
-let password = "sim";
+let button_submit = document.getElementById('mySubmit')
+let user_ = document.getElementById('username');
+let pass_ = document.getElementById('password');
+var error_auth = document.getElementById('login-error-info');
+var error_visible = document.getElementById('error_empty_field');
+var circle_ = document.getElementById('loader');
+
 var _token = null;
 
 let headers = new Headers();
 headers.append('Content-Type', 'application/json');
 headers.append('Access-Control-Allow-Origin', '*');
 headers.append('Access-Control-Allow-Credentials', 'true');
-headers.append('Authorization', btoa(username + ":" + password));
+headers.append('Authorization', btoa(user_.value + ":" + pass_.value));
 
 button_submit.addEventListener('click', async function(){
     try{
@@ -17,16 +21,27 @@ button_submit.addEventListener('click', async function(){
             mode: "cors",
             method: 'POST',
             body: JSON.stringify({
-                name: username,
-                password: password
+                name: user_.value,
+                password: pass_.value
             }),
-            credentials: "same-origin"
+            credentials: "same-origin",
         })
-        .then(response => response.json())
+        .then(response => {
+            if(response.status == 200){
+                window.location.href = './routes/home.html';
+                load_circle.style.visibility = 'visible'
+                return response.json()
+            }
+            if(response.status == 403 && user_.value != '' && pass_.value != ''){
+                error_auth.innerHTML = 'Usuário ou senha inválido'
+                error_visible.style.visibility = "visible"
+                load_circle.style.visibility = 'hidden'
+                return response.json()
+            }
+        })
         .then(token => {
             _token = token.access_token;
         });
-        alert("kkkkkkkkkkkkk");
         let user = getCookie("usr_tkn");
         user = _token;
         if (user != "" && user != null) {

@@ -17,19 +17,13 @@
     flex-direction: column;
     flex-wrap: nowrap;
     position: relative;
-    top: 10%;
     background-color: #fefefe;
     margin: auto;
     padding: 10px;
     border: 1px solid #888;
-    border-radius: 5px;
-    width: 600px;
+    width: 310px;
     height: 420px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
 }
 
 @-webkit-keyframes animatetop{
@@ -90,9 +84,9 @@
 }
 
 .modal-label{
-    color: #00000090;
-    font-size: 10pt;
-    font-weight: 500;
+    color: #000000d8;
+    font-size: 12px;
+    font-weight: 300;
     margin-left: 4px;
     margin-bottom: 8px;
 }
@@ -101,8 +95,7 @@
     float: left;
     color: #000000;
     outline: none;
-    border: 0.4px solid #00000022;
-    border-radius: 5px;
+    border: 0.4px solid #00000083;
     padding: 7px;
     padding-left: 15px;
     width: 250px;
@@ -115,16 +108,21 @@
 .modal-submit{
     color: #ffffff;
     font-size: 8pt;
-    background-color: #93C82F;
+    background-color: #165b22;
     padding: 8px;
     position: absolute;
     top: 88%;
-    left: 78%;
+    left: 67%;
     outline: none;
-    width: 15%;
+    width: 70px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
+    font-size: 12px;
+}
+
+.modal-submit:hover{
+    background-color: #1b6e2a;
 }
 
 @media only screen and (max-width: 1024px){

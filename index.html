@@ -21,8 +21,8 @@
                 <h2>Know<strong>BI</strong></h2>
                 <div id="loader" class="loader"></div>
                 <form class="login-form" action="">
-                    <input id="username" class="login-input" type="text" placeholder="Nome de usuário">
-                    <input id="password" class="login-input" type="password" placeholder="Senha">
+                    <input id="username" class="login-input" type="text" placeholder="Nome de usuário" required >
+                    <input id="password" class="login-input" type="password" placeholder="Senha" required >
                     <a href="./routes/forgotPassword.html" class="login-cookies">Aviso de Cookies</a>
                     <input id="mySubmit" class="login-button" type="submit" value="Entrar">
                 </form>
@@ -37,7 +37,7 @@
             <a href="./routes/createAccount.html" class="login-register">Cadastre-se</a>
         </div>
     <script src="./javaScript/API/auth.js"></script>
-    <script src="./javaScript/errors/loginErrors.js"></script>
+    <script src="./javaScript/API/loginErrors.js"></script>
     <script src="./javaScript/actions/preloader.js"></script>
 </body>
 </html>
