@@ -43,7 +43,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestControllerAdvice
 @RequestMapping(value = "/users")
-@CrossOrigin
 public class UserResources {
 	public static final String HEADER_ATRIBUTE = "Authorization";
 	public static final String ATRIBUTE_PREFIX = "Bearer ";
