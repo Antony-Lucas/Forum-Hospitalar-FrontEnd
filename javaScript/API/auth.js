@@ -30,13 +30,13 @@ button_submit.addEventListener('click', async function(){
             if(response.status == 200){
                 window.location.href = './routes/home.html';
                 load_circle.style.visibility = 'visible'
-                return response.json()
+                return response.json();
             }
             if(response.status == 403 && user_.value != '' && pass_.value != ''){
                 error_auth.innerHTML = 'Usuário ou senha inválido'
                 error_visible.style.visibility = "visible"
                 load_circle.style.visibility = 'hidden'
-                return response.json()
+                return response.json();
             }
         })
         .then(token => {

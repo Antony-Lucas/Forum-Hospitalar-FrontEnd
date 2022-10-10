@@ -4,25 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/loginPage/loginStyle.css">
     <title>Criar uma conta</title>
+    <link rel="stylesheet" href="../style/loginPage/loginStyle.css">
+    <link rel="stylesheet" href="../style/loader/loader.css">
+    <link rel="stylesheet" href="../style/loader/preloader.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
+    <div class="bg-preloader" id="preloader">
+        <div class="preloader"></div>
+    </div>
     <div class="login-center">
         <div class="login-top">
             <div class="login-centralize">
                 <h2>Know<strong>BI</strong></h2>
+                <div id="loader" class="loader"></div>
                 <form class="login-form" action="">
-                    <input class="login-input" type="text" placeholder="Nome de usuário">
-                    <input class="login-input" type="email" placeholder="Email">
-                    <input class="login-input" type="password" placeholder="Senha">
-                    <a href="#" class="login-button"><span>Cadastrar-se</span></a>
+                    <input id="newUser" class="login-input" type="text" placeholder="Nome de usuário">
+                    <input id="newEmail" class="login-input" type="email" placeholder="Email">
+                    <input id="newPassword" class="login-input" type="password" placeholder="Senha">
+                    <input id="newMySubmit" class="login-button" type="submit" value="Cadastrar-se">
                 </form>
             </div>
         </div>
         <div class="login-links">
+            <div class="login-error" id="error_empty_field">
+                <i class="material-icons" style="font-size: 15px;">error</i>
+                <p id="login-error-info">Preencha os campos acima</p>
+            </div>
             <a href="../index.html" class="back-login">Fazer Login</a>
         </div>
     </div>
+    <script type="module" src="../javaScript/API/config.js"></script>
+    <script type="module" src="../javaScript/API/signUp/signUp.js"></script>
+    <script type="module" src="../javaScript/API/signUp/signUpErrors.js"></script>
 </body>
 </html>

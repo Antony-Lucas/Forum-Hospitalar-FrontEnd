@@ -1,12 +1,13 @@
 @import url('http://fonts.cdnfonts.com/css/centrale-sans-regular');
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,regular,500,700,900);
 *{
     box-sizing: border-box;
-    font-family: "Centrale Sans", sans-serif;
+    font-family: "Centrale Sans", "Noto Sans JP";
     color: #ffffff;
 }
 
 body{
-    background-image: linear-gradient(to right, #02091B, #0C38A1);    
+    background-image: linear-gradient(125deg,#081026 0,#003478 60%,#0066a1 100%);    
     overflow: hidden;
 }
 
@@ -31,7 +32,6 @@ header{
 
 .dropdown-button{
     background-color: transparent;
-    font-weight: bold;
     padding: 6px;
     border: none;
     cursor: pointer;
@@ -47,7 +47,7 @@ header{
 
 .dropdown-button p{
     text-align: center;
-    font-size: 11px;
+    font-size: 12px;
     margin-left: 10px;
 }
 
@@ -133,6 +133,7 @@ section{
 .material-icons{
     border-bottom: solid 1px #ffffff77;
     padding-bottom: 5px;
+    margin-top: 3px;
     color: #ffffff77;
     transition: 0.5s;
 }
@@ -187,8 +188,7 @@ section{
 
 .body-item{
     text-decoration: none;
-    font-size: 11px;
-    font-weight: 300;
+    font-size: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,12 +207,30 @@ footer{
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    margin-top: 30px;
+    margin-top: 3vh;
 }
 
 footer p{
     font-size: 10px;
-    color: #ffffff77;
+    color: #a6a6a6;
+    padding-right: 10px;
+    font-weight: 300;
+}
+
+.policy{
+    display: flex;
+    align-items: center;
+}
+
+.policy a{
+    font-size: 9.5px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.date{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 1240px){
