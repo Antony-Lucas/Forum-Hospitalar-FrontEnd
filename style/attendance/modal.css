@@ -1,176 +1,25 @@
-.modal{
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.modal-content{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    position: relative;
-    left: -40%;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 10px;
-    border-right: 0.5px solid rgba(136, 136, 136, 0.371);
-    width: 20%;
-    height: 100%;
-    -webkit-animation-name: animateleft;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animateleft;
-    animation-duration: 0.4s;
-}
-
-.add-modal-content{
+.add-ask{
+    width: 50%;
+    padding-bottom: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    top: 30%;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 10px;
-    border-radius: 5px;
-    width: 500px;
-    height: 170px;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-}
-
-@-webkit-keyframes animateleft{
-    from{
-        left: -80%;
-        opacity: 0;
-    }
-    to{
-        left: -40%;
-        opacity: 1;
-    }
-}
-
-@keyframes animateleft{
-    from{
-        left: -80%;
-        opacity: 0;
-    }
-    to{
-        left: -40%;
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes animatetop{
-    from{
-        top: -300px;
-        opacity: 0;
-    }
-    to{
-        top: 30%;
-        opacity: 1;
-    }
-}
-
-@keyframes animatetop{
-    from{
-        top: 300px;
-        opacity: 0;
-    }
-    to{
-        top: 30%;
-        opacity: 1;
-    }
-}
-
-.close, .addClose{
-    color: #00000083;
-    float: right;
-    font-size: 16pt;
-}
-
-.close:hover,
-.close:focus,
-.addClose:hover,
-.addClose:focus{
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-header{
-    padding: 2px 16px;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h3{
-    font-size: 8pt;
-}
-
-.modal-body{
-    padding: 5px;
-    padding-top: 15px;
-}
-
-.add-modal-body{
-    padding: 5px;
-    padding-top: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: baseline;
     border-radius: 5px;
 }
 
-.modal-body a{
-    text-decoration: none;
-    color: #000000b3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-}
-
-.modal-body a:hover{
-    border-radius: 5px;
-    background-color: #00000004
-}
-
-.modal-body a:nth-child(1){
-    border-radius: 5px;
-    background-color: #0000000b;
-}
-
-.modal-body a p{
-    font-size: 8pt;
-}
-
-.modal-body a span{
-    color: #000000b3;
-    font-size: 10px;
-}
-
-.add-modal-body textarea{
+.add-ask textarea{
     resize: none;
     outline: none;
-    padding: 5px;
+    padding: 10px;
     font-size: 8pt;
     width: 95%;
     border: none;
     border-radius: 5px;
+    border: solid 0.5px #00000020;
 }
 
-.add-modal-buttons{
+.add-ask-buttons{
     width: 100%;
     padding-top: 5px;
     padding-right: 5px;
@@ -179,14 +28,14 @@
     align-items: center;
 }
 
-.add-modal-buttons-container{
+.add-ask-buttons-container{
     width: 90%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.add-modal-image::-webkit-file-upload-button{
+.add-ask-image::-webkit-file-upload-button{
     visibility: hidden;
 }
 
@@ -195,7 +44,7 @@ label {
     margin-right: 20px;
 }
 
-.add-modal-submit{
+.add-ask-submit{
     color: #ffffff;
     font-size: 8pt;
     background-color: #93C82F;
@@ -207,67 +56,18 @@ label {
     cursor: pointer;
 }
 
-.add-modal-submit span{
+.add-ask-submit span{
     margin-right: 10px;
     font-size: 23pt;
     color: #00000065;
 }
 
 @media only screen and (max-width: 1240px){
-    .modal-content{
-        width: 25%;
-        left: -38%;
-    }
-
-    @-webkit-keyframes animateleft{
-        from{
-            left: -80%;
-            opacity: 0;
-        }
-        to{
-            left: -40%;
-            opacity: 1;
-        }
-    }
     
-    @keyframes animateleft{
-        from{
-            left: -80%;
-            opacity: 0;
-        }
-        to{
-            left: -40%;
-            opacity: 1;
-        }
-    }
-
-    @-webkit-keyframes animatetop{
-        from{
-            top: -300px;
-            opacity: 0;
-        }
-        to{
-            top: 30%;
-            opacity: 1;
-        }
-    }
-    
-    @keyframes animatetop{
-        from{
-            top: 300px;
-            opacity: 0;
-        }
-        to{
-            top: 30%;
-            opacity: 1;
-        }
-    }
 }
 
 @media only screen and (max-width: 930px){
-    .modal-content{
-        width: 25%;
-    }
+   
 }
 
 @media only screen and (max-width: 730px){

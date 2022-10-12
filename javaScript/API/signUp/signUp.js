@@ -2,7 +2,6 @@ import  {url_api}  from "../config.js";
 import { email, pass, submit, user } from "./signUpErrors.js";
 
 submit.addEventListener('click', async function(){
-    console.log("user:"+user.value);
     try {
         await fetch(url_api + '/users', {
             method: 'POST',

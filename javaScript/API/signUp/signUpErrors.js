@@ -7,8 +7,7 @@ var error_empty_field = document.getElementById('error_empty_field');
 var load_circle = document.getElementById('loader');
 
 submit.onclick = function(){
-    console.log("user1"+user.value)
-    if(user.value.length == 0 || pass.value.length == 0){
+    if(user.value.length == 0 || email.value.length == 0 || pass.value.length == 0){
         error_empty_field.style.visibility = "visible";
         return false;
     }else{

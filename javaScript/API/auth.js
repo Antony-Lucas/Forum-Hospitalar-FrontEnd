@@ -5,7 +5,6 @@ let user_ = document.getElementById('username');
 let pass_ = document.getElementById('password');
 var error_auth = document.getElementById('login-error-info');
 var error_visible = document.getElementById('error_empty_field');
-var circle_ = document.getElementById('loader');
 
 var _token = null;
 
@@ -27,10 +26,14 @@ button_submit.addEventListener('click', async function(){
             credentials: "same-origin",
         })
         .then(response => {
-            if(response.status == 200){
+            if(getCookie != null){
                 window.location.href = './routes/home.html';
                 load_circle.style.visibility = 'visible'
                 return response.json();
+            }
+            else{
+                window.location.href = './index.html';
+                load_circle.style.visibility = 'visible'
             }
             if(response.status == 403 && user_.value != '' && pass_.value != ''){
                 error_auth.innerHTML = 'Usuário ou senha inválido'
