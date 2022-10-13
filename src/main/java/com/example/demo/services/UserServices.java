@@ -47,8 +47,12 @@ public class UserServices {
 	}
 	
 	public User insert(User obj) {
-		obj.setPassword(encoder.encode(obj.getPassword()));
-		return userRepository.save(obj);
+		try {
+			obj.setPassword(encoder.encode(obj.getPassword()));
+			return userRepository.save(obj);
+		}catch (DataIntegrityViolationException e) {
+			throw new DataBaseException(e.getMessage());
+		}
 	}
 	
 	public void delete(Long id) {
