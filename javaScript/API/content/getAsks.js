@@ -5,11 +5,9 @@ var ask_content = [];
 var ask_img = [];
 var ask_moment = [];
 
-var data_;
-
 async function req(){
     console.log(bearer);
-    await fetch(url_api+ '/modules/departments/asks',{
+    await fetch(url_api+ '/modules/departments',{
         headers:{
           'Authorization':'Bearer '+ bearer  
         },
@@ -26,18 +24,13 @@ async function req(){
         }
     )
     .then(data => {
-        data_ = data
-
         for(let i = 0; i <= data.length; i++){
-          ask_user_name = [data[i].userName.userName]
-          ask_content = [data[i].content];
-          ask_moment = [data[i].moment];
+          ask_user_name = [data[0].asks[i].userName.userName]
+          ask_content = [data[0].asks[i].content];
+          ask_moment = [data[0].asks[i].moment];
           
-          console.log(data)
-          console.log(ask_user_name)
-          console.log(ask_content)
-          console.log(ask_img)
-          console.log(ask_moment)
+          console.log(data[0])
+          
           let mainDiv = document.getElementById('mainDiv');
           let element = document.createElement('div');
           mainDiv.appendChild(element);

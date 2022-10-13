@@ -17,7 +17,17 @@ submit.addEventListener('click', async function(){
             }),
         })
         .then(
-            response => response.json()
+            response => {
+                if(user.value == "" || pass.value == ""){
+                    error_visible.style.visibility = "visible"
+                    load_circle.style.visibility = 'hidden'
+                    return false;
+                }
+                else
+                {
+                    response.json();
+                }
+            }
         )
         .then(
             data => console.log(data)

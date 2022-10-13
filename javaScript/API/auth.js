@@ -1,3 +1,5 @@
+import { getCookie, setCookie } from "./cookie/cookies.js";
+
 const url = 'http://localhost:8080';
 
 let button_submit = document.getElementById('mySubmit')
@@ -5,6 +7,7 @@ let user_ = document.getElementById('username');
 let pass_ = document.getElementById('password');
 var error_auth = document.getElementById('login-error-info');
 var error_visible = document.getElementById('error_empty_field');
+var load_circle = document.getElementById('loader');
 
 var _token = null;
 
@@ -12,7 +15,7 @@ let headers = new Headers();
 headers.append('Content-Type', 'application/json');
 headers.append('Access-Control-Allow-Origin', '*');
 headers.append('Access-Control-Allow-Credentials', 'true');
-headers.append('Authorization', btoa(user_.value + ":" + pass_.value));
+headers.append('Authorization', window.btoa(user_.value + ":" + pass_.value));
 
 button_submit.addEventListener('click', async function(){
     try{
@@ -26,19 +29,20 @@ button_submit.addEventListener('click', async function(){
             credentials: "same-origin",
         })
         .then(response => {
-            if(getCookie != null){
-                window.location.href = './routes/home.html';
-                load_circle.style.visibility = 'visible'
-                return response.json();
+            if(user_.value == "" || pass_.value == ""){
+                error_visible.style.visibility = "visible"
+                load_circle.style.visibility = 'hidden'
+                return false;
             }
-            else{
-                window.location.href = './index.html';
-                load_circle.style.visibility = 'visible'
-            }
-            if(response.status == 403 && user_.value != '' && pass_.value != ''){
+            if(response.status == 403){
                 error_auth.innerHTML = 'Usuário ou senha inválido'
                 error_visible.style.visibility = "visible"
                 load_circle.style.visibility = 'hidden'
+                return response.json();
+            }
+            if(getCookie('usr_tkn') || response.status == 200){
+                window.location.href = './routes/home.html';
+                load_circle.style.visibility = 'visible'
                 return response.json();
             }
         })
@@ -54,26 +58,3 @@ button_submit.addEventListener('click', async function(){
         console.log(err);
     }
 })
-
-function setCookie(cname,cvalue,exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-  
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-}
