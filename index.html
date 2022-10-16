@@ -12,33 +12,60 @@
     <title>Knowbi</title>
 </head>
 <body>
-    <div class="bg-preloader" id="preloader">
-        <div class="preloader"></div>
-    </div>
-    <div class="login-center">
-        <div class="login-top">
-            <div class="login-centralize">
-                <h2>Know<strong>BI</strong></h2>
-                <div id="loader" class="loader"></div>
-                <form class="login-form" action="">
-                    <input id="username" class="login-input" type="text" placeholder="Nome de usuário" required >
-                    <input id="password" class="login-input" type="password" placeholder="Senha" required >
-                    <a href="./routes/forgotPassword.html" class="login-cookies">Aviso de Cookies</a>
-                    <input id="mySubmit" class="login-button" type="submit" value="Entrar">
-                </form>
+    <section>
+        <div class="bg-preloader" id="preloader">
+            <div class="preloader"></div>
+        </div>
+        <div class="login-center">
+            <div class="login-top">
+                <div class="login-centralize">
+                    <h2>Know<strong>BI</strong></h2>
+                    <div id="loader" class="loader"></div>
+                    <form class="login-form" action="">
+                        <input id="username" class="login-input" type="text" placeholder="Nome de usuário">
+                        <input id="password" class="login-input" type="password" placeholder="Senha">
+                        <a href="./routes/forgotPassword.html" class="login-cookies">Aviso de Cookies</a>
+                        <input id="mySubmit" class="login-button" type="submit" value="Entrar" onclick="return false;">
+                    </form>
+                    <div class="login-links">
+                        <div class="login-error" id="error_empty_field">
+                            <i class="material-icons" style="font-size: 15px;">error</i>
+                            <p id="login-error-info">Informe usuário e senha</p>
+                        </div>
+                        <div class="login-links-final" id="links">
+                            <a href="./routes/forgotPassword.html" class="login-forgotpass">Esqueceu sua senha?</a>
+                            <a href="./routes/createAccount.html" class="login-register">Cadastre-se</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="login-links">
-            <div class="login-error" id="error_empty_field">
-                <i class="material-icons" style="font-size: 15px;">error</i>
-                <p id="login-error-info">Informe usuário e senha</p>
-            </div>
-            <a href="./routes/forgotPassword.html" class="login-forgotpass">Esqueceu sua senha?</a>
-            <a href="./routes/createAccount.html" class="login-register">Cadastre-se</a>
+    </section>
+    <footer>
+        <div class="warning-privacity">
+            <p class="warning-privacity-text">Os direitos de autor e todos os outros 
+                direitos de propriedade de qualquer software e documentação
+                 relacionada ("Software") disponibilizados para você pertencem 
+                 exclusivamente à Knowbi ou seus licenciadores. Nenhum título 
+                 ou propriedade no Software é conferido a você. O uso do Software 
+                 está sujeito às condições da licença do usuário final, conforme 
+                 disponíveis mediante solicitação.</p>
         </div>
-    </div>
+        <div class="policy">
+            <div class="policy-link">
+                <p>KnowBI Business Intelligence</p>
+            </div>
+            <p>V0.0.0.1</p>
+            <div class="date">
+                <p id="dateNow"></p>
+                <p id="hourNow"></p>
+                <p id="timeZoneNow">UTC (-03:00)</p>
+            </div>
+        </div>
+    </footer>
     <script src="./javaScript/API/loginErrors.js"></script>
     <script src="./javaScript/actions/preloader.js"></script>
+    <script src="./javaScript/dates/dateNow.js"></script>
     <script type="module" src="./javaScript/API/auth.js"></script>
     <script type="module" src="./javaScript/API/config.js"></script>
     <script type="module" src="./javaScript/API/cookie/cookies.js"></script>

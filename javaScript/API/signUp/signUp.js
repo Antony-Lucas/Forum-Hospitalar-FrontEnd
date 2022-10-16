@@ -1,5 +1,5 @@
 import  {url_api}  from "../config.js";
-import { email, pass, submit, user } from "./signUpErrors.js";
+import { email, links, pass, submit, user } from "./signUpErrors.js";
 
 submit.addEventListener('click', async function(){
     try {

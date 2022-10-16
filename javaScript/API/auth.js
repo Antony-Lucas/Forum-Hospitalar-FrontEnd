@@ -8,6 +8,7 @@ let pass_ = document.getElementById('password');
 var error_auth = document.getElementById('login-error-info');
 var error_visible = document.getElementById('error_empty_field');
 var load_circle = document.getElementById('loader');
+var links = document.getElementById('links');
 
 var _token = null;
 
@@ -30,13 +31,16 @@ button_submit.addEventListener('click', async function(){
         })
         .then(response => {
             if(user_.value == "" || pass_.value == ""){
+                error_auth.innerHTML = 'Usuário ou senha inválido'
                 error_visible.style.visibility = "visible"
+                links.style.top = "30px";
                 load_circle.style.visibility = 'hidden'
                 return false;
             }
             if(response.status == 403){
                 error_auth.innerHTML = 'Usuário ou senha inválido'
                 error_visible.style.visibility = "visible"
+                links.style.top = "30px";
                 load_circle.style.visibility = 'hidden'
                 return response.json();
             }

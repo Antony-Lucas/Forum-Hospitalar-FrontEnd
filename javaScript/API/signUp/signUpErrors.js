@@ -5,10 +5,12 @@ export var submit = document.getElementById('newMySubmit');
 export var error_auth = document.getElementById('login-error-info');
 export var error_empty_field = document.getElementById('error_empty_field');
 export var load_circle = document.getElementById('loader');
+export var links = document.getElementById('links');
 
 submit.onclick = function(){
     if(user.value.length == 0 || email.value.length == 0 || pass.value.length == 0){
         error_empty_field.style.visibility = "visible";
+        links.style.top = "35px";
         return false;
     }else{
         load_circle.style.visibility = 'visible'

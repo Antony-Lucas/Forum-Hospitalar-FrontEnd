@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+html{
+    overflow: hidden;
+}
+
 header{
     background-image: linear-gradient(to right,#02091B, #0C38A1);
     height: 50px;
@@ -20,7 +24,7 @@ header{
 
 section{
     background-color: #00000019;
-    min-height: 100vh;
+    min-height: 97vh;
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -79,24 +83,13 @@ section{
 .body-content{
     width: 99%;
     background-color: #00000003;
-    margin-top: 3.7rem;
+    margin-top: 3.3rem;
     overflow: hidden;
-}
-
-.body-content-header{
-    background-color: #000000c9;
-    width: 100%;
-    padding: 10px;
-}
-
-.body-content-header-title{
-    color: #ffffff;
-    font-size: 10pt;
 }
 
 .body-container{
     width: 100%;
-    height: 80vh;
+    height: 86vh;
     display: flex;
     overflow: hidden;
 }
@@ -203,7 +196,7 @@ section{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 60vh;
+    height: 80vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -262,6 +255,39 @@ section{
     color: #336799;
 }
 
+footer{
+    width: 100%;
+    height: 2vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #333333;
+}
+
+footer p{
+    font-size: 10px;
+    color: #a6a6a6;
+    padding-right: 10px;
+    font-weight: 300;
+}
+
+.policy{
+    display: flex;
+    align-items: center;
+}
+
+.policy a{
+    font-size: 9.5px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.date{
+    display: flex;
+    justify-content: space-evenly;
+}
 
 @media only screen and (max-width: 1440px){
     .body-content-list-item{
