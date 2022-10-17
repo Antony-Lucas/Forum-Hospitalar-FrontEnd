@@ -196,7 +196,7 @@ section{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 80vh;
+    height: 67vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -228,7 +228,7 @@ section{
 
 .ask-body-content{
     padding-left: 10px;
-    width: 30%;
+    width: 60%;
 }
 
 .ask-body-content h4{
