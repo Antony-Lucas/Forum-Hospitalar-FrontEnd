@@ -42,7 +42,7 @@ public class User implements Serializable{
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	@JsonIgnore
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user")
 	private Management management;
 	@JsonIgnore
 	@OneToMany(mappedBy = "userName")

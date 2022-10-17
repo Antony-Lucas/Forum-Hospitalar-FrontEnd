@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,19 +22,18 @@ public class Management implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne
-	@MapsId
+	@OneToOne(cascade = CascadeType.MERGE)
 	private User user;
-	@OneToMany(mappedBy = "management")
+	@OneToMany(mappedBy = "management", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Asks> asks = new ArrayList<>();
-	@OneToMany(mappedBy = "management")
+	@OneToMany(mappedBy = "management", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Answers> answers = new ArrayList<>();
 	
 	public Management() {
 		
 	}
 
-	public Management(Long id, User user) {
+	public Management(Long id,  User user) {
 		super();
 		this.id = id;
 		this.user = user;
