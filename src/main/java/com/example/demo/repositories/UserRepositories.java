@@ -9,6 +9,6 @@ import com.example.demo.entities.User;
 
 @Repository
 public interface UserRepositories extends JpaRepository<User, Long>{
-	public Optional<User> findByName(String name);
-	public Optional<User> findByEmail(String email);
+	public User findByName(String name);
+	public User findByEmail(String email);
 }

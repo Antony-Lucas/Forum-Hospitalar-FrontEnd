@@ -15,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "Management")
 public class Management implements Serializable{
@@ -23,6 +26,7 @@ public class Management implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@OneToOne(cascade = CascadeType.MERGE)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private User user;
 	@OneToMany(mappedBy = "management", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Asks> asks = new ArrayList<>();

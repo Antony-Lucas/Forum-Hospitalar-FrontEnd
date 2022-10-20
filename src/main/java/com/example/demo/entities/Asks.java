@@ -42,6 +42,7 @@ public class Asks implements Serializable{
 	private Management management;
 	@ManyToOne
 	@JoinColumn(name = "userNameId")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private User userName;
 	@OneToMany(mappedBy = "asks", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Answers> answers = new ArrayList<>();

@@ -33,11 +33,11 @@ public class UserServices {
 		return userRepository.findAll();
 	}
 	
-	public Optional<User> findByName(String name){
+	public User findByName(String name){
 		return userRepository.findByName(name);
 	}
 	
-	public Optional<User> findByEmail(String email){
+	public User findByEmail(String email){
 		return userRepository.findByEmail(email);
 	}
 	

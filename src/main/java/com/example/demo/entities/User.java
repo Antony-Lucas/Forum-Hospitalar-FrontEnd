@@ -41,7 +41,6 @@ public class User implements Serializable{
 	private String email;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
-	@JsonIgnore
 	@OneToOne(mappedBy = "user")
 	private Management management;
 	@JsonIgnore
@@ -122,6 +121,11 @@ public class User implements Serializable{
 			return false;
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public boolean isPresent() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

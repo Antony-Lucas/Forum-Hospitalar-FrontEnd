@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.auth0.jwt.JWT;
@@ -23,6 +25,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.example.demo.config.GUIDconfig;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.data.DetailUserData;
+import com.example.demo.services.UserServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JWTauth extends UsernamePasswordAuthenticationFilter{
@@ -61,10 +64,13 @@ public class JWTauth extends UsernamePasswordAuthenticationFilter{
 			.withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
 			.sign(Algorithm.HMAC512(GUIDconfig.TOKEN_PASSWORD));
 		
-		Map<String, String> tokens = new HashMap<>();
+		Map<String, Object> tokens = new HashMap<>();
 		tokens.put("access_token", token);
 		tokens.put("refresh_token", refresh_token);
+		tokens.put("id", userdata.getUserId());
+		tokens.put("userName", userdata.getFullUserName());
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		new ObjectMapper().writeValue(response.getOutputStream(), tokens);
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.writeValue(response.getOutputStream(), tokens);
 	}
 }

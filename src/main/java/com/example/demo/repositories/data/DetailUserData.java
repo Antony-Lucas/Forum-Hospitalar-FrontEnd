@@ -7,14 +7,15 @@ import java.util.Optional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.example.demo.entities.Management;
 import com.example.demo.entities.User;
 
 public class DetailUserData implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	
-	private final Optional<User> user;
+	private User user;
 
-	public DetailUserData(Optional<User> user) {
+	public DetailUserData(User user) {
 		super();
 		this.user = user;
 	}
@@ -23,15 +24,31 @@ public class DetailUserData implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return new ArrayList<>();
 	}
-
-	@Override
-	public String getPassword() {
-		return user.orElse(new User()).getPassword();
+	
+	public Long getUserId() {
+		return this.user.getId();
+	}
+	
+	public String getFullUserName() {
+        return this.user.getUserName();
+    }
+	
+	public String GetEmail() {
+		return this.user.getEmail();
+	}
+	
+	public Management getManagement() {
+		return this.user.getManagement();
 	}
 
 	@Override
 	public String getUsername() {
-		return user.orElse(new User()).getName();
+		return this.user.getName();
+	}
+
+	@Override
+	public String getPassword() {
+		return this.user.getPassword();
 	}
 
 	@Override

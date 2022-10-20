@@ -15,9 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +31,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -74,24 +79,10 @@ public class UserResources {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@GetMapping(value = "/validation")
-	public ResponseEntity<Boolean> validPass(@RequestParam String name, @RequestParam String password) {
-		Optional<User> optuser = services.findByName(name);
-		if(optuser.isEmpty()){
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
-		}		
-		
-		User user = optuser.get();
-		boolean valid = encoder.matches(password, user.getPassword());
-		HttpStatus status = (valid) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
-	
-		return ResponseEntity.status(status).body(valid);
-	}
-	
 	@PostMapping
 	public ResponseEntity<User> insert(@Validated @RequestBody User obj) throws Exception {
-		Optional<User> usernameEntry = services.findByName(obj.getName());
-		Optional<User> emailEntry = services.findByEmail(obj.getEmail());
+		User usernameEntry = services.findByName(obj.getName());
+		User emailEntry = services.findByEmail(obj.getEmail());
 		if(usernameEntry.isPresent()){
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome de usuário indisponível");
 		}
