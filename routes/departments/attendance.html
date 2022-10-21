@@ -13,71 +13,14 @@
 </head>
 <body>
     <header>
-        <div class="header-menu">
-            <a href="#" id="showModal">
-                <span class="material-symbols-outlined" style="color: #ffffff;">menu</span>
-            </a>
-        </div>
         <div class="header-items">
             <div class="header-asks">
                 <p>Atendimento</p>
-                <a href="../home.html">
-                    <span class="header-close">&times;</span>
-                </a>
+                <span class="header-close" onclick="closeModalAttendance()">&times;</span>
             </div>
         </div>
     </header>
     <section>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Módulos</h3>
-                    <span class="close">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <a href="#" class="modal-body-row">
-                        <p>Atendimento</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Assistencial</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Apoio</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Controladoria</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Faturamento</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Financeiro</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Gerencial</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Hotelaria</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>SADT</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                    <a href="#" class="modal-body-row">
-                        <p>Suprimentos</p>
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </a>
-                </div>
-            </div>
-        </div>
         <div class="body-content">
             <div class="body-container">
                 <div class="body-content-center">
@@ -202,11 +145,11 @@
             <p id="timeZoneNow">UTC (-03:00)</p>
         </div>
     </footer>
-    <script src="../../javaScript/actions/modal.js"></script>
     <script src="../../javaScript/actions/addModal.js"></script>
     <script src="../../javaScript/API/DOM/setImageName.js"></script>
     <script src="../../javaScript/dates/dateNow.js"></script>
-    <script type="module" src="../../javaScript/API/config.js"></script>
+    <script src="../../javaScript/API/config.js"></script>
+    <script src="../../javaScript/actions/modal.js"></script>
     <script type="module" src="../../javaScript/API/content/setAsks.js"></script>
     <script type="module" src="../../javaScript/API/content/getAsks.js"></script>
 </body>
