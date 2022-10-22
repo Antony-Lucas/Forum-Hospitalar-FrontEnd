@@ -1,4 +1,5 @@
 import { url_api } from "../config.js";
+import { getCookie } from "../cookie/cookies.js";
 let bearer = getCookie("usr_tkn");
 var ask_user_name = [];
 var ask_content = [];
@@ -24,12 +25,12 @@ async function req(){
         }
     )
     .then(data => {
-        for(let i = 0; i <= data.length; i++){
+        for(let i = 0; i <= data[0].asks.length; i++){
           ask_user_name = [data[0].asks[i].userName.userName]
           ask_content = [data[0].asks[i].content];
           ask_moment = [data[0].asks[i].moment];
           
-          console.log(data[0])
+          console.log(data[0].asks)
           
           let mainDiv = document.getElementById('mainDiv');
           let element = document.createElement('div');
@@ -48,22 +49,6 @@ async function req(){
           )
         }
     })
-}
-
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
 }
 
 req();

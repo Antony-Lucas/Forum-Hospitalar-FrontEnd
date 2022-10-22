@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar uma conta</title>
+    <link rel="stylesheet" href="../style/signUP/modalSignUp.css">
     <link rel="stylesheet" href="../style/loginPage/loginStyle.css">
     <link rel="stylesheet" href="../style/loader/loader.css">
     <link rel="stylesheet" href="../style/loader/preloader.css">
@@ -16,6 +17,20 @@
             <div class="preloader"></div>
         </div>
         <div class="login-center">
+            <div id="myModal" class="modal" style="z-index: 50;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Cadastro</h2>
+                    </div>
+                    <form class="modal-body">
+                        <h3 class="modal-label">Cadastrado com sucesso!</h3>
+                        <div class="modal-buttons">
+                            <input type="button" class="modal-close" value="fechar" onclick="closeModal()">
+                            <input id="butonLogin" type="button" class="modal-submit" value="Login">
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="login-top">
                 <div class="login-centralize">
                     <h2>Know<strong>BI</strong></h2>
@@ -57,6 +72,7 @@
         </div>
     </footer>
     <script src="../javaScript/dates/dateNow.js"></script>
+    <script src="../javaScript/actions/modal.js"></script>
     <script type="module" src="../javaScript/API/config.js"></script>
     <script type="module" src="../javaScript/API/signUp/signUp.js"></script>
     <script type="module" src="../javaScript/API/signUp/signUpErrors.js"></script>

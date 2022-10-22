@@ -45,8 +45,7 @@ button_submit.addEventListener('click', async function(){
                 return response.json();
             }
             if(getCookie('usr_tkn') || response.status == 200){
-                //window.location.href = './routes/home.html';
-                
+                window.location.href = './routes/home.html';
                 load_circle.style.visibility = 'visible'
                 return response.json();
             }
