@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,9 +42,10 @@ public class User implements Serializable{
 	private String email;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
-	@OneToOne(mappedBy = "user")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Management management;
-	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "userName")
 	private List<Asks> asks = new ArrayList<>();
 	
@@ -121,11 +123,5 @@ public class User implements Serializable{
 			return false;
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
-	}
-
-	public boolean isPresent() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+	}	
 }

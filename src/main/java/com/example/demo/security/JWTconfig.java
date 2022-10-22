@@ -59,6 +59,8 @@ public class JWTconfig {
 			.permitAll()
 			.antMatchers(HttpMethod.POST, "/users")
 			.permitAll()
+			.antMatchers(HttpMethod.POST, "/management")
+			.permitAll()
 			.anyRequest()
 			.authenticated()
 			.and()

@@ -83,10 +83,10 @@ public class UserResources {
 	public ResponseEntity<User> insert(@Validated @RequestBody User obj) throws Exception {
 		User usernameEntry = services.findByName(obj.getName());
 		User emailEntry = services.findByEmail(obj.getEmail());
-		if(usernameEntry.isPresent()){
+		if(usernameEntry != null){
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome de usuário indisponível");
 		}
-		if(emailEntry.isPresent()){
+		if(emailEntry != null){
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Endereço de email indisponível");
 		}
 		else {
