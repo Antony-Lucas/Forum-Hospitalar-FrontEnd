@@ -10,7 +10,7 @@ async function req(){
     console.log(bearer);
     await fetch(url_api+ '/modules/departments',{
         headers:{
-          'Authorization':'Bearer '+ bearer  
+          'Authorization':'Bearer ' + bearer  
         },
         mode: 'cors',
         method: 'GET'

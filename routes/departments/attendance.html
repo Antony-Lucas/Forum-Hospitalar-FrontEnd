@@ -84,7 +84,7 @@
                                 <span class="addClose">&times;</span>
                             </div>
                             <form class="add-modal-body">
-                                <textarea name="" id="" cols="60" rows="3" placeholder="Faça uma pergunta..."></textarea>
+                                <textarea name="" cols="60" rows="3" placeholder="Faça uma pergunta..."></textarea>
                                 <div class="add-modal-buttons">
                                     <div class="add-modal-buttons-container">
                                         <label for="image-button"><img class="imgBtn" src="../../assets/add_photo.svg" alt=""></label>
@@ -110,8 +110,8 @@
                                     <textarea id="askContent" cols="60" rows="2" placeholder="Faça uma pergunta..."></textarea>
                                     <div class="add-ask-buttons">
                                         <div class="add-ask-buttons-container">
-                                            <button type="submit" class="add-ask-submit">Publicar</button>
-                                            <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 25px">attach_file</span></label>
+                                            <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
+                                            <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 25px">attach_file</span>Anexar imagem</label>
                                             <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg" id="image-button" class="add-ask-image">     
                                             <div id="imageList"></div>                   
                                         </div>
@@ -142,6 +142,7 @@
     <script src="../../javaScript/dates/dateNow.js"></script>
     <script src="../../javaScript/API/config.js"></script>
     <script src="../../javaScript/actions/modal.js"></script>
+    <script src="../../javaScript/API/home/main.js"></script>
     <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
     <script type="module" src="../../javaScript/API/content/setAsks.js"></script>
     <script type="module" src="../../javaScript/API/content/getAsks.js"></script>
