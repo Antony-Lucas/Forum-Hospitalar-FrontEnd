@@ -8,13 +8,87 @@
     <link rel="stylesheet" href="../../style/attendance/attendance.css">
     <link rel="stylesheet" href="../../style/attendance/modal.css">
     <link rel="stylesheet" href="../../style/attendance/modalAnswers.css">
+    <link rel="stylesheet" href="../../style/homePage/modals.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0..1,-50..200" />
 </head>
 <body>
+    <header>
+        <div class="header-main">
+            <div class="header-menu" id="mainMenu">
+                <a id="showMainModal" onclick="openMainModal()">
+                    <span class="material-symbols-outlined" style="color: #ffffff;">menu</span>
+                </a>
+            </div>
+            <div class="knowbi">
+                <h2>Know<strong>BI</strong></h2>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-button">
+                <img src="../../assets/profile_circle.svg" alt="perfil-usuário">
+                <p id="myUserName"></p>
+                <img src="../../assets/arrow_down.svg" alt="mais-opções" class="dropdown-arrow">
+            </button>
+            <div class="dropdown-content">
+                <a href="#" id="showModal" onclick="openModal()">Meu cadastro</a>
+                <a id="signOut" href="#" class="dropdown-exit">Sair</a>
+            </div>
+        </div>
+    </header>
     <section>
         <div class="body-content">
             <div class="body-container">
+                <div id="myMainModal" class="modal">
+                    <div class="main-modal-content">
+                        <div class="main-modal-header">
+                            <h3>Módulos</h3>
+                            <span class="close-main-modal" onclick="closeMainModal()">&times;</span>
+                        </div>
+                        <div class="main-modal-body">
+                            <a href="#" class="modal-body-row">
+                                <p>Atendimento</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Assistencial</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Apoio</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Controladoria</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Faturamento</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Financeiro</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Gerencial</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Hotelaria</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>SADT</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                            <a href="#" class="modal-body-row">
+                                <p>Suprimentos</p>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="body-content-center">
                     <h3 class="body-content-center-title">Departamentos</h3>
                     <div class="body-content-center-container">
@@ -77,19 +151,49 @@
                     </div>
                 </div>
                 <div class="body-asks">
-                    <div id="addModal" class="modal">
-                        <div class="add-modal-content">
+                    <div id="answerModal" class="answer-modal" style="z-index: 50;">
+                        <div class="answer-modal-content">
                             <div class="modal-header">
-                                <h3>Respostas</h3>
-                                <span class="addClose">&times;</span>
+                                <h2>Respostas</h2>
+                                <span class="close" onclick="closeAnswerModal()">&times;</span>
                             </div>
-                            <form class="add-modal-body">
-                                <textarea name="" cols="60" rows="3" placeholder="Faça uma pergunta..."></textarea>
-                                <div class="add-modal-buttons">
-                                    <div class="add-modal-buttons-container">
-                                        <label for="image-button"><img class="imgBtn" src="../../assets/add_photo.svg" alt=""></label>
-                                        <input id="image-button" class="add-modal-image" type="file" accept="image/png, image/gif, image/jpeg">
-                                        <button type="submit" class="add-modal-submit">Publicar</button>
+                            <form class="modal-answer-body">
+                                <div>
+                                    <div class="ask-header-content">
+                                        <span class="material-symbols-outlined">account_circle</span>
+                                        <div class="ask-body-content">
+                                          <h4>${user_name}</h4>
+                                          <p>${set_ask}</p>
+                                          <p>${getTime}</p>
+                                        </div>
+                                    </div>
+                                    <p class="ask-body-recently">Respostas</p>
+                                    <div class="ask-header-content">
+                                        <span class="material-symbols-outlined">account_circle</span>
+                                        <div class="ask-body-content">
+                                          <h4>${user_name}</h4>
+                                          <p>${set_ask}</p>
+                                          <p>${getTime}</p>
+                                        </div>
+                                    </div>
+                                    <div class="ask-header-content">
+                                        <span class="material-symbols-outlined">account_circle</span>
+                                        <div class="ask-body-content">
+                                          <h4>${user_name}</h4>
+                                          <p>${set_ask}</p>
+                                          <p>${getTime}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-answer">
+                                    <textarea id="answerContent" cols="60" rows="2" placeholder="Escreva um comentário..."></textarea>
+                                    <div class="add-answer-buttons">
+                                        <div class="add-answer-buttons-container">
+                                            <button id="submitAnswer" type="button" class="add-answer-submit">Enviar</button>
+                                            <label for="image-answer-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 25px">attach_file</span></label>
+                                            <input id="image-answer-button" class="add-answer-image" type="file" accept="image/png, image/gif, image/jpeg">     
+                                            <div id="imageList"></div>                   
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -112,7 +216,7 @@
                                         <div class="add-ask-buttons-container">
                                             <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
                                             <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 25px">attach_file</span>Anexar imagem</label>
-                                            <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg" id="image-button" class="add-ask-image">     
+                                            <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">     
                                             <div id="imageList"></div>                   
                                         </div>
                                     </div>

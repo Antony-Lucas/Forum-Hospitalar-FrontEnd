@@ -1,9 +1,11 @@
+var header = document.getElementById("header");
 var mainMenu = document.getElementById("mainMenu");
 var mainModal = document.getElementById("myMainModal");
 var modal = document.getElementById("myModal");
+var answerModal = document.getElementById("answerModal");
 var modalAttendance = document.getElementById("myModalAttendance");
-
 var closeModalAtt = document.getElementById("closeModalAttendance");
+
 
 function openMainModal(){
     mainModal.style.display = "block";
@@ -14,7 +16,7 @@ function closeMainModal(){
 }
 
 function openModal(){
-    modal.style.display = "block";
+    modal.style.display = "flex";
 }
 
 function closeModal(){
@@ -23,12 +25,20 @@ function closeModal(){
 
 function openModalAttendance(){
     modalAttendance.style.display = "block";
-    mainMenu.style.display = "block"
+    header.style.display = "none";
 }
 
 function closeModalAttendance(){
     modalAttendance.style.display = "none";
-    mainMenu.style.display = "none";
+    header.style.display = "flex";
+}
+
+function openAnswersModal(){
+    answerModal.style.display = "flex"
+}
+
+function closeAnswerModal(){
+    answerModal.style.display = "none"
 }
 
 window.onclick = function(event){
@@ -38,5 +48,8 @@ window.onclick = function(event){
 
     if(event.target == mainModal){
         mainModal.style.display = "none"
+    }
+    if(event.target == answerModal){
+        answerModal.style.display = "none"
     }
 }

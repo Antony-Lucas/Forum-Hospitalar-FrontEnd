@@ -25,11 +25,11 @@ async function req(){
         }
     )
     .then(data => {
+        localStorage.setItem("dep_id", data[0].id);
         for(let i = 0; i <= data[0].asks.length; i++){
           ask_user_name = [data[0].asks[i].userName.userName]
           ask_content = [data[0].asks[i].content];
           ask_moment = [data[0].asks[i].moment];
-          
           console.log(data[0].asks)
           
           let mainDiv = document.getElementById('mainDiv');
@@ -43,7 +43,7 @@ async function req(){
                   <h4>${ask_user_name}</h4>
                   <p>${ask_content}</p>
                   <p>${ask_moment}</p>
-                  <a id="id="showModal" href="#">Responder</a>
+                  <a id="showModal" onclick="openAnswersModal()">Responder</a>
                 </div>
             </div>`
           )

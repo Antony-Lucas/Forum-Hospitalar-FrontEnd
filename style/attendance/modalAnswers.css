@@ -1,100 +1,47 @@
-.modal{
+.answer-modal{
     display: none;
     position: fixed;
+    justify-content: center;
+    align-items: center;
     z-index: 15;
-    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0,0,0,0.4);
 }
 
-.main-modal-content{
+.answer-modal-content{
+    background-color: #fefefe;
+    padding: 30px;
+    width: 600px;
+    height: 70%;
+    margin-bottom: 50px;
+}
+
+.modal-answer-body{
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    position: relative;
-    left: -40%;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 10px;
-    border-right: 0.5px solid rgba(136, 136, 136, 0.371);
-    width: 20%;
+    justify-content: space-around;
     height: 100%;
-    -webkit-animation-name: animateleft;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animateleft;
-    animation-duration: 0.4s;
 }
 
-.add-modal-content{
+.modal-header{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    top: 30%;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 10px;
-    border-radius: 5px;
-    width: 500px;
-    height: 170px;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
-@-webkit-keyframes animateleft{
-    from{
-        left: -80%;
-        opacity: 0;
-    }
-    to{
-        left: -40%;
-        opacity: 1;
-    }
-}
-
-@keyframes animateleft{
-    from{
-        left: -80%;
-        opacity: 0;
-    }
-    to{
-        left: -40%;
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes animatetop{
-    from{
-        top: -300px;
-        opacity: 0;
-    }
-    to{
-        top: 30%;
-        opacity: 1;
-    }
-}
-
-@keyframes animatetop{
-    from{
-        top: 300px;
-        opacity: 0;
-    }
-    to{
-        top: 30%;
-        opacity: 1;
-    }
+.modal-header h2{
+    font-size: 8px;
 }
 
 .close, .addClose{
     color: #00000083;
     float: right;
-    font-size: 16pt;
+    font-size: 8px;
 }
 
 .close:hover,
@@ -103,19 +50,6 @@
 .addClose:focus{
     text-decoration: none;
     cursor: pointer;
-}
-
-.main-modal-header{
-    padding: 2px 10px;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.main-modal-header h3{
-    font-size: 8pt;
-    color: #333;
 }
 
 .close-main-modal{
@@ -136,31 +70,6 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-}
-
-.main-modal-body a{
-    text-decoration: none;
-    color: #000000b3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3px;
-}
-
-.main-modal-body a:hover{
-    border-radius: 5px;
-    background-color: #00000004
-}
-
-.main-modal-body a p{
-    font-size: 8pt;
-    padding-left: 5px;
-    color: #000000b3;
-}
-
-.main-modal-body a span{
-    color: #000000b3;
-    font-size: 10px;
 }
 
 .add-modal-body textarea{

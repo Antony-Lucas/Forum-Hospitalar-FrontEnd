@@ -38,25 +38,7 @@ async function mainLogin(){
             credentials: "same-origin",
         })
         .then(response => {
-            if(user_.value == "" || pass_.value == ""){
-                error_auth.innerHTML = 'Usuário ou senha inválido'
-                error_visible.style.visibility = "visible"
-                links.style.top = "30px";
-                load_circle.style.visibility = 'hidden'
-                return false;
-            }
-            if(response.status == 403){
-                error_auth.innerHTML = 'Usuário ou senha inválido'
-                error_visible.style.visibility = "visible"
-                links.style.top = "30px";
-                load_circle.style.visibility = 'hidden'
-                return response.json();
-            }
-            if(getCookie('usr_tkn') || response.status == 200){
-                window.location.href = './routes/home.html';
-                load_circle.style.visibility = 'visible'
-                return response.json();
-            }
+            return response.json();  
         })
         .then(token => {
             getUser = token;
@@ -73,7 +55,7 @@ async function mainLogin(){
         console.log(err);
     }
     id_user = localStorage.getItem("id_session");
-    getManagement();
+    getManagement()
 }
 
 async function getManagement(){
@@ -93,7 +75,41 @@ async function getManagement(){
                 catch_management_id = data[i].id
                 localStorage.setItem("management_session", catch_management_id);
                 console.log(localStorage.getItem("management_session"));
+                dataBinding();
             }
         }
     });
+}
+
+async function dataBinding(){
+    await fetch(url_api + '/login', { 
+        mode: "cors",
+        method: 'POST',
+        body: JSON.stringify({
+            name: user_.value,
+            password: pass_.value
+        }),
+        credentials: "same-origin",
+    }).then(response => {
+        if(user_.value == "" || pass_.value == ""){
+            error_auth.innerHTML = 'Usuário ou senha inválido'
+            error_visible.style.visibility = "visible"
+            links.style.top = "30px";
+            load_circle.style.visibility = 'hidden'
+            return false;
+        }
+        if(response.status == 403){
+            error_auth.innerHTML = 'Usuário ou senha inválido'
+            error_visible.style.visibility = "visible"
+            links.style.top = "30px";
+            load_circle.style.visibility = 'hidden'
+            return response.json();
+        }
+        if(getCookie('usr_tkn') || response.status == 200){
+            window.location.href = './routes/home.html';
+            console.log(localStorage.getItem("management_session"));
+            load_circle.style.visibility = 'visible'
+            return response.json();
+        }
+    })
 }

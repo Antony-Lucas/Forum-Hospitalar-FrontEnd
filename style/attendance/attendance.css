@@ -12,10 +12,108 @@ html{
     overflow: hidden;
 }
 
+body{
+    height: 100vh;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 52px;
+}
+
+.header-main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+}
+
+.header-menu{
+    border: none;
+    margin-bottom: 5px;
+    transition: 0.5s;
+}
+
+.knowbi h2{
+    margin-top: 0;
+    font-size: 14pt;
+    font-weight: 400;
+    margin-left: 10px;
+    color: #ffffff;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.dropdown-button{
+    background-color: transparent;
+    padding: 10px;
+    padding-top: 12px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-button img{
+    max-width: 22px;
+}
+
+.dropdown-button p{
+    text-align: center;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.dropdown-arrow{
+    width: 20px;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #336799;
+    min-width: 100%;
+    z-index: 1;
+}
+
+.dropdown-content:hover{
+    background-color: #336799;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown:hover .dropdown-button{
+    background-color: #336799;
+}
+
+.dropdown-content a{
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 11px;
+    color: #ffffff;
+}
+
+.dropdown-exit{
+    border-top: dashed 0.3px #ffffff63;
+}
+
 section{
     background-color: rgb(199, 199, 199);
-    height: 88vh;
-    margin-top: -40px;
+    height: 82vh;
+    margin-top: -57px;
+    z-index: 1;
 }
 
 .header-title{
@@ -42,7 +140,7 @@ section{
 
 .body-container{
     width: 100%;
-    height: 86vh;
+    height: 80vh;
     display: flex;
     overflow: hidden;
 }
@@ -51,9 +149,8 @@ section{
     padding: 20px;
     background-color: #ffffff;
     width: 20%;
-    height: 100%;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 12px;
+    margin-left: 12px;
     -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.45); 
     box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.45);
 }
@@ -103,8 +200,8 @@ section{
 .body-asks{
     background-color: #ffffff;
     width: 100%;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 12px;
+    margin-left: 12px;
     padding: 20px;
     -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.45); 
     box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.45);
@@ -129,7 +226,7 @@ section{
 
 .ask-body-recently{
     font-size: 8pt;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .ask-body-search{
@@ -186,7 +283,7 @@ section{
 
 .ask-body-content{
     padding-left: 10px;
-    width: 60%;
+    width: 50%;
 }
 
 .ask-body-content h4{
@@ -211,6 +308,7 @@ section{
     font-size: 8pt;
     text-decoration: none;
     color: #336799;
+    cursor: pointer;
 }
 
 footer{
@@ -218,8 +316,8 @@ footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
-    padding-top: 3px;
+    padding: 7px;
+    padding-top: 4px;
     background-color: #333333;
 }
 
