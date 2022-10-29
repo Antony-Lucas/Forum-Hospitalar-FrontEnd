@@ -24,17 +24,6 @@
                 <h2>Know<strong>BI</strong></h2>
             </div>
         </div>
-        <div class="dropdown">
-            <button class="dropdown-button">
-                <img src="../../assets/profile_circle.svg" alt="perfil-usuário">
-                <p id="myUserName"></p>
-                <img src="../../assets/arrow_down.svg" alt="mais-opções" class="dropdown-arrow">
-            </button>
-            <div class="dropdown-content">
-                <a href="#" id="showModal" onclick="openModal()">Meu cadastro</a>
-                <a id="signOut" href="#" class="dropdown-exit">Sair</a>
-            </div>
-        </div>
     </header>
     <section>
         <div class="body-content">
@@ -154,49 +143,11 @@
                     <div id="answerModal" class="answer-modal" style="z-index: 50;">
                         <div class="answer-modal-content">
                             <div class="modal-header">
-                                <h2>Respostas</h2>
                                 <span class="close" onclick="closeAnswerModal()">&times;</span>
                             </div>
-                            <form class="modal-answer-body">
-                                <div>
-                                    <div class="ask-header-content">
-                                        <span class="material-symbols-outlined">account_circle</span>
-                                        <div class="ask-body-content">
-                                          <h4>${user_name}</h4>
-                                          <p>${set_ask}</p>
-                                          <p>${getTime}</p>
-                                        </div>
-                                    </div>
-                                    <p class="ask-body-recently">Respostas</p>
-                                    <div class="ask-header-content">
-                                        <span class="material-symbols-outlined">account_circle</span>
-                                        <div class="ask-body-content">
-                                          <h4>${user_name}</h4>
-                                          <p>${set_ask}</p>
-                                          <p>${getTime}</p>
-                                        </div>
-                                    </div>
-                                    <div class="ask-header-content">
-                                        <span class="material-symbols-outlined">account_circle</span>
-                                        <div class="ask-body-content">
-                                          <h4>${user_name}</h4>
-                                          <p>${set_ask}</p>
-                                          <p>${getTime}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="add-answer">
-                                    <textarea id="answerContent" cols="60" rows="2" placeholder="Escreva um comentário..."></textarea>
-                                    <div class="add-answer-buttons">
-                                        <div class="add-answer-buttons-container">
-                                            <button id="submitAnswer" type="button" class="add-answer-submit">Enviar</button>
-                                            <label for="image-answer-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 25px">attach_file</span></label>
-                                            <input id="image-answer-button" class="add-answer-image" type="file" accept="image/png, image/gif, image/jpeg">     
-                                            <div id="imageList"></div>                   
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            <div id="myModalAnswers" class="iframe-modal-answers">
+                                <iframe src="../departments/answers.html" width="100%" height="100%" frameborder="0"></iframe>
+                            </div>
                         </div>
                     </div>
                     <div class="ask-content">
@@ -247,6 +198,7 @@
     <script src="../../javaScript/API/config.js"></script>
     <script src="../../javaScript/actions/modal.js"></script>
     <script src="../../javaScript/API/home/main.js"></script>
+    <script src="../../javaScript/API/content/askManager.js"></script>
     <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
     <script type="module" src="../../javaScript/API/content/setAsks.js"></script>
     <script type="module" src="../../javaScript/API/content/getAsks.js"></script>

@@ -1,4 +1,4 @@
-var header = document.getElementById("header");
+var header = document.getElementById("headerLogo");
 var mainMenu = document.getElementById("mainMenu");
 var mainModal = document.getElementById("myMainModal");
 var modal = document.getElementById("myModal");
@@ -25,12 +25,12 @@ function closeModal(){
 
 function openModalAttendance(){
     modalAttendance.style.display = "block";
-    header.style.display = "none";
+    header.style.visibility = "hidden";
 }
 
 function closeModalAttendance(){
     modalAttendance.style.display = "none";
-    header.style.display = "flex";
+    header.style.visibility = "visible";
 }
 
 function openAnswersModal(){

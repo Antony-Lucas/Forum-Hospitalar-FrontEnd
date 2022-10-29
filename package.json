@@ -19,6 +19,7 @@
   "homepage": "https://github.com/KnowBI-Business-Intelligence/KnowBI-FrontEnd#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "jquery": "^3.6.1",
     "moment": "^2.29.4",
     "yarn": "^1.22.19"
   }
