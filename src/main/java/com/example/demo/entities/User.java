@@ -48,6 +48,9 @@ public class User implements Serializable{
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "userName")
 	private List<Asks> asks = new ArrayList<>();
+	@OneToMany(mappedBy = "userName")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<Answers> answers = new ArrayList<>();
 	
 	public User() {};
 	
@@ -106,6 +109,10 @@ public class User implements Serializable{
 	
 	public List<Asks> getAsks() {
 		return asks;
+	}
+	
+	public List<Answers> getAnswers() {
+		return answers;
 	}
 
 	@Override

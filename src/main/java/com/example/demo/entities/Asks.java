@@ -30,7 +30,7 @@ public class Asks implements Serializable{
 	private Long id;
 	private String content;
 	private String imageUrl;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone="GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT")
 	private Instant moment;
 	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

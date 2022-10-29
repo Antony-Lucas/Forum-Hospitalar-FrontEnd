@@ -26,7 +26,7 @@ public class Answers implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String content;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone="GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT")
 	private Instant moment;
 	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -36,12 +36,16 @@ public class Answers implements Serializable{
 	@JoinColumn(name = "managementId")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Management management;
+	@ManyToOne
+	@JoinColumn(name = "userNameId")
+	private User userName;
 	
 	public Answers() {}
 	
-	public Answers(Long id, Instant moment, String content, Asks asks, Management management) {
+	public Answers(Long id, User userName, Instant moment, String content, Asks asks, Management management) {
 		super();
 		this.id = id;
+		this.userName = userName;
 		this.content = content;
 		this.moment = moment;
 		this.asks = asks;
@@ -54,6 +58,14 @@ public class Answers implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public User getUserName() {
+		return userName;
+	}
+
+	public void setUserName(User userName) {
+		this.userName = userName;
 	}
 
 	public String getContent() {
