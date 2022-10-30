@@ -38,20 +38,11 @@ submit_ask.addEventListener("click", async function(){
     }catch(err){
         console.log(err);
     }
-    let mainDiv = document.getElementById('mainDiv');
-    let element = document.createElement('div');
-    mainDiv.appendChild(element);
-    element.insertAdjacentHTML(
-        'beforeend', 
-        `<div class="ask-header-content">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="ask-body-content">
-              <h4>${user_name}</h4>
-              <p>${set_ask}</p>
-              <p>${getTime}</p>
-              <a id="id="showModal">Responder</a>
-            </div>
-        </div>`
-    )
     document.getElementById("askContent").value = "";
+    updateDiv();
 })
+
+function updateDiv()
+{ 
+    $( "#mainDiv" ).load(window.location.href + " #mainDiv" );
+}

@@ -6,7 +6,6 @@ var answerModal = document.getElementById("answerModal");
 var modalAttendance = document.getElementById("myModalAttendance");
 var closeModalAtt = document.getElementById("closeModalAttendance");
 
-
 function openMainModal(){
     mainModal.style.display = "block";
 }
@@ -34,7 +33,7 @@ function closeModalAttendance(){
 }
 
 function openAnswersModal(){
-    answerModal.style.display = "flex"
+    
 }
 
 function closeAnswerModal(){

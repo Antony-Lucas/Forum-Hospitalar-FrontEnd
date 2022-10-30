@@ -135,7 +135,7 @@ section{
 
 .body-asks{
     background-color: #ffffff;
-    width: 100%;
+    width: 600px;
     margin-top: 12px;
     margin-left: 12px;
     padding: 20px;
@@ -161,8 +161,9 @@ section{
 }
 
 .ask-body-recently{
-    font-size: 8pt;
+    font-size: 10px;
     margin-top: 40px;
+    color: rgba(0, 0, 0, 0.272);;
 }
 
 .ask-body-search{
@@ -193,7 +194,7 @@ section{
 }
 
 .body-content-ask::-webkit-scrollbar{
-    width: 10px;
+    width: 5px;
 }
 
 .body-content-ask::-webkit-scrollbar-track{
@@ -218,8 +219,7 @@ section{
 }
 
 .ask-body-content{
-    padding-left: 10px;
-    width: 50%;
+    width: 70%;
 }
 
 .ask-body-content h4{
