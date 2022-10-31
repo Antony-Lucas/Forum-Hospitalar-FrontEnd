@@ -2,9 +2,9 @@ import { url_api } from "../config.js";
 import { getCookie } from "../cookie/cookies.js";
 
 const date_ = new Date();
+
 let bearer = getCookie("usr_tkn");
 var submit_ask = document.getElementById("submitAsk");
-var user_name = localStorage.getItem("name_session");
 var user_id = localStorage.getItem("id_session");
 var management_id = localStorage.getItem("management_session");
 var getTime = date_.toLocaleString();
@@ -12,11 +12,6 @@ var setDep = 1;
 
 submit_ask.addEventListener("click", async function(){
     var set_ask = document.getElementById("askContent").value;
-    console.log("content: "+ set_ask);
-    console.log("moment: "+ getTime);
-    console.log("departmentid: "+ setDep);
-    console.log("userid: "+ user_id);
-    console.log("management: "+ management_id);
     try{
         await fetch(url_api + "/modules/departments/asks", {
             headers: {
@@ -31,7 +26,7 @@ submit_ask.addEventListener("click", async function(){
                 moment: getTime,
                 client: { id: setDep },
                 userName: { id: user_id },
-                management: { id:management_id }
+                management: { id: management_id }
             })
         })
         .then(Response => Response.json())
@@ -39,10 +34,4 @@ submit_ask.addEventListener("click", async function(){
         console.log(err);
     }
     document.getElementById("askContent").value = "";
-    updateDiv();
 })
-
-function updateDiv()
-{ 
-    $( "#mainDiv" ).load(window.location.href + " #mainDiv" );
-}

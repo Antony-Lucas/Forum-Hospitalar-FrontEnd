@@ -38,7 +38,7 @@ async function req(){
           ask_content = [data[0].asks[i].content];
           ask_moment = [data[0].asks[i].moment];
 
-          let mainDiv = document.getElementById('mainDiv');
+          let mainDiv = document.getElementById('newAsks');
           let element = document.createElement('div');
           mainDiv.appendChild(element);
           element.insertAdjacentHTML(

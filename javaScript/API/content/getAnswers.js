@@ -28,20 +28,13 @@ async function setIdAsk(e){
             get_answers = data[i].answers
 
             if(e == get_id_asks){
-                console.log(get_id_asks);
-                console.log(get_ask_username);
-                console.log(get_ask_content);
-                console.log(get_ask_moment);
-
-                console.log(get_answers);
-
                 var answersContent = document.getElementById("answersContent");
                 var answersContainer = document.getElementById("recentlyAnswers");
                 
                 var mainAsk = document.getElementById("mainAskDiv");
                 var mainAnswers = document.getElementById("answerChildrens");
 
-                var askElement = document.createElement('div');
+                var askElement = document.createElement("div");
                 var answerElement = document.createElement("div");
                 var answerRecent = document.createElement("p");
                 var newAnswer = document.createElement("div");
@@ -62,7 +55,7 @@ async function setIdAsk(e){
                 answersContainer.appendChild(answerRecent);
                 answerRecent.insertAdjacentHTML(
                     "afterbegin",
-                    `<p id="answersRecently" class="answer-body-recently">Respostas</p>`
+                    `<p id="answersRecently" class="answer-body-recently">Recentes</p>`
                 );
 
                 answersContent.appendChild(newAnswer);
@@ -76,7 +69,7 @@ async function setIdAsk(e){
                         <textarea id="answerContent" cols="60" rows="1" placeholder="Escreva um comentário..."></textarea>
                         <div class="add-answer-buttons">
                             <div class="add-answer-buttons-container">
-                                <button id="submitAnswer" type="button" class="add-answers-submit">Enviar</button>               
+                                <a onclick="setIdAnswer(${get_id_asks});" id="submitAnswer" type="button" class="add-answers-submit">Enviar</a>               
                             </div>
                         </div>
                     </div>
@@ -89,10 +82,6 @@ async function setIdAsk(e){
                 get_answers_content = data[i].answers[c];
                 get_answers_moment = data[i].answers[c];
                 if(e == get_id_asks){
-                    console.log(get_answers_userName.userName.userName);
-                    console.log(get_answers_content.content);
-                    console.log(get_answers_moment.moment);
-
                     mainAnswers.appendChild(answerElement);
                     answerElement.insertAdjacentHTML(
                         "beforeend",

@@ -151,8 +151,8 @@
                             </div>
                         </div>
                         <div class="ask-body">
-                            <div class="body-content-ask" id="mainDiv">
-                                <form class="add-ask">
+                            <div id="mainDiv" class="body-content-ask">
+                                <div class="add-ask">
                                     <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 20px">photo_camera</span></label>
                                     <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
                                     <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
@@ -161,15 +161,19 @@
                                             <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                                 <div id="imageList"></div> 
                                 <p class="ask-body-recently">Recentes</p>
+                                <div id="newAsks"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="answer-modal-content">
                     <div id="myModalAnswers" class="iframe-modal-answers">
+                        <div class="ask-header-container">
+                            <h3>Respostas</h3>
+                        </div>
                         <div id="answersContent" class="answer-modal-body">
                             <div id="answersContainer" class="answers-align">
                                 <div id="mainAskDiv"></div>
@@ -201,9 +205,10 @@
     <script src="../../javaScript/API/config.js"></script>
     <script src="../../javaScript/actions/modal.js"></script>
     <script src="../../javaScript/API/home/main.js"></script>
-    <script src="../../javaScript/API/content/getAnswers.js"></script>
     <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
     <script type="module" src="../../javaScript/API/content/setAsks.js"></script>
     <script type="module" src="../../javaScript/API/content/getAsks.js"></script>
+    <script src="../../javaScript/API/content/getAnswers.js"></script>
+    <script src="../../javaScript/API/content/setAnswers.js"></script>
 </body>
 </html>
