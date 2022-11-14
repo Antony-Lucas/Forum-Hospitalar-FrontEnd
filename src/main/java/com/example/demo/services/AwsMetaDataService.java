@@ -33,8 +33,7 @@ public class AwsMetaDataService implements AwsMetaData{
 	@Value("${bucketName}")
 	private String bucketName;
 
-	@Override
-	public void upload(MultipartFile file) throws IOException {
+	public String upload(MultipartFile file, String url) throws IOException {
 		if(file.isEmpty()){
 			throw new IllegalStateException("O sistema não aceita requisições nulas");
 		}
@@ -48,7 +47,9 @@ public class AwsMetaDataService implements AwsMetaData{
 		com.amazonaws.services.s3.model.PutObjectResult putObjectResult = awsServicesImpl.upload(
 				path, fileName, Optional.of(metaData), file.getInputStream()
 		);		
-		awsRepositories.save(new Aws(fileName, path, putObjectResult.getMetadata().getVersionId()));
+		awsRepositories.save(new Aws(fileName, path, putObjectResult.getMetadata().getVersionId(), null));
+		url = path +"/"+ fileName;
+		return url;
 	}
 
 	@Override

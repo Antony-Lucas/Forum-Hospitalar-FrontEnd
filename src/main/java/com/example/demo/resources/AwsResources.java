@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -46,9 +47,8 @@ public class AwsResources {
 	}
 	
 	@PostMapping("upload")
-	public String upload(@RequestParam("file") MultipartFile file) throws IOException{
-		awsMetaData.upload(file);
-		return "redirect:/dashboard";
+	public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file, @RequestParam String url) throws IOException{
+		return new ResponseEntity<>(awsMetaData.upload(file, url), HttpStatus.OK);
 	}
 	
 	@GetMapping("download/{id}")

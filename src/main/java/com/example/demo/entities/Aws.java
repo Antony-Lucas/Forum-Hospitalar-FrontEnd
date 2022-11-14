@@ -6,7 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "imageUrl")
@@ -18,14 +22,26 @@ public class Aws implements Serializable{
 	private String fileName;
 	private String filePath;
 	private String version;
-	
+	@ManyToOne
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JoinColumn(name = "imageUrl")
+	private Asks imageToAsk;
 	public Aws() {}
 	
-	public Aws(String fileName, String filePath, String version) {
+	public Aws(String fileName, String filePath, String version, Asks imageToAsk) {
 		super();
 		this.fileName = fileName;
 		this.filePath = filePath;
 		this.version = version;
+		this.imageToAsk = imageToAsk;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFileName() {
@@ -50,6 +66,14 @@ public class Aws implements Serializable{
 
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	public Asks getImageToAsk() {
+		return imageToAsk;
+	}
+
+	public void setImageToAsk(Asks imageToAsk) {
+		this.imageToAsk = imageToAsk;
 	}
 
 	@Override
