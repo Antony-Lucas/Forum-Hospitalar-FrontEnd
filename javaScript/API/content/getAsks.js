@@ -35,6 +35,7 @@ async function req(){
           id_count++;
           ask_user_id = [data[0].asks[i].id]
           ask_user_name = [data[0].asks[i].userName.userName]
+          ask_img = [data[0].asks[i].imageUrl]
           ask_content = [data[0].asks[i].content];
           ask_moment = [data[0].asks[i].moment];
 
@@ -47,8 +48,9 @@ async function req(){
                 <span class="material-symbols-outlined">account_circle</span>
                 <div class="ask-body-content">
                   <h4>${ask_user_name}</h4>
-                  <p>${ask_content}</p>
-                  <p>${ask_moment}</p>
+                  <p class='ask-content'>${ask_content}</p>
+                  <img class='img-ask' src="${ask_img}">
+                  <p class='ask-moment'>${ask_moment}</p>
                   <a id="showModal" onclick="setIdAsk(${ask_user_id}); openAnswersModal();">Responder</a>
                 </div>
             </div>`

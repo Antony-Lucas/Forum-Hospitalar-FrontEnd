@@ -1,6 +1,7 @@
 var get_id_asks;
 var get_ask_username;
 var get_ask_content;
+var get_ask_img;
 var get_ask_moment;
 
 var get_answers;
@@ -23,6 +24,7 @@ async function setIdAsk(e){
             get_id_asks = data[i].id;
             get_ask_username = data[i].userName.userName
             get_ask_content = data[i].content;
+            get_ask_img = data[i].imageUrl;
             get_ask_moment = data[i].moment;
 
             get_answers = data[i].answers
@@ -45,9 +47,10 @@ async function setIdAsk(e){
                     `<div class="answers-header-content">
                         <span class="material-symbols-outlined">account_circle</span>
                         <div class="answers-body-content">
-                        <h4>${get_ask_username}</h4>
-                        <p>${get_ask_content}</p>
-                        <p>${get_ask_moment}</p>
+                            <h4>${get_ask_username}</h4>
+                            <p class='ask-content'>${get_ask_content}</p>
+                            <img class='img-ask' src="${get_ask_img}">
+                            <p class='ask-moment'>${get_ask_moment}</p>
                         </div>
                     </div>`
                 )
@@ -89,8 +92,8 @@ async function setIdAsk(e){
                             <span class="material-symbols-outlined">account_circle</span>
                             <div class="answers-body-content">
                             <h4>${get_answers_userName.userName.userName}</h4>
-                            <p>${get_answers_content.content}</p>
-                            <p>${get_answers_moment.moment}</p>
+                            <p class='ask-content'>${get_answers_content.content}</p>
+                            <p class='ask-moment-answers'>${get_answers_moment.moment}</p>
                             </div>
                         </div>`
                     )

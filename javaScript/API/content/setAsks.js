@@ -11,12 +11,13 @@ var getTime = date_.toLocaleString();
 var setImage = document.getElementById("image-button");
 var setDep = 1;
 
+var setUrlImage;
 submit_ask.addEventListener("click", async function(){
     const formData = new FormData();
     formData.append('file', setImage.files[0]);
     formData.append('url', 'filename');
     try {
-        await fetch("http://localhost:8080/upload",{
+        await fetch(url_api + "/upload",{
             method: "POST",
             headers: {
                 "Authorization":"Bearer " + bearer
@@ -26,15 +27,17 @@ submit_ask.addEventListener("click", async function(){
             return response.text();
         })
         .then(function(data) {
-            var imageUrl = data;
-            console.log(imageUrl);
-            return imageUrl;
+            var imageLink = data;
+            setUrlImage = imageLink;
+            console.log("upload: "+imageLink);
+            return imageLink;
         })
     } catch (error) {
         console.log(error);
     }
 
     var set_ask = document.getElementById("askContent").value;
+
     try{
         await fetch(url_api + "/modules/departments/asks", {
             headers: {
@@ -47,12 +50,14 @@ submit_ask.addEventListener("click", async function(){
             body: JSON.stringify({
                 content: set_ask,
                 moment: getTime,
+                imageUrl: setUrlImage,
                 client: { id: setDep },
                 userName: { id: user_id },
                 management: { id: management_id }
             })
         })
         .then(Response => Response.json())
+        console.log("variable3 "+setUrlImage);
     }catch(err){
         console.log(err);
     }

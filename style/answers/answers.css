@@ -59,6 +59,7 @@ body{
 .answers-header-content{
     display: flex;
     margin-top: 5%;
+    margin-bottom: 20px;
 }
 
 .answers-header-content span{
@@ -73,11 +74,6 @@ body{
     margin-top: 5px;
     font-size: 8pt;
     width: 100%;
-}
-
-.answers-body-content p{
-    font-size: 8pt;
-    margin-top: 5px;
 }
 
 .answers-body-content p:nth-child(3){

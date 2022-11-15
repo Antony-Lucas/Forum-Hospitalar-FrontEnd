@@ -224,20 +224,32 @@ section{
     width: 100%;
 }
 
-.ask-body-content p{
+.ask-content{
     font-size: 8pt;
     margin-top: 5px;
 }
 
-.ask-body-content p:nth-child(3){
+.img-ask{
+    padding: 12px 0px;
+    width: 350px;
+    max-height: 300px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.ask-moment{
     color: rgba(0, 0, 0, 0.437);
     font-size: 6pt;
 }
 
+.ask-moment-answers{
+    margin: 8px 0;
+}
+
 .ask-body-content a{
-    padding-top: 5px;
+    margin-top: 8px;
     padding-right: 10px;
-    font-size: 8pt;
+    font-size: 7pt;
     text-decoration: none;
     color: #336799;
     cursor: pointer;
