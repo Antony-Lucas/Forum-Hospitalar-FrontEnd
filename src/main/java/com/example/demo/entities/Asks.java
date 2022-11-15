@@ -29,8 +29,7 @@ public class Asks implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String content;
-	@OneToMany(mappedBy = "imageToAsk", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Aws> imageUrl;
+	private String imageUrl;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", timezone="GMT")
 	private Instant moment;
 	@ManyToOne
@@ -50,10 +49,11 @@ public class Asks implements Serializable{
 		
 	}
 
-	public Asks(Long id, User userName, String content, Instant moment, Department client, Management management) {
+	public Asks(Long id, String imageUrl, User userName, String content, Instant moment, Department client, Management management) {
 		super();
 		this.id = id;
 		this.userName = userName;
+		this.imageUrl = imageUrl;
 		this.content = content;
 		this.moment = moment;
 		this.client = client;
@@ -84,8 +84,12 @@ public class Asks implements Serializable{
 		this.content = content;
 	}
 
-	public List<Aws> getImageUrl(){
+	public String getImageUrl() {
 		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Instant getMoment() {

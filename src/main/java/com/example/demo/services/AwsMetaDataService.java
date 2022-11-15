@@ -40,17 +40,17 @@ public class AwsMetaDataService implements AwsMetaData{
 		Map<String, String> metaData = new HashMap<>();
 		metaData.put("Content-Type", file.getContentType());
 		metaData.put("Content-lenght", String.valueOf(file.getSize()));
-		
-		String path = String.format("%s/%s",bucketName, UUID.randomUUID());
-		String fileName = String.format("%s", file.getOriginalFilename());
+		String bucket = String.format("%s", bucketName);
+		String path = String.format("/%s", UUID.randomUUID());
+		String fileName = String.format("%s", file.getOriginalFilename().replace(" ", ""));
+		String Url = "https://"+ bucket +".s3.amazonaws.com"+ path + "/" + fileName;
 		
 		com.amazonaws.services.s3.model.PutObjectResult putObjectResult = awsServicesImpl.upload(
-				path, fileName, Optional.of(metaData), file.getInputStream()
+				bucket+path, fileName, Optional.of(metaData), file.getInputStream()
 		);		
-		awsRepositories.save(new Aws(fileName, path, putObjectResult.getMetadata().getVersionId(), null));
-		url = path +"/"+ fileName;
-		return url;
-	}
+		awsRepositories.save(new Aws(fileName, Url, putObjectResult.getMetadata().getVersionId()));
+		return Url;
+	} 
 
 	@Override
 	public S3Object download(int id) {

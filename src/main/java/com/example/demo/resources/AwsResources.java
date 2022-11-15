@@ -65,8 +65,10 @@ public class AwsResources {
 		return new HttpEntity<byte[]>(bytes, httpHeaders);
 	}
 	
-	@DeleteMapping("{filename}")
-	public String deletefile(@PathVariable("filename") String filename) {
-		return s3Services.deleteFile(filename);
-	}
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> deleteFile(@RequestParam(value= "fileName") final String keyName) {
+		s3Services.deleteFile(keyName);
+        final String response = "[" + keyName + "] deleted successfully.";
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

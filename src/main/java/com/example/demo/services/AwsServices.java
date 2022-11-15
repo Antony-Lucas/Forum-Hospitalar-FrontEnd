@@ -8,9 +8,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
@@ -26,11 +28,12 @@ public class AwsServices implements AwsServicesImpl{
 	@Autowired
 	private AmazonS3 s3;
 
-	@Override
-	public String deleteFile(String fileName) {
-		s3.deleteObject(bucketName, fileName);
-		return "File deleted";
-	}
+	@Async
+    public String deleteFile(final String keyName) {
+        final DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(bucketName, keyName);
+        s3.deleteObject(deleteObjectRequest);
+        return "Removido com sucesso";
+    }
 
 	@Override
 	public List<String> listAllFiles() {
