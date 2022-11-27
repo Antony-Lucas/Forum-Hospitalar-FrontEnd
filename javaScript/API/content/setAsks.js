@@ -1,6 +1,3 @@
-import { url_api } from "../config.js";
-import { getCookie } from "../cookie/cookies.js";
-
 const date_ = new Date();
 
 let bearer = getCookie("usr_tkn");
@@ -9,15 +6,14 @@ var user_id = localStorage.getItem("id_session");
 var management_id = localStorage.getItem("management_session");
 var getTime = date_.toLocaleString();
 var setImage = document.getElementById("image-button");
-var setDep = 1;
 
 var setUrlImage;
-submit_ask.addEventListener("click", async function(){
+submit_ask.addEventListener("click", async function setAsk(e){
     const formData = new FormData();
     formData.append('file', setImage.files[0]);
     formData.append('url', 'filename');
     try {
-        await fetch(url_api + "/upload",{
+        await fetch("http://localhost:8080/upload",{
             method: "POST",
             headers: {
                 "Authorization":"Bearer " + bearer
@@ -39,7 +35,7 @@ submit_ask.addEventListener("click", async function(){
     var set_ask = document.getElementById("askContent").value;
 
     try{
-        await fetch(url_api + "/modules/departments/asks", {
+        await fetch("http://localhost:8080/modules/departments/asks", {
             headers: {
                 "Content-Type": "application/json; charset=utf8",
                 "Authorization":"Bearer " + bearer
@@ -51,7 +47,7 @@ submit_ask.addEventListener("click", async function(){
                 content: set_ask,
                 moment: getTime,
                 imageUrl: setUrlImage,
-                client: { id: setDep },
+                client: { id: e },
                 userName: { id: user_id },
                 management: { id: management_id }
             })
@@ -63,3 +59,19 @@ submit_ask.addEventListener("click", async function(){
     }
     document.getElementById("askContent").value = "";
 })
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}

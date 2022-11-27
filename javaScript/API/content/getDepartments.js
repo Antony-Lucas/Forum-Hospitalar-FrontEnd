@@ -21,9 +21,7 @@ async function getdepartment(){
             for(let i = 0; i < data.length; i++){
                 dep_id = data[i].id;
                 dep_name = data[i].nameDepartment;
-                
-                console.log(dep_id);
-
+  
                 var divDep = document.getElementById("departments");
                 var li = document.createElement("li");
                 divDep.appendChild(li)
@@ -31,7 +29,7 @@ async function getdepartment(){
                     "afterbegin",
                     `
                     <li>
-                        <a onclick='req(${dep_id})' class="body-content-list-item">
+                        <a id="showDepartment" onclick='req(${dep_id}); setAsk(${dep_id})' class="body-content-list-item">
                             <p>${dep_name}</p>
                             <span class="material-symbols-outlined">chevron_right</span>
                         </a>
@@ -43,6 +41,11 @@ async function getdepartment(){
     } catch (error) {
         console.log(error)
     }
+}
+
+function updateDiv()
+{ 
+    $( "#bodyAsks" ).load(location.href + "#bodyAsks" );
 }
 
 getdepartment();

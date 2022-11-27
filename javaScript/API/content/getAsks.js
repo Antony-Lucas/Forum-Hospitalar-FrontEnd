@@ -7,10 +7,7 @@ var ask_content = [];
 var ask_img = [];
 var ask_moment = [];
 
-let id_count = 0;
-
 async function req(e){
-  console.log(e);
     await fetch('http://localhost:8080/modules/departments',{
         headers:{
           'Authorization':'Bearer ' + bearer  
@@ -29,51 +26,46 @@ async function req(e){
     )
     .then(data => {
         e = e - 1;
-        localStorage.setItem("dep_id", data[e].id);
+        console.log(e);
+        var loadAsks = document.getElementById("bodyAsks");
+        var div = document.createElement("div");
+        loadAsks.appendChild(div);
+        loadAsks.innerHTML = `
+        <div class="ask-content">
+                <div class="ask-header">
+                    <div class="ask-header-container">
+                        <h3>${data[e].nameDepartment}</h3>
+                    </div>
+                    <div class="ask-body-search">
+                        <input type="text" placeholder="&#x1F50E;&#xFE0E;" id="searchbar">
+                    </div>
+                </div>
+                <div class="ask-body">
+                    <div id="mainDiv" class="body-content-ask">
+                        <div class="add-ask">
+                            <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 20px">photo_camera</span></label>
+                            <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
+                            <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
+                            <div class="add-ask-buttons">
+                                <div class="add-ask-buttons-container">
+                                    <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="imageList"></div> 
+                        <p class="ask-body-recently">Recentes</p>
+                        <div id="newAsks"></div>
+                    </div>
+                </div>
+            </div>
+        `
+
         for(let i = 0; i <= data[e].asks.length; i++){
-          id_count++;
-          console.log(data[e].nameDepartment);
           ask_user_id = [data[e].asks[i].id]
           ask_user_name = [data[e].asks[i].userName.userName]
           ask_img = [data[e].asks[i].imageUrl]
           ask_content = [data[e].asks[i].content];
           ask_moment = [data[e].asks[i].moment];
-
-          var loadAsks = document.getElementById("bodyAsks");
-          var div = document.createElement("div");
-          loadAsks.appendChild(div);
-          div.insertAdjacentHTML(
-              "afterbegin",
-              `
-              <div class="ask-content">
-                  <div class="ask-header">
-                      <div class="ask-header-container">
-                          <h3>${data[e].nameDepartment}</h3>
-                      </div>
-                      <div class="ask-body-search">
-                          <input type="text" placeholder="&#x1F50E;&#xFE0E;" id="searchbar">
-                      </div>
-                  </div>
-                  <div class="ask-body">
-                      <div id="mainDiv" class="body-content-ask">
-                          <div class="add-ask">
-                              <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 20px">photo_camera</span></label>
-                              <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
-                              <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
-                              <div class="add-ask-buttons">
-                                  <div class="add-ask-buttons-container">
-                                      <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
-                                  </div>
-                              </div>
-                          </div>
-                          <div id="imageList"></div> 
-                          <p class="ask-body-recently">Recentes</p>
-                          <div id="newAsks"></div>
-                      </div>
-                  </div>
-              </div>
-              `
-          )
 
           let mainDiv = document.getElementById('newAsks');
           let element = document.createElement('div');
@@ -96,6 +88,10 @@ async function req(e){
   )
 }
 
+function updateDiv()
+{ 
+    $( "#bodyAsks" ).load(location.href + "#bodyAsks" );
+}
 
 window.onload = function(){
   catchUserName.innerHTML = name_user;
