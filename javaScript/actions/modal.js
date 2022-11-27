@@ -5,6 +5,7 @@ var modal = document.getElementById("myModal");
 var answerModal = document.getElementById("answerModal");
 var modalAttendance = document.getElementById("myModalAttendance");
 var closeModalAtt = document.getElementById("closeModalAttendance");
+var tabCont = document.getElementById("tabContent");
 
 function openMainModal(){
     mainModal.style.display = "block";
@@ -22,12 +23,13 @@ function closeModal(){
     modal.style.display = "none";
 }
 
-function openModalAttendance(){
+function openModaModules(e){
+    tabCont.innerText = e;
     modalAttendance.style.display = "block";
     header.style.visibility = "hidden";
 }
 
-function closeModalAttendance(){
+function closeModalModules(){
     modalAttendance.style.display = "none";
     header.style.visibility = "visible";
 }

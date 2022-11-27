@@ -52,6 +52,7 @@ async function mainLogin(){
             setCookie("usr_tkn", user, 30);
         }
     }catch(err){
+        showError();
         console.log(err);
     }
     id_user = localStorage.getItem("id_session");
@@ -70,12 +71,17 @@ async function getManagement(){
     .then(response => response.json())
     .then(data => {
         for(let i = 0; i <= data.length; i++){
-            catch_user_id = [data[i].user.id]
-            if(id_user == catch_user_id){
-                catch_management_id = data[i].id
-                localStorage.setItem("management_session", catch_management_id);
-                console.log(localStorage.getItem("management_session"));
-                dataBinding();
+            try {
+                catch_user_id = [data[i].user.id]
+                if(id_user == catch_user_id){
+                    catch_management_id = data[i].id
+                    localStorage.setItem("management_session", catch_management_id);
+                    console.log(localStorage.getItem("management_session"));
+                    dataBinding();
+                }
+            } catch (error) {
+                showError();
+                console.log(error);
             }
         }
     });
@@ -92,17 +98,11 @@ async function dataBinding(){
         credentials: "same-origin",
     }).then(response => {
         if(user_.value == "" || pass_.value == ""){
-            error_auth.innerHTML = 'Usuário ou senha inválido'
-            error_visible.style.visibility = "visible"
-            links.style.top = "30px";
-            load_circle.style.visibility = 'hidden'
+            showError();
             return false;
         }
         if(response.status == 403){
-            error_auth.innerHTML = 'Usuário ou senha inválido'
-            error_visible.style.visibility = "visible"
-            links.style.top = "30px";
-            load_circle.style.visibility = 'hidden'
+            showError();
             return response.json();
         }
         if(getCookie('usr_tkn') || response.status == 200){
@@ -112,4 +112,11 @@ async function dataBinding(){
             return response.json();
         }
     })
+}
+
+function showError(){
+    error_auth.innerHTML = 'Usuário ou senha inválido'
+    error_visible.style.visibility = "visible"
+    links.style.top = "30px";
+    load_circle.style.visibility = 'hidden'
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KnowBI-Home</title>
+    <title>KnowBI</title>
     <link rel="stylesheet" href="../style/homePage/homeStyle.css">
     <link rel="stylesheet" href="../style/attendance/modalAnswers.css">
     <link rel="stylesheet" href="../style/homePage/modals.css">
@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body id="homePage">
-    <div class="bg-preloader" id="preloader">
+    <!--<div class="bg-preloader" id="preloader">
         <div class="preloader"></div>
-    </div>
+    </div>-->
     <header id="header">
         <div id="headerLogo" class="header-main">
             <div class="knowbi">
@@ -59,84 +59,86 @@
             <div id="myModalAttendance" class="iframe-modal-content">
                 <div class="iframe-items">
                     <div class="iframe-asks">
-                        <p>Atendimento</p>
-                        <span class="iframe-close" onclick="closeModalAttendance()">&times;</span>
+                        <p id="tabContent"></p>
+                        <span class="iframe-close" onclick="closeModalModules()">&times;</span>
                     </div>
                 </div>
-                <iframe src="./departments/attendance.html" width="100%" height="100%" frameborder="0"></iframe>
+                <iframe src="./departments/attendance.html" width="100%" height="92%" frameborder="0"></iframe>
             </div>
-            <div class="body-filter">
-                <div class="body-field">
-                    <i class="material-icons" style="font-size: 18px;" id="searchIcon">search</i>
-                    <input type="text" class="body-searh" id="searchbar" onkeyup="search_departments()">
+            <div class="body-center-content">
+                <div class="body-filter">
+                    <div class="body-field">
+                        <i class="material-icons" style="font-size: 18px;" id="searchIcon">search</i>
+                        <input type="text" class="body-searh" id="searchbar" onkeyup="search_departments()">
+                    </div>
+                    <p class="body-modules">Módulos</p>
                 </div>
-                <p class="body-modules">Módulos</p>
-            </div>
-            
-            <div class="body-content">
-                <ul class="body-items" id="departments">
-                    <li class="department-item">
-                        <a href="#" class="body-item" onclick="openModalAttendance()">
-                            <img src="../assets/main_icons/patient (1).png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Atendimento</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/patient (3).png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Assistencial</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/patient (2).png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Apoio</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/patient (4).png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Controladoria</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/invoice.png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Faturamento</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/saving.png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Financeiro</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/management.png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Gerencial</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/clinic.png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Hotelaria</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/clinic (2).png" alt="icone-atendimento" class="body-items-icons">
-                            <p>SADT</p>
-                        </a>
-                    </li>
-                    <li class="department-item">
-                        <a href="#" class="body-item">
-                            <img src="../assets/main_icons/clinic (1).png" alt="icone-atendimento" class="body-items-icons">
-                            <p>Suprimentos</p>
-                            <span style="margin-left: 35px;"></span>
-                        </a>
-                    </li>
-                </ul>
+                
+                <div class="body-content">
+                    <ul class="body-items" id="departments">
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Atendimento')">
+                                <img src="../assets/main_icons/patient (1).png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Atendimento</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Assistencial')">
+                                <img src="../assets/main_icons/patient (3).png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Assistencial</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Apoio')">
+                                <img src="../assets/main_icons/patient (2).png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Apoio</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Controladoria')">
+                                <img src="../assets/main_icons/patient (4).png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Controladoria</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Faturamento')">
+                                <img src="../assets/main_icons/invoice.png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Faturamento</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Financeiro')">
+                                <img src="../assets/main_icons/saving.png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Financeiro</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Gerencial')">
+                                <img src="../assets/main_icons/management.png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Gerencial</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Hotelaria')">
+                                <img src="../assets/main_icons/clinic.png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Hotelaria</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('SADT')">
+                                <img src="../assets/main_icons/clinic (2).png" alt="icone-atendimento" class="body-items-icons">
+                                <p>SADT</p>
+                            </a>
+                        </li>
+                        <li class="department-item">
+                            <a href="#" class="body-item" onclick="openModaModules('Suprimentos')">
+                                <img src="../assets/main_icons/clinic (1).png" alt="icone-atendimento" class="body-items-icons">
+                                <p>Suprimentos</p>
+                                <span style="margin-left: 35px;"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -152,6 +154,7 @@
             <p id="timeZoneNow">UTC (-03:00)</p>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../javaScript/actions/searchbar.js"></script>
     <script src="../javaScript/actions/onFocus.js"></script>
     <script src="../javaScript/dates/dateNow.js"></script>
@@ -159,5 +162,6 @@
     <script type="module" src="../javaScript/API/home/main.js"></script>
     <script type="module" src="../javaScript/API/auth.js"></script>
     <script type="module" src="../javaScript/API/cookie/cookies.js"></script>
+    
 </body>
 </html>

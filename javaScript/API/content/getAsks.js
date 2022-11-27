@@ -1,5 +1,3 @@
-import { url_api } from "../config.js";
-import { getCookie } from "../cookie/cookies.js";
 let bearer = getCookie("usr_tkn");
 let catchUserName = document.getElementById("myUserName");
 var name_user = localStorage.getItem("name_session");
@@ -11,9 +9,9 @@ var ask_moment = [];
 
 let id_count = 0;
 
-async function req(){
-    console.log(bearer);
-    await fetch(url_api+ '/modules/departments',{
+async function req(e){
+  console.log(e);
+    await fetch('http://localhost:8080/modules/departments',{
         headers:{
           'Authorization':'Bearer ' + bearer  
         },
@@ -30,14 +28,52 @@ async function req(){
         }
     )
     .then(data => {
-        localStorage.setItem("dep_id", data[0].id);
-        for(let i = 0; i <= data[0].asks.length; i++){
+        e = e - 1;
+        localStorage.setItem("dep_id", data[e].id);
+        for(let i = 0; i <= data[e].asks.length; i++){
           id_count++;
-          ask_user_id = [data[0].asks[i].id]
-          ask_user_name = [data[0].asks[i].userName.userName]
-          ask_img = [data[0].asks[i].imageUrl]
-          ask_content = [data[0].asks[i].content];
-          ask_moment = [data[0].asks[i].moment];
+          console.log(data[e].nameDepartment);
+          ask_user_id = [data[e].asks[i].id]
+          ask_user_name = [data[e].asks[i].userName.userName]
+          ask_img = [data[e].asks[i].imageUrl]
+          ask_content = [data[e].asks[i].content];
+          ask_moment = [data[e].asks[i].moment];
+
+          var loadAsks = document.getElementById("bodyAsks");
+          var div = document.createElement("div");
+          loadAsks.appendChild(div);
+          div.insertAdjacentHTML(
+              "afterbegin",
+              `
+              <div class="ask-content">
+                  <div class="ask-header">
+                      <div class="ask-header-container">
+                          <h3>${data[e].nameDepartment}</h3>
+                      </div>
+                      <div class="ask-body-search">
+                          <input type="text" placeholder="&#x1F50E;&#xFE0E;" id="searchbar">
+                      </div>
+                  </div>
+                  <div class="ask-body">
+                      <div id="mainDiv" class="body-content-ask">
+                          <div class="add-ask">
+                              <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 20px">photo_camera</span></label>
+                              <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
+                              <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
+                              <div class="add-ask-buttons">
+                                  <div class="add-ask-buttons-container">
+                                      <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="imageList"></div> 
+                          <p class="ask-body-recently">Recentes</p>
+                          <div id="newAsks"></div>
+                      </div>
+                  </div>
+              </div>
+              `
+          )
 
           let mainDiv = document.getElementById('newAsks');
           let element = document.createElement('div');
@@ -67,4 +103,19 @@ window.onload = function(){
       window.location.href = '../../../index.html';
   }
 }
-req();
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}

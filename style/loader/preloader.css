@@ -8,30 +8,26 @@
     align-items: center;
     position: absolute;
     left: 0;
-    opacity: 0;
+    opacity: 1;
     visibility: hidden;
-    -webkit-animation: hotPreReloadBG 2s linear;
-    animation: hotPreReloadBG 2s linear;
+    -webkit-animation: hotPreReloadBG 3s linear;
+    animation: hotPreReloadBG 3s linear;
 }
 
 @-webkit-keyframes hotPreReloadBG {
     0%{
-        opacity: 1;
         visibility: visible;
     }
     100%{
-        opacity: 0;
         visibility: hidden;
     }
 }
 
 @keyframes hotPreReloadBG {
     0%{
-        opacity: 1;
         visibility: visible;
     }
     100%{
-        opacity: 0;
         visibility: hidden;
     }
 }
@@ -50,11 +46,9 @@
 
 @-webkit-keyframes hotPreReload {
     0%{
-        opacity: 0;
         transform: rotate(0deg);
     }
     100%{
-        opacity: 1;
         transform: rotate(360deg);
     }
 }

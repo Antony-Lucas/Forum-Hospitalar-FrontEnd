@@ -22,7 +22,7 @@
                     <h2>Know<strong>BI</strong></h2>
                     <div id="loader" class="loader"></div>
                     <form class="login-form" action="">
-                        <input id="username" class="login-input" type="text" placeholder="Nome de usuário">
+                        <input id="username" class="login-input" type="text" placeholder="Nome de usuário" autocomplete="off">
                         <input id="password" class="login-input" type="password" placeholder="Senha">
                         <a href="./routes/forgotPassword.html" class="login-cookies">Aviso de Cookies</a>
                         <input id="mySubmit" class="login-button" type="submit" value="Entrar" onclick="return false;">
@@ -63,11 +63,17 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./javaScript/API/loginErrors.js"></script>
     <script src="./javaScript/actions/preloader.js"></script>
     <script src="./javaScript/dates/dateNow.js"></script>
     <script type="module" src="./javaScript/API/auth.js"></script>
     <script type="module" src="./javaScript/API/config.js"></script>
     <script type="module" src="./javaScript/API/cookie/cookies.js"></script>
+    <script>
+        $(window).on('load', function () {
+            $('#preloader').hide();
+        }) 
+    </script>
 </body>
 </html>

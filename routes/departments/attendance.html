@@ -18,7 +18,7 @@
         <div class="header-main">
             <div class="header-menu" id="mainMenu">
                 <a id="showMainModal" onclick="openMainModal()">
-                    <span class="material-symbols-outlined" style="color: #ffffff;">menu</span>
+                    <span class="material-symbols-outlined" style="color: #ffffff; margin-right: 10px;">menu</span>
                 </a>
             </div>
             <div class="knowbi">
@@ -36,11 +36,11 @@
                             <span class="close-main-modal" onclick="closeMainModal()">&times;</span>
                         </div>
                         <div class="main-modal-body">
-                            <a href="#" class="modal-body-row">
+                            <a id="attendance" class="modal-body-row">
                                 <p>Atendimento</p>
                                 <span class="material-symbols-outlined">chevron_right</span>
                             </a>
-                            <a href="#" class="modal-body-row">
+                            <a id="assistant" class="modal-body-row">
                                 <p>Assistencial</p>
                                 <span class="material-symbols-outlined">chevron_right</span>
                             </a>
@@ -82,93 +82,10 @@
                 <div class="body-content-center">
                     <h3 class="body-content-center-title">Departamentos</h3>
                     <div class="body-content-center-container">
-                        <ul class="body-content-list" id="departments">
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Anatomia Patológica</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Banco de Sangue</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Exames</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Hemodiálise</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Imunização</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Laboratório</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Quimioterapia</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Radioterapia</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="body-content-list-item">
-                                    <p>Transplantes</p>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            </li>
-                        </ul>
+                        <ul class="body-content-list" id="departments"></ul>
                     </div>
                 </div>
-                <div class="body-asks">
-                    <div class="ask-content">
-                        <div class="ask-header">
-                            <div class="ask-header-container">
-                                <h3>Anatomia patológica</h3>
-                            </div>
-                            <div class="ask-body-search">
-                                <input type="text" placeholder="&#x1F50E;&#xFE0E;" id="searchbar">
-                            </div>
-                        </div>
-                        <div class="ask-body">
-                            <div id="mainDiv" class="body-content-ask">
-                                <div class="add-ask">
-                                    <label for="image-button"><span title="Anexar imagem" class="material-symbols-outlined" style="font-size: 20px">photo_camera</span></label>
-                                    <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
-                                    <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
-                                    <div class="add-ask-buttons">
-                                        <div class="add-ask-buttons-container">
-                                            <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="imageList"></div> 
-                                <p class="ask-body-recently">Recentes</p>
-                                <div id="newAsks"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="body-asks" id="bodyAsks"></div>
                 <div class="answer-modal-content">
                     <div id="myModalAnswers" class="iframe-modal-answers">
                         <div class="ask-header-container">
@@ -184,20 +101,20 @@
                     </div>
                 </div>
             </div>
+            <div class="footer">
+                <div class="policy">
+                    <p>KnowBI Business Intelligence</p>
+                    <a href="#">Aviso de Privacidade e Termos de Uso</a>
+                </div>
+                <p>V0.0.0.1</p>
+                <div class="date">
+                    <p id="dateNow"></p>
+                    <p id="hourNow"></p>
+                    <p id="timeZoneNow">UTC (-03:00)</p>
+                </div>
+            </div>
         </div>
     </section>
-    <footer>
-        <div class="policy">
-            <p>KnowBI Business Intelligence</p>
-            <a href="#">Aviso de Privacidade e Termos de Uso</a>
-        </div>
-        <p>V0.0.0.1</p>
-        <div class="date">
-            <p id="dateNow"></p>
-            <p id="hourNow"></p>
-            <p id="timeZoneNow">UTC (-03:00)</p>
-        </div>
-    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../../javaScript/actions/addModal.js"></script>
     <script src="../../javaScript/API/DOM/setImageName.js"></script>
@@ -205,10 +122,11 @@
     <script src="../../javaScript/API/config.js"></script>
     <script src="../../javaScript/actions/modal.js"></script>
     <script src="../../javaScript/API/home/main.js"></script>
-    <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
-    <script type="module" src="../../javaScript/API/content/setAsks.js"></script>
-    <script type="module" src="../../javaScript/API/content/getAsks.js"></script>
+    <script src="../../javaScript/API/content/getAsks.js"></script>
     <script src="../../javaScript/API/content/getAnswers.js"></script>
     <script src="../../javaScript/API/content/setAnswers.js"></script>
+    <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
+    <script type="module" src="../../javaScript/API/content/setAsks.js"></script>
+    <script type="module" src="../../javaScript/API/content/getDepartments.js"></script>
 </body>
 </html>
