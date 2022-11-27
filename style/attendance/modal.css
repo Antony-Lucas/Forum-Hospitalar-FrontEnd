@@ -13,7 +13,7 @@
     padding: 10px;
     font-size: 8pt;
     width: 100%;
-    border: solid 0.5px #00000065;
+    border: none;
     border-radius: 3px
 }
 
@@ -83,7 +83,7 @@
     justify-content: space-around;
     align-items: center;
     width: 150px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .image-label{

@@ -75,9 +75,26 @@ async function setIdAsk(e){
                                 <a onclick="setIdAnswer(${get_id_asks});" id="submitAnswer" type="button" class="add-answers-submit">Enviar</a>               
                             </div>
                         </div>
+                        <div id="imageListAnswer"></div> 
                     </div>
                     `
                 )
+
+                let input_answer_file = document.getElementById("image-answer-button");
+                let image_answer_list = document.getElementById("imageListAnswer");
+
+                input_answer_file.addEventListener('change', function(){
+                    image_answer_list.innerHTML = '<ul>';
+                    for(let i = 0; i < input_answer_file.files.length; i++){
+                        image_answer_list.innerHTML += '<li class="imageList-list-answers">'
+                            + "<span class='image-label'>" + input_answer_file.files.item(i).name + "</span>" + 
+                            '<span onclick="removeAnswerImage()" id="imageFl" class="material-symbols-outlined" style="font-size: 15px;">' 
+                                + 'close' + 
+                            '</span>'
+                        '</li>';
+                    }
+                    image_list.innerHTML += '</ul>'
+                });
             }
 
             for(let c = 0; c <= get_answers.length; c++){

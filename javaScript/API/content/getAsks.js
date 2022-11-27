@@ -28,8 +28,6 @@ async function req(e){
         e = e - 1;
         console.log(e);
         var loadAsks = document.getElementById("bodyAsks");
-        var div = document.createElement("div");
-        loadAsks.appendChild(div);
         loadAsks.innerHTML = `
         <div class="ask-content">
                 <div class="ask-header">
@@ -53,12 +51,35 @@ async function req(e){
                             </div>
                         </div>
                         <div id="imageList"></div> 
-                        <p class="ask-body-recently">Recentes</p>
+                          <p class="ask-body-recently">Recentes</p>
                         <div id="newAsks"></div>
                     </div>
                 </div>
-            </div>
+        </div>
         `
+        let input_file = document.getElementById("image-button");
+        let image_list = document.getElementById("imageList");
+
+        function removeImage() {
+          input_file.value = null;
+          image_list.innerHTML = null;
+        }
+
+        input_file.addEventListener("change", function(){
+          image_list.innerHTML = '<ul>';
+          for(let i = 0; i < input_file.files.length; i++){
+              image_list.innerHTML += 
+              `
+              <li class="imageList-list">
+                  <span class='image-label'>${input_file.files.item(i).name}</span>
+                  <span onclick="${removeImage()}" id="imageFl" class="material-symbols-outlined" style="font-size: 15px;">
+                      close 
+                  </span>
+              </li>
+              `
+          }
+          image_list.innerHTML += '</ul>'
+        });
 
         for(let i = 0; i <= data[e].asks.length; i++){
           ask_user_id = [data[e].asks[i].id]
@@ -77,7 +98,6 @@ async function req(e){
                 <div class="ask-body-content">
                   <h4>${ask_user_name}</h4>
                   <p class='ask-content'>${ask_content}</p>
-                  <img class='img-ask' src="${ask_img}">
                   <p class='ask-moment'>${ask_moment}</p>
                   <a id="showModal" onclick="setIdAsk(${ask_user_id}); openAnswersModal();">Responder</a>
                 </div>
@@ -88,16 +108,11 @@ async function req(e){
   )
 }
 
-function updateDiv()
-{ 
-    $( "#bodyAsks" ).load(location.href + "#bodyAsks" );
-}
-
 window.onload = function(){
-  catchUserName.innerHTML = name_user;
-  if(getCookie('usr_tkn') == ""){
-      window.location.href = '../../../index.html';
-  }
+    catchUserName.innerHTML = name_user;
+    if(getCookie('usr_tkn') == ""){
+        window.location.href = '../../../index.html';
+    }
 }
 
 function getCookie(cname) {
