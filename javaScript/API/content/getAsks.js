@@ -57,13 +57,70 @@ async function req(e){
                 </div>
         </div>
         `
+        const date_ = new Date();
+        var user_id = localStorage.getItem("id_session");
+        var management_id = localStorage.getItem("management_session");
+        var getTime = date_.toLocaleString();
+        var setImage = document.getElementById("image-button");
+        var submit_ask = document.getElementById("submitAsk");
+        var setUrlImage = "";
+
         let input_file = document.getElementById("image-button");
         let image_list = document.getElementById("imageList");
+        
+        submit_ask.addEventListener("click", async function setAsk(){
+          var set_ask = document.getElementById("askContent").value;
+          console.log("department "+ e+1)
+          console.log("user "+ user_id);
+          console.log("content "+ set_ask);
+          console.log("management "+management_id);
+          console.log("moment "+getTime);
+          const formData = new FormData();
+          if(setImage.files[0] != undefined){
+            formData.append('file', setImage.files[0]);
+            formData.append('url', 'filename');
+            try {
+                await fetch("http://localhost:8080/upload",{
+                    method: "POST",
+                    headers: {
+                        "Authorization":"Bearer " + bearer
+                    },
+                    body: formData
+                }).then(function(response) {
+                    return response.text();
+                })
+                .then(function(data) {
+                    var imageLink = data;
+                    setUrlImage = imageLink;
+                    console.log("upload: "+imageLink);
+                    return imageLink;
+                })
+            } catch (error) {
+                console.log(error);
+            }
+          }
 
-        function removeImage() {
-          input_file.value = null;
-          image_list.innerHTML = null;
-        }
+          await fetch("http://localhost:8080/modules/departments/asks", {
+            headers: {
+              "Content-Type": "application/json; charset=utf8",
+              "Authorization":"Bearer " + bearer
+            },
+            method: "POST",
+            mode: "cors",
+            credentials: "same-origin",
+            body: JSON.stringify({
+              content: set_ask,
+              moment: getTime,
+              imageUrl: setUrlImage,
+              client: { id: e+1 },
+              userName: { id: user_id },
+              management: { id: management_id }
+            })
+            })
+            .then(Response => Response.json())
+            console.log("image url "+setUrlImage);
+           document.getElementById("askContent").value = "";
+        })
 
         input_file.addEventListener("change", function(){
           image_list.innerHTML = '<ul>';
@@ -72,13 +129,17 @@ async function req(e){
               `
               <li class="imageList-list">
                   <span class='image-label'>${input_file.files.item(i).name}</span>
-                  <span onclick="${removeImage()}" id="imageFl" class="material-symbols-outlined" style="font-size: 15px;">
+                  <span id="imageFl" class="material-symbols-outlined" style="font-size: 15px;">
                       close 
                   </span>
               </li>
               `
           }
           image_list.innerHTML += '</ul>'
+          imageFl.addEventListener("click", function(){
+            input_file.value = null;
+            image_list.innerHTML = null;
+          })
         });
 
         for(let i = 0; i <= data[e].asks.length; i++){
@@ -99,7 +160,12 @@ async function req(e){
                   <h4>${ask_user_name}</h4>
                   <p class='ask-content'>${ask_content}</p>
                   <p class='ask-moment'>${ask_moment}</p>
-                  <a id="showModal" onclick="setIdAsk(${ask_user_id}); openAnswersModal();">Responder</a>
+                  <a id="showModal" onclick="setIdAsk(${ask_user_id}); openAnswersModal();">
+                    <div class="ask-comment">
+                      <span class="material-symbols-outlined">chat</span>
+                      <p>Comentar</p>
+                    </div>
+                  </a>
                 </div>
             </div>`
           )

@@ -50,6 +50,9 @@
 .material-symbols-outlined:nth-child(2){
     margin-right: 0;
     padding-top: 0;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .material-symbols-outlined:hover{

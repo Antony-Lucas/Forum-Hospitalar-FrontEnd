@@ -29,7 +29,7 @@ async function getdepartment(){
                     "afterbegin",
                     `
                     <li>
-                        <a id="showDepartment" onclick='req(${dep_id}); setAsk(${dep_id})' class="body-content-list-item">
+                        <a id="showDepartment" onclick='req(${dep_id}); setAsk()' class="body-content-list-item">
                             <p>${dep_name}</p>
                             <span class="material-symbols-outlined">chevron_right</span>
                         </a>

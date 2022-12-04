@@ -217,7 +217,7 @@ section{
 .ask-header-content{
     display: flex;
     margin-top: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     width: 100%;
     border-bottom: solid 0.5px #00000015;
 }
@@ -266,6 +266,26 @@ section{
     text-decoration: none;
     color: #336799;
     cursor: pointer;
+}
+
+.ask-comment{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.ask-comment span{
+    color: #00000047;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.ask-comment span:hover{
+    color: #00000047;
+}
+
+.ask-comment p {
+    font-size: 9px;
 }
 
 .footer{
