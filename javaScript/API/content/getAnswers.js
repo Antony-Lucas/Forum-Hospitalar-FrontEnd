@@ -50,7 +50,7 @@ async function setIdAsk(e){
                             <h4>${get_ask_username}</h4>
                             <p class='ask-content'>${get_ask_content}</p>
                             <img class='img-ask' src="${get_ask_img}">
-                            <p class='ask-moment'>${get_ask_moment}</p>
+                            <p class='ask-moment'>Publicado em: ${get_ask_moment}</p>
                         </div>
                     </div>`
                 )

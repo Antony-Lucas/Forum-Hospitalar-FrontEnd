@@ -41,8 +41,8 @@ async function setIdAnswer(e){
             <span class="material-symbols-outlined">account_circle</span>
             <div class="answers-body-content">
                 <h4>${user_name}</h4>
-                <p>${content_answer}</p>
-                <p>${getDate}</p>
+                <p class='ask-content'>${content_answer}</p>
+                <p class='ask-moment'>${getDate}</p>
             </div>
         </div>
         `

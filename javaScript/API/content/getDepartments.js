@@ -1,5 +1,3 @@
-let bearer = getCookie("usr_tkn");
-
 var attendance = document.getElementById("attendance");
 var assistant = document.getElementById("assistant");
 
@@ -7,11 +5,10 @@ var dep_id = [];
 var dep_name = [];
 
 async function getdepartment(){
-    console.log(bearer);
     try {
         await fetch('http://localhost:8080/modules/departments', {
             headers: {
-                'Authorization':'Bearer '+ bearer
+                'Authorization':'Bearer '+ getCookie("usr_tkn")
             },
             mode: 'cors',
             method: 'GET'

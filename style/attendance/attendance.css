@@ -184,13 +184,11 @@ section{
 
 .ask-body-search input{
     outline: none;
-    border: none;
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 3px;
     width: 250px;
     color: #000;
     font-size: 8pt;
+    border: solid 0.5px #00000015;
 }
 
 .body-content-ask{
@@ -216,8 +214,7 @@ section{
 
 .ask-header-content{
     display: flex;
-    margin-top: 15px;
-    padding-bottom: 5px;
+    margin-top: 10px;
     width: 100%;
     border-bottom: solid 0.5px #00000015;
 }
@@ -227,7 +224,7 @@ section{
 }
 
 .ask-body-content{
-    width: 70%;
+    width: 85%;
 }
 
 .ask-body-content h4{
@@ -249,10 +246,24 @@ section{
     cursor: pointer;
 }
 
+.os{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ask-os-number{
+    color: #00000047;
+    font-size: 8px;
+    margin-top: 5px;
+}
+
 .ask-moment{
     color: rgba(0, 0, 0, 0.437);
     font-size: 6pt;
     margin: 1px 0;
+    margin-top: 5px;
+    width: 200px;
 }
 
 .ask-moment-answers{
@@ -269,7 +280,6 @@ section{
 }
 
 .ask-comment{
-    margin-top: 5px;
     display: flex;
     align-items: center;
 }
@@ -329,7 +339,7 @@ section{
     }
 
     .body-content-ask{
-        height: 69vh;
+        height: 73vh;
     }
     
     .footer{

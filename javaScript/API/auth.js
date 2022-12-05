@@ -2,8 +2,8 @@ import { url_api } from "./config.js";
 import { getCookie, setCookie } from "./cookie/cookies.js";
 
 let button_submit = document.getElementById('mySubmit')
-let user_ = document.getElementById('username');
-let pass_ = document.getElementById('password');
+var user_ = document.getElementById('username');
+var pass_ = document.getElementById('password');
 var error_auth = document.getElementById('login-error-info');
 var error_visible = document.getElementById('error_empty_field');
 var load_circle = document.getElementById('loader');
@@ -23,6 +23,9 @@ headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('Authorization', window.btoa(user_.value + ":" + pass_.value));
 
 button_submit.addEventListener('click', async function load(){
+    localStorage.setItem("name_usr", user_.value);
+    localStorage.setItem("pass_usr", pass_.value);
+    load_circle.style.visibility = 'visible'
     mainLogin();
 })
 
@@ -79,8 +82,11 @@ async function getManagement(){
                     console.log(localStorage.getItem("management_session"));
                     dataBinding();
                 }
+                if(user_.value == "" && pass_.value == ""){
+                    showError();
+                    return false;
+                }
             } catch (error) {
-                showError();
                 console.log(error);
             }
         }
@@ -97,23 +103,25 @@ async function dataBinding(){
         }),
         credentials: "same-origin",
     }).then(response => {
-        if(user_.value == "" || pass_.value == ""){
-            showError();
-            return false;
-        }
-        if(response.status == 403){
-            showError();
-            return response.json();
-        }
         if(getCookie('usr_tkn') || response.status == 200){
             window.location.href = './routes/home.html';
             console.log(localStorage.getItem("management_session"));
             load_circle.style.visibility = 'visible'
             return response.json();
+        }else{
+            if(user_.value == "" && pass_.value == ""){
+                showError();
+                return false;
+            }
+            if(response.status == 403){
+                showError();
+                return response.json();
+            }
         }
     })
 }
 
+//Função de Erro Primário na tela de login
 function showError(){
     error_auth.innerHTML = 'Usuário ou senha inválido'
     error_visible.style.visibility = "visible"
