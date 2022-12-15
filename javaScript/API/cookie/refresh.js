@@ -15,7 +15,7 @@ window.setInterval(async function(){
     }).then(data => {
         setCookie("usr_tkn", data.access_token, 30);
     })
-}, 1100000)
+}, 270000)
 
 function setCookie(cname,cvalue,exdays) {
     const d = new Date();

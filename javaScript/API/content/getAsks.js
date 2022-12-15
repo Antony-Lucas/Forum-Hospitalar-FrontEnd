@@ -121,7 +121,7 @@ async function req(e){
             })
             .then(Response => Response.json())
             console.log("image url "+setUrlImage);
-           document.getElementById("askContent").value = "";
+            document.getElementById("askContent").value = "";
         })
 
         input_file.addEventListener("change", function(){
@@ -152,11 +152,11 @@ async function req(e){
           ask_moment = [data[e].asks[i].moment];
         
           let mainDiv = document.getElementById('newAsks');
-          let element = document.createElement('div');
+          let element = document.createElement('span');
           mainDiv.appendChild(element);
           element.insertAdjacentHTML(
             'afterbegin', 
-            `<div class="ask-header-content">
+            `<span id="askActions" oncontextmenu="askActions(${ask_user_id}); openAnswersModal();" id="askActions" class="ask-header-content">
                 <span class="material-symbols-outlined">account_circle</span>
                 <div class="ask-body-content">
                   <div class="os">
@@ -172,7 +172,7 @@ async function req(e){
                     </div>
                   </a>
                 </div>
-            </div>`
+            </span>`
           )
         }
     }
