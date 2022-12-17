@@ -1,10 +1,20 @@
 const context_menu = document.querySelector(".wrapper");
 const context_id = document.getElementById("wrapper");
 const body_asks = document.getElementById("bodyAsks");
+const delete_ask = document.getElementById("excludeAsk");
+const edit_ask = document.getElementById("editAsk");
+const modal_exclude = document.getElementById("myModal");
+const modal_edit = document.getElementById("myModalEdit");
+const buttonExclude = document.getElementById("butonExclude");
 
 async function askActions(e){
     console.log("ask "+ e);
-    context_menu.style.display = "block"
+    context_menu.style.display = "block";
+    
+    buttonExclude.addEventListener("click",function(){
+        console.log(e);
+    })
+    
 }
 
 body_asks.addEventListener("contextmenu", ev =>{
@@ -29,3 +39,14 @@ body_asks.addEventListener("click", function(){
 body_asks.addEventListener("wheel", function(){
     context_menu.style.display = "none";
 })
+
+delete_ask.addEventListener("click", function(){
+    context_menu.style.display = "none";
+    modal_exclude.style.display = "block"
+})
+
+edit_ask.addEventListener("click", function(){
+    context_menu.style.display = "none";
+    modal_edit.style.display = "block"
+})
+

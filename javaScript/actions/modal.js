@@ -1,6 +1,7 @@
 var header = document.getElementById("headerLogo");
 var mainMenu = document.getElementById("mainMenu");
 var mainModal = document.getElementById("myMainModal");
+var modalEdit = document.getElementById("myModalEdit");
 var modal = document.getElementById("myModal");
 var answerModal = document.getElementById("answerModal");
 var modalAttendance = document.getElementById("myModalAttendance");
@@ -23,6 +24,14 @@ function closeModal(){
     modal.style.display = "none";
 }
 
+function openModalEdit(){
+    modalEdit.style.display = "flex";
+}
+
+function closeModalEdit(){
+    modalEdit.style.display = "none";
+}
+
 function openModaModules(e){
     tabCont.innerText = e;
     modalAttendance.style.display = "block";
@@ -32,10 +41,6 @@ function openModaModules(e){
 function closeModalModules(){
     modalAttendance.style.display = "none";
     header.style.visibility = "visible";
-}
-
-function openAnswersModal(){
-    
 }
 
 function closeAnswerModal(){
@@ -50,7 +55,12 @@ window.onclick = function(event){
     if(event.target == mainModal){
         mainModal.style.display = "none"
     }
+
     if(event.target == answerModal){
         answerModal.style.display = "none"
+    }
+
+    if(event.target == modalEdit){
+        modalEdit.style.display = "none"
     }
 }

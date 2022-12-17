@@ -156,7 +156,7 @@ async function req(e){
           mainDiv.appendChild(element);
           element.insertAdjacentHTML(
             'afterbegin', 
-            `<span id="askActions" oncontextmenu="askActions(${ask_user_id}); openAnswersModal();" id="askActions" class="ask-header-content">
+            `<span id="askActions" oncontextmenu="askActions(${ask_user_id});" id="askActions" class="ask-header-content">
                 <span class="material-symbols-outlined">account_circle</span>
                 <div class="ask-body-content">
                   <div class="os">
