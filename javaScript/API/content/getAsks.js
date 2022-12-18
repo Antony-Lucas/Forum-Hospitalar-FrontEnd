@@ -48,7 +48,7 @@ async function req(e){
                             
                             <div class="add-ask-buttons">
                                 <div class="add-ask-buttons-container">
-                                    <button id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
+                                    <button onclick="testGet(${e})" id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
                                 </div>
                             </div>
                         </div>
@@ -59,6 +59,7 @@ async function req(e){
                 </div>
         </div>
         `
+
         const date_ = new Date();
         var user_id = localStorage.getItem("id_session");
         var management_id = localStorage.getItem("management_session");
@@ -66,17 +67,13 @@ async function req(e){
         var setImage = document.getElementById("image-button");
         var submit_ask = document.getElementById("submitAsk");
         var setUrlImage = "";
-
+        
         let input_file = document.getElementById("image-button");
         let image_list = document.getElementById("imageList");
         
         submit_ask.addEventListener("click", async function setAsk(){
           var set_ask = document.getElementById("askContent").value;
-          console.log("department "+ e+1)
-          console.log("user "+ user_id);
-          console.log("content "+ set_ask);
-          console.log("management "+management_id);
-          console.log("moment "+getTime);
+
           const formData = new FormData();
           if(setImage.files[0] != undefined){
             formData.append('file', setImage.files[0]);
@@ -89,7 +86,7 @@ async function req(e){
                     },
                     body: formData
                 }).then(function(response) {
-                    return response.text();
+                    return response.json();
                 })
                 .then(function(data) {
                     var imageLink = data;
@@ -101,6 +98,9 @@ async function req(e){
                 console.log(error);
             }
           }
+
+          input_file.value = null;
+          image_list.innerHTML = null;
 
           await fetch("http://localhost:8080/modules/departments/asks", {
             headers: {
@@ -120,11 +120,10 @@ async function req(e){
             })
             })
             .then(Response => Response.json())
-            console.log("image url "+setUrlImage);
             document.getElementById("askContent").value = "";
-        })
+            })
 
-        input_file.addEventListener("change", function(){
+          input_file.addEventListener("change", function(){
           image_list.innerHTML = '<ul>';
           for(let i = 0; i < input_file.files.length; i++){
               image_list.innerHTML += 
@@ -144,15 +143,30 @@ async function req(e){
           })
         });
 
+        fetch("http://localhost:8080/modules/departments/asks", {
+          headers: {
+            "Authorization":"Bearer " + getCookie("usr_tkn")
+          },
+          method: "GET",
+          mode: "cors"
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        });
+
         for(let i = 0; i <= data[e].asks.length; i++){
           ask_user_id = [data[e].asks[i].id]
           ask_user_name = [data[e].asks[i].userName.userName]
           ask_img = [data[e].asks[i].imageUrl]
           ask_content = [data[e].asks[i].content];
           ask_moment = [data[e].asks[i].moment];
-        
+
+          console.log(ask_user_id);
+
           let mainDiv = document.getElementById('newAsks');
           let element = document.createElement('span');
+          
           mainDiv.appendChild(element);
           element.insertAdjacentHTML(
             'afterbegin', 

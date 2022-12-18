@@ -11,7 +11,7 @@ async function askActions(e){
     console.log("ask "+ e);
     context_menu.style.display = "block";
     
-    buttonExclude.addEventListener("click",function(){
+    buttonExclude.addEventListener("click", function(){
         console.log(e);
     })
     
