@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Answers;
@@ -19,7 +20,7 @@ public class AnswersServices {
 	private AnswersRepositories answerRepository;
 
 	public List<Answers> findAll() {
-		return answerRepository.findAll();
+		return answerRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 	}
 	
 	public Answers findById(Long id) {
