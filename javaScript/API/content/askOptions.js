@@ -10,11 +10,23 @@ const buttonExclude = document.getElementById("butonExclude");
 async function askActions(e){
     console.log("ask "+ e);
     context_menu.style.display = "block";
-    
+
     buttonExclude.addEventListener("click", function(){
-        console.log(e);
+        console.log("delete" + e);
+        try {
+            fetch(`http://localhost:8080/modules/departments/asks/${e}`,{
+                headers: {
+                    "Authorization":"Bearer " + getCookie("usr_tkn")
+                },
+                method: "DELETE",
+                mode: "cors"
+            }).then(response => console.log(response.json()));
+        } catch (error) {
+            console.log(error);
+        }
+        e = null;
+        modal_exclude.style.display = "none";
     })
-    
 }
 
 body_asks.addEventListener("contextmenu", ev =>{
@@ -42,7 +54,7 @@ body_asks.addEventListener("wheel", function(){
 
 delete_ask.addEventListener("click", function(){
     context_menu.style.display = "none";
-    modal_exclude.style.display = "block"
+    modal_exclude.style.display = "block";
 })
 
 edit_ask.addEventListener("click", function(){
@@ -50,3 +62,18 @@ edit_ask.addEventListener("click", function(){
     modal_edit.style.display = "block"
 })
 
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}

@@ -54,25 +54,65 @@ async function req(e){
                         </div>
                         <div id="imageList"></div> 
                           <p class="ask-body-recently">Recentes</p>
-                        <div id="newAsks"></div>
+                        <div id="newAsks">
+                          <div class="bg-preloader" id="preloader">
+                              <div class="preloader"></div>
+                          </div>
+                        </div>
                     </div>
                 </div>
         </div>
         `
-
+        
         const date_ = new Date();
+        const buttonExclude = document.getElementById("butonExclude");
         var user_id = localStorage.getItem("id_session");
         var management_id = localStorage.getItem("management_session");
         var getTime = date_.toLocaleString();
         var setImage = document.getElementById("image-button");
         var submit_ask = document.getElementById("submitAsk");
-        var setUrlImage = "";
-        
+        var newAsks = document.getElementById("newAsks");
         let input_file = document.getElementById("image-button");
         let image_list = document.getElementById("imageList");
+        var preloader = document.getElementById("preloader");
+        var submit_ask_query = document.querySelector("#submitAsk").disabled;
+        var setUrlImage = "";
+
+        newAsks.style.overflow = "hidden";
+        preloader.onload = setTimeout(function(){
+          newAsks.style.overflow = "initial";
+          preloader.style.display = "none";
+        },2000)
+
+        buttonExclude.addEventListener("click", function(){
+          preloader.style.visibility = "visible";
+          preloader.style.display = "flex";
+          newAsks.style.overflow = "hidden";
+
+          setTimeout(function(){
+            preloader.style.visibility = "false";
+            newAsks.style.overflow = "initial";
+            preloader.style.display = "none";
+          },3200)
+
+          console.log("teste" + e);
+          testGet(e)
+        });
         
         submit_ask.addEventListener("click", async function setAsk(){
           var set_ask = document.getElementById("askContent").value;
+
+          newAsks.style.overflow = "hidden"
+          submit_ask_query = true;
+          submit_ask.style.backgroundColor = "#239037";
+          preloader.style.display = "flex";
+        
+          setTimeout(function(){
+            submit_ask_query = false;
+            submit_ask.style.backgroundColor = "#1b6e2a";
+            newAsks.style.overflow = "initial";
+            console.log("asd");
+          },3200)
 
           const formData = new FormData();
           if(setImage.files[0] != undefined){

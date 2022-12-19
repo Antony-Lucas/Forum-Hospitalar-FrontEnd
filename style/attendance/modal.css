@@ -63,6 +63,7 @@
 }
 
 .add-ask-submit{
+    transition: 0.3s;
     color: #ffffff;
     font-size: 9px;
     padding: 8px;
