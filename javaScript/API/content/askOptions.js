@@ -6,25 +6,32 @@ const edit_ask = document.getElementById("editAsk");
 const modal_exclude = document.getElementById("myModal");
 const modal_edit = document.getElementById("myModalEdit");
 const buttonExclude = document.getElementById("butonExclude");
+var arr = [];
+var depArr = [];
 
-async function askActions(e){
-    console.log("ask "+ e);
+function askActions(e, arg){
+    arr = [e];
+    depArr = [arg-1];
+    console.log(arr);
+    console.log(depArr);
     context_menu.style.display = "block";
-
-    buttonExclude.addEventListener("click", function(){
-        console.log("delete" + e);
+    buttonExclude.addEventListener("click", async function(){
+        depArr = [arg-1];
+        console.log(depArr);
         try {
-            fetch(`http://localhost:8080/modules/departments/asks/${e}`,{
+            await fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
                 headers: {
-                    "Authorization":"Bearer " + getCookie("usr_tkn")
+                    "Authorization" : "Bearer " + getCookie("usr_tkn")
                 },
                 method: "DELETE",
                 mode: "cors"
-            }).then(response => console.log(response.json()));
+            })
+            .then(response => console.log(response.json()));
+            const removeAskInDom = document.getElementById(`askActions${arr}`);
+            removeAskInDom.remove();
         } catch (error) {
             console.log(error);
         }
-        e = null;
         modal_exclude.style.display = "none";
     })
 }
@@ -40,8 +47,8 @@ body_asks.addEventListener("contextmenu", ev =>{
     var cmWidth = context_menu.offsetWidth;
     var winHeigth = window.innerHeight;
     var cmHeight = context_menu.offsetHeigth
-    x = x > winWidth - cmWidth ? winWidth - cmWidth : x;
-    y = y > winHeigth - cmHeight ? winHeigth - cmHeight : x;
+    var x = x > winWidth - cmWidth ? winWidth - cmWidth : x;
+    var y = y > winHeigth - cmHeight ? winHeigth - cmHeight : x;
 });
 
 body_asks.addEventListener("click", function(){

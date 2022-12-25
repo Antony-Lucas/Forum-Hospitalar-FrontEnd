@@ -1,5 +1,6 @@
 let catchUserName = document.getElementById("myUserName");
 var name_user = localStorage.getItem("name_session");
+var ask_dep;
 var ask_user_id;
 var ask_user_name = [];
 var ask_content = [];
@@ -27,45 +28,44 @@ async function req(e){
         e = e - 1;
         console.log(e);
         var loadAsks = document.getElementById("bodyAsks");
-        loadAsks.innerHTML = `
-        <div class="ask-content">
-                <div class="ask-header">
-                    <div class="ask-header-container">
-                        <h3>${data[e].nameDepartment}</h3>
-                    </div>
-                </div>
-                <div class="ask-body">
-                    <div id="mainDiv" class="body-content-ask">
-                        <div class="add-ask">
-                            <textarea id="askContent" cols="60" rows="2" placeholder="Faça uma pergunta..."></textarea>
-
-                            <label for="image-button">
-                              <span title="Anexar imagem" id="cameraIcon" class="material-symbols-outlined" style="font-size: 20px; margin-right: 0px; margin-left: 15px;">
-                                photo_camera
-                              </span>
-                            </label>
-                            <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
-                            
-                            <div class="add-ask-buttons">
-                                <div class="add-ask-buttons-container">
-                                    <button onclick="testGet(${e})" id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="imageList"></div> 
-                          <p class="ask-body-recently">Recentes</p>
-                        <div id="newAsks">
-                          <div class="bg-preloader" id="preloader">
-                              <div class="preloader"></div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
+        loadAsks.innerHTML =
         `
-        
+          <div class="ask-content">
+                  <div class="ask-header">
+                      <div class="ask-header-container">
+                          <h3>${data[e].nameDepartment}</h3>
+                      </div>
+                  </div>
+                  <div class="ask-body">
+                      <div id="mainDiv" class="body-content-ask">
+                          <div class="add-ask">
+                              <textarea id="askContent" cols="60" rows="2" placeholder="Faça uma pergunta..."></textarea>
+
+                              <label for="image-button">
+                                <span title="Anexar imagem" id="cameraIcon" class="material-symbols-outlined" style="font-size: 20px; margin-right: 0px; margin-left: 15px;">
+                                  photo_camera
+                                </span>
+                              </label>
+                              <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
+                              
+                              <div class="add-ask-buttons">
+                                  <div class="add-ask-buttons-container">
+                                      <button onclick="testGet(${e})" id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="imageList"></div> 
+                            <p class="ask-body-recently">Recentes</p>
+                          <div id="newAsks">
+                            <div class="bg-preloader" id="preloader">
+                                <div class="preloader"></div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+          </div>
+        `
         const date_ = new Date();
-        const buttonExclude = document.getElementById("butonExclude");
         var user_id = localStorage.getItem("id_session");
         var management_id = localStorage.getItem("management_session");
         var getTime = date_.toLocaleString();
@@ -75,43 +75,26 @@ async function req(e){
         let input_file = document.getElementById("image-button");
         let image_list = document.getElementById("imageList");
         var preloader = document.getElementById("preloader");
-        var submit_ask_query = document.querySelector("#submitAsk").disabled;
         var setUrlImage = "";
 
         newAsks.style.overflow = "hidden";
         preloader.onload = setTimeout(function(){
           newAsks.style.overflow = "initial";
           preloader.style.display = "none";
-        },2000)
-
-        buttonExclude.addEventListener("click", function(){
-          preloader.style.visibility = "visible";
-          preloader.style.display = "flex";
-          newAsks.style.overflow = "hidden";
-
-          setTimeout(function(){
-            preloader.style.visibility = "false";
-            newAsks.style.overflow = "initial";
-            preloader.style.display = "none";
-          },3200)
-
-          console.log("teste" + e);
-          testGet(e)
-        });
-        
+          console.log("id load" + e);
+        },1500)
+  
         submit_ask.addEventListener("click", async function setAsk(){
           var set_ask = document.getElementById("askContent").value;
 
           newAsks.style.overflow = "hidden"
-          submit_ask_query = true;
+          document.querySelector("#submitAsk").disabled = true;
           submit_ask.style.backgroundColor = "#239037";
-          preloader.style.display = "flex";
         
           setTimeout(function(){
-            submit_ask_query = false;
+            document.querySelector("#submitAsk").disabled = false;
             submit_ask.style.backgroundColor = "#1b6e2a";
             newAsks.style.overflow = "initial";
-            console.log("asd");
           },3200)
 
           const formData = new FormData();
@@ -196,23 +179,21 @@ async function req(e){
         });
 
         for(let i = 0; i <= data[e].asks.length; i++){
-          ask_user_id = [data[e].asks[i].id]
-          ask_user_name = [data[e].asks[i].userName.userName]
-          ask_img = [data[e].asks[i].imageUrl]
+          ask_dep = data[e].id;
+          ask_user_id = [data[e].asks[i].id];
+          ask_user_name = [data[e].asks[i].userName.userName];
+          ask_img = [data[e].asks[i].imageUrl];
           ask_content = [data[e].asks[i].content];
           ask_moment = [data[e].asks[i].moment];
-
-          console.log(ask_user_id);
 
           let mainDiv = document.getElementById('newAsks');
           let element = document.createElement('span');
           
           mainDiv.appendChild(element);
-          element.insertAdjacentHTML(
-            'afterbegin', 
-            `<span id="askActions" oncontextmenu="askActions(${ask_user_id});" id="askActions" class="ask-header-content">
+          element.innerHTML =
+            `<span id="askActions${ask_user_id}" oncontextmenu="askActions(${ask_user_id}, ${ask_dep});" class="ask-header-content">
                 <span class="material-symbols-outlined">account_circle</span>
-                <div class="ask-body-content">
+                <div class="ask-body-content" id="contentAsk">
                   <div class="os">
                     <h4>${ask_user_name}</h4>
                     <p class="ask-os-number">#${ask_user_id}</p>
@@ -227,7 +208,6 @@ async function req(e){
                   </a>
                 </div>
             </span>`
-          )
         }
     }
   )

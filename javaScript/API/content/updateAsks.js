@@ -1,7 +1,9 @@
+var arr = [];
 function testGet(e){
-    setTimeout(async function(){ 
-        $( "#newAsks" ).load(window.location.href + " #newAsks" );
-        console.log("updateAsk2" + e)
+    $( "#newAsks" ).load(window.location.href + " #newAsks" );
+    setTimeout(async function(){
+        arr = [e]; 
+        console.log(arr);
         await fetch("http://localhost:8080/modules/departments", {
             headers: {
                 "Authorization":"Bearer " + getCookie("usr_tkn")
@@ -11,18 +13,19 @@ function testGet(e){
         })
         .then(response => response.json())
         .then(data => {
-            for(let i = 0; i < data[e].asks.length; i++){
-                var ask_user_id = [data[e].asks[i].id]
-                var ask_user_name = [data[e].asks[i].userName.userName]
-                var ask_content = [data[e].asks[i].content];
-                var ask_moment = [data[e].asks[i].moment];
+            for(let i = 0; i < data[arr].asks.length; i++){
+                var ask_dep = data[arr].id;
+                var ask_user_id = [data[arr].asks[i].id]
+                var ask_user_name = [data[arr].asks[i].userName.userName]
+                var ask_content = [data[arr].asks[i].content];
+                var ask_moment = [data[arr].asks[i].moment];
 
                 let mainDiv = document.getElementById('newAsks');
                 let element = document.createElement('span');
                 
                 mainDiv.appendChild(element);
                 element.innerHTML =
-                    `<span id="askActions" oncontextmenu="askActions(${ask_user_id});" id="askActions" class="ask-header-content">
+                    `<span id="askActions${ask_user_id}" oncontextmenu="askActions(${ask_user_id}, ${ask_dep});" class="ask-header-content">
                         <span class="material-symbols-outlined">account_circle</span>
                         <div class="ask-body-content">
                         <div class="os">
