@@ -50,7 +50,7 @@ async function req(e){
                               
                               <div class="add-ask-buttons">
                                   <div class="add-ask-buttons-container">
-                                      <button onclick="testGet(${e})" id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
+                                      <button onclick="testGet(${e});" id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
                                   </div>
                               </div>
                           </div>
@@ -67,6 +67,8 @@ async function req(e){
         `
         const date_ = new Date();
         var user_id = localStorage.getItem("id_session");
+        const buttonExclude = document.getElementById("butonExclude");
+        const buttonUpdate = document.getElementById("butonSave");
         var management_id = localStorage.getItem("management_session");
         var getTime = date_.toLocaleString();
         var setImage = document.getElementById("image-button");
@@ -83,40 +85,54 @@ async function req(e){
           preloader.style.display = "none";
           console.log("id load" + e);
         },1500)
+
+        buttonExclude.addEventListener("click", function(){
+          newAsks.style.opacity = "0.7";
+          setTimeout(function(){
+            newAsks.style.opacity = "1";
+          },1000)
+        })
+
+        buttonUpdate.addEventListener("click", function(){
+          newAsks.style.opacity = "0.7";
+          setTimeout(function(){
+            newAsks.style.opacity = "1";
+          },3000)
+        })
   
         submit_ask.addEventListener("click", async function setAsk(){
           var set_ask = document.getElementById("askContent").value;
 
-          newAsks.style.overflow = "hidden"
+          newAsks.style.opacity = "0.7";
           document.querySelector("#submitAsk").disabled = true;
           submit_ask.style.backgroundColor = "#239037";
-        
+          
           setTimeout(function(){
             document.querySelector("#submitAsk").disabled = false;
             submit_ask.style.backgroundColor = "#1b6e2a";
-            newAsks.style.overflow = "initial";
-          },3200)
+            newAsks.style.opacity = "1";
+            preloader.style.display = "none";
+          },3100)
 
           const formData = new FormData();
           if(setImage.files[0] != undefined){
-            formData.append('file', setImage.files[0]);
-            formData.append('url', 'filename');
             try {
-                await fetch("http://localhost:8080/upload",{
-                    method: "POST",
-                    headers: {
-                        "Authorization":"Bearer " + getCookie("usr_tkn")
-                    },
-                    body: formData
-                }).then(function(response) {
-                    return response.json();
-                })
-                .then(function(data) {
-                    var imageLink = data;
-                    setUrlImage = imageLink;
-                    console.log("upload: "+imageLink);
-                    return imageLink;
-                })
+              formData.append('file', setImage.files[0]);
+              formData.append('url', 'filename');
+              await fetch("http://localhost:8080/upload",{
+                method: "POST",
+                headers: {
+                  'Authorization':'Bearer ' + getCookie('usr_tkn')
+                },
+                body: formData
+                }).then(response => response.text())
+                .then(data => {
+                  console.log(data)
+                  var imageLink = data;
+                  setUrlImage = imageLink;
+                  console.log("upload: "+imageLink);
+                }
+              )
             } catch (error) {
                 console.log(error);
             }

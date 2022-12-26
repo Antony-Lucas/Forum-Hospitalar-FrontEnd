@@ -26,7 +26,7 @@ async function setIdAsk(e){
             get_ask_content = data[i].content;
             get_ask_img = data[i].imageUrl;
             get_ask_moment = data[i].moment;
-
+            console.log(data[i]);
             get_answers = data[i].answers
 
             if(e == get_id_asks){

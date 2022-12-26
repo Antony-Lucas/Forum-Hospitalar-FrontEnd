@@ -6,18 +6,71 @@ const edit_ask = document.getElementById("editAsk");
 const modal_exclude = document.getElementById("myModal");
 const modal_edit = document.getElementById("myModalEdit");
 const buttonExclude = document.getElementById("butonExclude");
+const buttonUpdate = document.getElementById("butonSave");
+
+const textAreaEdit = document.getElementById("askEditContent");
+const managementId = localStorage.getItem("management_session");
+
 var arr = [];
 var depArr = [];
 
-function askActions(e, arg){
+async function askActions(e, arg){
+    const date_get = new Date();
+    var getTime = date_get.toLocaleString();
+
     arr = [e];
     depArr = [arg-1];
-    console.log(arr);
-    console.log(depArr);
     context_menu.style.display = "block";
+
+    console.log("Content " + textAreaEdit.value);
+    console.log("Moment " + getTime);
+    console.log("Department " + depArr);
+    console.log("Management " + managementId);
+
+    edit_ask.addEventListener("click", async function(){
+        context_menu.style.display = "none";
+        modal_edit.style.display = "block";
+        try {
+            await fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
+                headers: {
+                    "Authorization" : "Bearer " + getCookie("usr_tkn")
+                },
+                method: "GET",
+                mode: "cors"
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.content)
+                textAreaEdit.value = data.content;
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    })
+
+    buttonUpdate.addEventListener("click", async function(){
+        fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
+            headers: {
+                "Content-Type": "application/json; charset=utf8",
+                "Authorization" : "Bearer " + getCookie("usr_tkn")
+            },
+            method: "PUT",
+            mode: "cors",
+            body: JSON.stringify({
+                content: textAreaEdit.value,
+                moment: getTime,
+                client: { id: depArr+1 },
+                management: { id: managementId }
+            })
+        }).then(response => response.json())
+        .then(data => {
+            console.log(data.id);
+            testGet(depArr);
+        })
+        modal_edit.style.display = "none";
+    })
+
     buttonExclude.addEventListener("click", async function(){
-        depArr = [arg-1];
-        console.log(depArr);
         try {
             await fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
                 headers: {
@@ -28,7 +81,9 @@ function askActions(e, arg){
             })
             .then(response => console.log(response.json()));
             const removeAskInDom = document.getElementById(`askActions${arr}`);
-            removeAskInDom.remove();
+            setTimeout(function(){
+                removeAskInDom.remove();
+            },1000)
         } catch (error) {
             console.log(error);
         }
@@ -62,11 +117,6 @@ body_asks.addEventListener("wheel", function(){
 delete_ask.addEventListener("click", function(){
     context_menu.style.display = "none";
     modal_exclude.style.display = "block";
-})
-
-edit_ask.addEventListener("click", function(){
-    context_menu.style.display = "none";
-    modal_edit.style.display = "block"
 })
 
 function getCookie(cname) {

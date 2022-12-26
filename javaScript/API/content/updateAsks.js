@@ -1,7 +1,8 @@
 var arr = [];
+
 function testGet(e){
-    $( "#newAsks" ).load(window.location.href + " #newAsks" );
     setTimeout(async function(){
+        $( "#newAsks" ).load(window.location.href + " #newAsks" );
         arr = [e]; 
         console.log(arr);
         await fetch("http://localhost:8080/modules/departments", {
