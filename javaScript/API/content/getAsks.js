@@ -69,7 +69,8 @@ async function req(e){
         var user_id = localStorage.getItem("id_session");
         const buttonExclude = document.getElementById("butonExclude");
         const buttonUpdate = document.getElementById("butonSave");
-        var management_id = localStorage.getItem("management_session");
+        const management_id = localStorage.getItem("management_session");
+        
         var getTime = date_.toLocaleString();
         var setImage = document.getElementById("image-button");
         var submit_ask = document.getElementById("submitAsk");

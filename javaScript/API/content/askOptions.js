@@ -7,9 +7,9 @@ const modal_exclude = document.getElementById("myModal");
 const modal_edit = document.getElementById("myModalEdit");
 const buttonExclude = document.getElementById("butonExclude");
 const buttonUpdate = document.getElementById("butonSave");
-
 const textAreaEdit = document.getElementById("askEditContent");
 const managementId = localStorage.getItem("management_session");
+const name_id = localStorage.getItem("name_session"); 
 
 var arr = [];
 var depArr = [];
@@ -17,36 +17,34 @@ var depArr = [];
 async function askActions(e, arg){
     const date_get = new Date();
     var getTime = date_get.toLocaleString();
-
     arr = [e];
     depArr = [arg-1];
-    context_menu.style.display = "block";
-
-    console.log("Content " + textAreaEdit.value);
-    console.log("Moment " + getTime);
-    console.log("Department " + depArr);
-    console.log("Management " + managementId);
-
-    edit_ask.addEventListener("click", async function(){
-        context_menu.style.display = "none";
-        modal_edit.style.display = "block";
-        try {
-            await fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
-                headers: {
-                    "Authorization" : "Bearer " + getCookie("usr_tkn")
-                },
-                method: "GET",
-                mode: "cors"
-            })
-            .then(response => response.json())
-            .then(data => {
+    
+    context_menu.style.display = "none";
+    
+    try {
+        await fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
+            headers: {
+                "Authorization" : "Bearer " + getCookie("usr_tkn")
+            },
+            method: "GET",
+            mode: "cors"
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(name_id == data.userName.userName){
+                context_menu.style.display = "block";
+            }
+            edit_ask.addEventListener("click", async function(){
+                context_menu.style.display = "none";
+                modal_edit.style.display = "block";
                 console.log(data.content)
                 textAreaEdit.value = data.content;
             })
-        } catch (error) {
-            console.log(error);
-        }
-    })
+        })
+    } catch (error) {
+        console.log(error);
+    }
 
     buttonUpdate.addEventListener("click", async function(){
         fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
