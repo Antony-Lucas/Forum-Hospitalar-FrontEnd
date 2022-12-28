@@ -19,7 +19,7 @@ async function askActions(e, arg){
     var getTime = date_get.toLocaleString();
     arr = [e];
     depArr = [arg-1];
-    
+
     context_menu.style.display = "none";
     
     try {
@@ -38,7 +38,6 @@ async function askActions(e, arg){
             edit_ask.addEventListener("click", async function(){
                 context_menu.style.display = "none";
                 modal_edit.style.display = "block";
-                console.log(data.content)
                 textAreaEdit.value = data.content;
             })
         })
