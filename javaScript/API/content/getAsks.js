@@ -8,12 +8,12 @@ var ask_img = [];
 var ask_moment = [];
 
 async function req(e){
-    await fetch('http://localhost:8080/modules/departments',{
-        headers:{
-          'Authorization':'Bearer ' + getCookie("usr_tkn")
-        },
-        mode: 'cors',
-        method: 'GET'
+  await fetch('http://localhost:8080/modules/departments',{
+    headers:{
+      'Authorization':'Bearer ' + getCookie("usr_tkn")
+    },
+    mode: 'cors',
+    method: 'GET'
     })
     .then(
         response => {
@@ -26,7 +26,6 @@ async function req(e){
     )
     .then(data => {
         e = e - 1;
-        console.log(e);
         var loadAsks = document.getElementById("bodyAsks");
         loadAsks.innerHTML =
         `
@@ -39,7 +38,7 @@ async function req(e){
                   <div class="ask-body">
                       <div id="mainDiv" class="body-content-ask">
                           <div class="add-ask">
-                              <textarea id="askContent" cols="60" rows="2" placeholder="Faça uma pergunta..."></textarea>
+                              <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
 
                               <label for="image-button">
                                 <span title="Anexar imagem" id="cameraIcon" class="material-symbols-outlined" style="font-size: 20px; margin-right: 0px; margin-left: 15px;">
@@ -160,7 +159,7 @@ async function req(e){
             })
             })
             .then(Response => Response.json())
-            document.getElementById("askContent").value = "";
+              document.getElementById("askContent").value = "";
             })
 
           input_file.addEventListener("change", function(){

@@ -6,12 +6,41 @@ async function setIdAnswer(e){
     var management_id = localStorage.getItem("management_session");
     var content_answer = document.getElementById("answerContent").value;
     var getDate = date_.toLocaleString();
+    var setAnswerImage = document.getElementById("image-answer-button");
+    var image_url = "";
+    let input_answer_file = document.getElementById("image-answer-button");
+    let image_answer_list = document.getElementById("imageListAnswer");
 
     console.log("content "+content_answer);
     console.log("moment "+getDate);
     console.log("Ask id "+e);
     console.log("user id "+user_id)
     console.log("management id "+management_id);
+
+    const formData = new FormData();
+    if(setAnswerImage.files[0] != undefined){
+        try {
+            formData.append('file', setAnswerImage.files[0]);
+            formData.append('url', 'filename');
+            await fetch("http://localhost:8080/upload",{
+                method: "POST",
+                headers: {
+                'Authorization':'Bearer ' + getCookie('usr_tkn')
+            },
+            body: formData
+            }).then(response => response.text())
+            .then(data => {
+                console.log(data)
+                image_url = data;
+                console.log("upload: "+image_url);
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    input_answer_file.value = null;
+    image_answer_list.innerHTML = null;
 
     try{
         await fetch("http://localhost:8080/modules/departments/asks/answers", {
@@ -25,28 +54,13 @@ async function setIdAnswer(e){
             body: JSON.stringify({
                 content: content_answer,
                 moment: getDate,
+                imageUrl: image_url,
                 asks: { id: e },
                 userName: { id: user_id },
                 management: { id: management_id }
             })
-        }).then(response => response.json())
-        var mainAnswers = document.getElementById("answerChildrens");
-        var answerElement = document.createElement("div");
-
-        mainAnswers.appendChild(answerElement);
-        answerElement.insertAdjacentHTML(
-        "afterbegin",
-        `
-        <div class="answers-header-content">
-            <span class="material-symbols-outlined">account_circle</span>
-            <div class="answers-body-content">
-                <h4>${user_name}</h4>
-                <p class='ask-content'>${content_answer}</p>
-                <p class='ask-moment'>${getDate}</p>
-            </div>
-        </div>
-        `
-        )
+        })
+        .then(response => response.json())
         document.getElementById("answerContent").value = "";
     }catch(err){
         console.log(err);

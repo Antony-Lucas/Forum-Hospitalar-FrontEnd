@@ -13,6 +13,7 @@ const name_id = localStorage.getItem("name_session");
 
 var arr = [];
 var depArr = [];
+var attArrId = []
 
 async function askActions(e, arg){
     const date_get = new Date();
@@ -61,8 +62,14 @@ async function askActions(e, arg){
             })
         }).then(response => response.json())
         .then(data => {
-            console.log(data.id);
-            testGet(depArr);
+            attArrId = [data.id];
+            const nu = depArr.shift();
+            
+            if(nu != undefined){
+                console.log(nu);
+                testGet(nu);
+            }
+            
         })
         modal_edit.style.display = "none";
     })
@@ -86,6 +93,7 @@ async function askActions(e, arg){
         }
         modal_exclude.style.display = "none";
     })
+
 }
 
 body_asks.addEventListener("contextmenu", ev =>{
