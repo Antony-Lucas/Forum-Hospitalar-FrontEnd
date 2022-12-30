@@ -46,7 +46,7 @@
                 <h2>Editar</h2>
             </div>
             <form class="modal-body-edit">
-                <h3 class="modal-label-edit">Alterar Conteúdo</h3>
+                <h3 class="modal-label-edit">Alterar Pergunta</h3>
                 <textarea class="modal-edit-textarea" id="askEditContent" cols="60" rows="8"></textarea>
                 <div class="modal-buttons-edit">
                     <input type="button" class="modal-close-edit" value="Cancelar" onclick="closeModalEdit()">
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div id="myModalA" class="modal-delete" style="z-index: 50;">
-        <div class="modal-content-delete">
+        <div class="modal-content-delete-answers">
             <div class="modal-header-delete">
                 <span class="material-symbols-outlined" style="color: #ffffff; font-size: 15px; margin-bottom: 5px;">cancel</span>
                 <h2>Excluir</h2>
@@ -74,6 +74,21 @@
                 <div class="modal-buttons-delete">
                     <input type="button" class="modal-close-delete" value="Cancelar" onclick="closeModalAnswers()">
                     <input id="butonExcludeAnswers" type="button" class="modal-submit-delete" value="Sim">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="myModalEditAnswers" class="modal-edit" style="z-index: 50;">
+        <div class="modal-content-edit">
+            <div class="modal-header-edit">
+                <h2>Editar</h2>
+            </div>
+            <form class="modal-body-edit">
+                <h3 class="modal-label-edit">Alterar Resposta</h3>
+                <textarea class="modal-edit-textarea" id="answersEditContent" cols="60" rows="8"></textarea>
+                <div class="modal-buttons-edit">
+                    <input type="button" class="modal-close-edit" value="Cancelar" onclick="closeModalEditAnswers()">
+                    <input id="butonSaveAnswers" type="button" class="modal-submit-edit" value="Alterar">
                 </div>
             </form>
         </div>

@@ -20,7 +20,7 @@ async function askActions(e, arg){
     var getTime = date_get.toLocaleString();
     arr = [e];
     depArr = [arg-1];
-
+    
     context_menu.style.display = "none";
     
     try {
@@ -75,6 +75,7 @@ async function askActions(e, arg){
     })
 
     buttonExclude.addEventListener("click", async function(){
+        console.log(arr);
         try {
             await fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
                 headers: {

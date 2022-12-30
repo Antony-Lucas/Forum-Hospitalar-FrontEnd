@@ -1,4 +1,5 @@
 var get_answers;
+var get_answers_id;
 var get_answers_userName;
 var get_answers_content;
 var get_answers_img;
@@ -27,12 +28,11 @@ function updateAskContent(e){
                     console.log(get_answers.length);
 
                     for(let c = 0; c <= get_answers.length; c++){
-                        console.log(c);
+                        get_answers_id = data[i].answers[c];
                         get_answers_userName = data[i].answers[c];
                         get_answers_content = data[i].answers[c];
                         get_answers_img = data[i].answers[c];
                         get_answers_moment = data[i].answers[c];
-                        console.log(get_answers_userName);
                         if(e == get_id_asks){
     
                             var mainAnswers = document.getElementById("answerChildrens");
@@ -41,7 +41,7 @@ function updateAskContent(e){
                             mainAnswers.appendChild(answerElement);
                             answerElement.insertAdjacentHTML(
                                 "beforeend",
-                                `<div class="answers-header-content">
+                                `<div class="answers-header-content" id="answerId${get_answers_id.id} oncontextmenu="answersEdit(${get_answers_id.id}, ${e})">
                                     <span class="material-symbols-outlined">account_circle</span>
                                     <div class="answers-body-content">
                                     <h4>${get_answers_userName.userName.userName}</h4>

@@ -1,3 +1,6 @@
+var arr = [];
+var askArr = [];
+var attArrId = [];
 async function answersEdit(e, arg){
     const context_menu = document.querySelector(".wrapperA");
     const context_id = document.getElementById("wrapperAnswers");
@@ -15,10 +18,6 @@ async function answersEdit(e, arg){
     const name_id = localStorage.getItem("name_session"); 
     const date_get = new Date();
     var getTime = date_get.toLocaleString();
-
-    var arr = [];
-    var askArr = [];
-    var attArrId = [];
 
     arr = [e];
     askArr = [arg];
@@ -41,6 +40,68 @@ async function answersEdit(e, arg){
         var x = x > winWidth - cmWidth ? winWidth - cmWidth : x;
         var y = y > winHeigth - cmHeight ? winHeigth - cmHeight : x;
     });
+
+    buttonUpdate.addEventListener("click", async function(){
+        fetch(`http://localhost:8080/modules/departments/asks/answers/${arr}`,{
+            headers: {
+                "Content-Type": "application/json; charset=utf8",
+                "Authorization" : "Bearer " + getCookie("usr_tkn")
+            },
+            method: "PUT",
+            mode: "cors",
+            body: JSON.stringify({
+                content: textAreaEdit.value,
+                moment: getTime,
+                client: { id: depArr },
+                management: { id: managementId }
+            })
+        }).then(response => response.json())
+        const nu = askArr.shift();
+        console.log(nu);
+
+        if(nu != undefined){
+            console.log(nu);
+            updateAskContent(nu);
+        }
+
+        answerContainer.style.opacity = "0.7";
+        submitAnswer.style.backgroundColor = "#239037";
+        setTimeout(() => {
+            answerContainer.style.opacity = "1";
+            submitAnswer.style.backgroundColor = "#1b6e2a";
+            answerContainer.scrollTop = answerContainer.scrollHeight;
+        }, 3200);
+        modal_edit.style.display = "none";
+    })
+
+    buttonExclude.addEventListener("click", async function(){
+        console.log(arr);
+        try {
+            await fetch(`http://localhost:8080/modules/departments/asks/answers/${arr}`,{
+                headers: {
+                    "Authorization" : "Bearer " + getCookie("usr_tkn")
+                },
+                method: "DELETE",
+                mode: "cors"
+            })
+            .then(response => console.log(response.json()));
+            const removeAnswerInDom = document.getElementById(`answerId${arr}`);
+            console.log(removeAnswerInDom);
+            setTimeout(function(){
+                removeAnswerInDom.remove();
+            },1000)
+        } catch (error) {
+            console.log(error);
+        }
+
+        answerContainer.style.opacity = "0.7";
+        submitAnswer.style.backgroundColor = "#239037";
+        setTimeout(function(){
+            answerContainer.style.opacity = "1";
+            submitAnswer.style.backgroundColor = "#1b6e2a";
+        },1000)
+        modal_exclude_answers.style.display = "none";
+    })
 
     try {
         await fetch(`http://localhost:8080/modules/departments/asks/${askArr}`,{
@@ -69,42 +130,6 @@ async function answersEdit(e, arg){
         console.log(error);
     }
 
-    /*buttonUpdate.addEventListener("click", async function(){
-        fetch(`http://localhost:8080/modules/departments/asks/answers/${arr}`,{
-            headers: {
-                "Content-Type": "application/json; charset=utf8",
-                "Authorization" : "Bearer " + getCookie("usr_tkn")
-            },
-            method: "PUT",
-            mode: "cors",
-            body: JSON.stringify({
-                content: textAreaEdit.value,
-                moment: getTime,
-                client: { id: depArr },
-                management: { id: managementId }
-            })
-        }).then(response => response.json())
-        .then(data => {
-            attArrId = [data.id];
-            const nu = depArr.shift();
-            
-            if(nu != undefined){
-                console.log(nu);
-                updateAskContent(nu);
-            }
-
-            answerContainer.style.opacity = "0.7";
-            submitAnswer.style.backgroundColor = "#239037"
-            setTimeout(() => {
-                answerContainer.style.opacity = "1";
-                submitAnswer.style.backgroundColor = "#1b6e2a";
-                answerContainer.scrollTop = answerContainer.scrollHeight;
-            }, 3200);
-            
-        })
-        modal_edit.style.display = "none";
-    })*/
-
     answerChildrens.addEventListener("click", function(){
         context_menu.style.display = "none";
     })
@@ -114,7 +139,6 @@ async function answersEdit(e, arg){
     })
 
     delete_answers.addEventListener("click", function(){
-        console.log("dasddasdsadasdsad");
         context_menu.style.display = "none";
         modal_exclude_answers.style.display = "flex";
     })
