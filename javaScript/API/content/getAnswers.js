@@ -60,6 +60,11 @@ async function setIdAsk(e){
                         </div>
                     </div>`
                 )
+
+                var getImg = document.getElementById(`imgAskDisplay${i}`);
+                if(get_ask_img == null || get_ask_img == ""){
+                    getImg.style.display = "none";
+                }
                 
                 answersContainer.appendChild(answerRecent);
                 answerRecent.insertAdjacentHTML(

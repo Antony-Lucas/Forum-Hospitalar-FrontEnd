@@ -212,6 +212,7 @@ async function req(e){
                 <div class="ask-body-content" id="contentAsk">
                   <div class="os">
                     <h4>${ask_user_name}</h4>
+                    <span title="Arquivo anexado" id="attachFile${ask_user_id}" class="material-symbols-outlined">attach_file</span>
                     <p class="ask-os-number">#${ask_user_id}</p>
                   </div>
                   <p class='ask-content'>${ask_content}</p>
@@ -223,7 +224,16 @@ async function req(e){
                     </div>
                   </a>
                 </div>
-            </span>`
+            </span>`;
+          
+          const attach_file_ask = document.getElementById(`attachFile${ask_user_id}`);
+          if(ask_img == "" || ask_img.length < 1){
+            attach_file_ask.style.display = "none";
+          }else{
+            attach_file_ask.style.fontSize = "17px";
+            attach_file_ask.style.marginRight = "8px";
+          }
+
         }
     }
   )
