@@ -1,3 +1,5 @@
+const body_closer = document.getElementById("bodyContainerClose");
+const header_closer = document.getElementById("headerCo");
 const context_menu = document.querySelector(".wrapper");
 const context_id = document.getElementById("wrapper");
 const body_asks = document.getElementById("bodyAsks");
@@ -11,6 +13,7 @@ const textAreaEdit = document.getElementById("askEditContent");
 const managementId = localStorage.getItem("management_session");
 const name_id = localStorage.getItem("name_session"); 
 
+var catchImagePath;
 var arr = [];
 var depArr = [];
 var attArrId = [];
@@ -33,9 +36,12 @@ async function askActions(e, arg){
         })
         .then(response => response.json())
         .then(data => {
+            catchImagePath = data.imageUrl;
+
             if(name_id == data.userName.userName){
                 context_menu.style.display = "block";
             }
+
             edit_ask.addEventListener("click", async function(){
                 context_menu.style.display = "none";
                 modal_edit.style.display = "block";
@@ -85,6 +91,22 @@ async function askActions(e, arg){
                 mode: "cors"
             })
             .then(response => console.log(response.json()));
+
+            if(catchImagePath.length != 0){
+
+                fetch(`http://localhost:8080/delete?fileName=${catchImagePath.slice(40)}`, {
+                    headers: {
+                        "Authorization" : "Bearer " + getCookie("usr_tkn")
+                    },
+                    method: "DELETE",
+                    mode: "cors"
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+            }
+
             const removeAskInDom = document.getElementById(`askActions${arr}`);
             setTimeout(function(){
                 removeAskInDom.remove();
@@ -117,6 +139,14 @@ body_asks.addEventListener("click", function(){
 })
 
 body_asks.addEventListener("wheel", function(){
+    context_menu.style.display = "none";
+})
+
+body_closer.addEventListener("click", function(){
+    context_menu.style.display = "none";
+})
+
+header_closer.addEventListener("click", function(){
     context_menu.style.display = "none";
 })
 

@@ -1,7 +1,10 @@
 var arr = [];
 var askArr = [];
 var attArrId = [];
+var answerIdData;
 async function answersEdit(e, arg){
+    const body_closer = document.getElementById("bodyContainerClose");
+    const header_closer = document.getElementById("headerCo");
     const context_menu = document.querySelector(".wrapperA");
     const context_id = document.getElementById("wrapperAnswers");
     const answerChildrens = document.getElementById("answerChildrens");
@@ -18,6 +21,7 @@ async function answersEdit(e, arg){
     const name_id = localStorage.getItem("name_session"); 
     const date_get = new Date();
     var getTime = date_get.toLocaleString();
+    var catchImageAnswerPath;
 
     arr = [e];
     askArr = [arg];
@@ -61,7 +65,7 @@ async function answersEdit(e, arg){
 
         if(nu != undefined){
             console.log(nu);
-            updateAskContent(nu);
+            updateAskContent(nu, arr);
         }
 
         answerContainer.style.opacity = "0.7";
@@ -85,15 +89,29 @@ async function answersEdit(e, arg){
                 mode: "cors"
             })
             .then(response => console.log(response.json()));
-            const removeAnswerInDom = document.getElementById(`answerId${arr}`);
-            console.log(removeAnswerInDom);
+
+            if(catchImageAnswerPath.length != 0){
+                fetch(`http://localhost:8080/delete?fileName=${catchImageAnswerPath.slice(40)}`, {
+                    headers: {
+                        "Authorization" : "Bearer " + getCookie("usr_tkn")
+                    },
+                    method: "DELETE",
+                    mode: "cors"
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+            }
+            
+            const removeAskInDom = document.getElementById(`answerId${arr}`);
             setTimeout(function(){
-                removeAnswerInDom.remove();
+                removeAskInDom.remove();
             },1000)
         } catch (error) {
             console.log(error);
         }
-
+        
         answerContainer.style.opacity = "0.7";
         submitAnswer.style.backgroundColor = "#239037";
         setTimeout(function(){
@@ -114,7 +132,9 @@ async function answersEdit(e, arg){
         .then(response => response.json())
         .then(data => {
             for(let i = 0; i <= data.answers.length; i++){
-                if(data.answers[i].id == arr){  
+                answerIdData = data.answers[i].id
+                if(answerIdData == arr){  
+                    catchImageAnswerPath = data.answers[i].imageUrl;
                     if(name_id == data.answers[i].userName.userName){
                         context_menu.style.display = "block";
                         edit_answers.addEventListener("click", async function(){
@@ -135,6 +155,14 @@ async function answersEdit(e, arg){
     })
     
     answerChildrens.addEventListener("wheel", function(){
+        context_menu.style.display = "none";
+    })
+
+    body_closer.addEventListener("click", function(){
+        context_menu.style.display = "none";
+    })
+
+    header_closer.addEventListener("click", function(){
         context_menu.style.display = "none";
     })
 

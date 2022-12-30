@@ -63,6 +63,7 @@
 }
 
 .add-ask-submit{
+    word-break: normal;
     transition: 0.3s;
     color: #ffffff;
     font-size: 9px;

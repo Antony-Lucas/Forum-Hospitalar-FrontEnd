@@ -130,7 +130,7 @@ async function setIdAsk(e){
                     mainAnswers.appendChild(answerElement);
                     answerElement.insertAdjacentHTML(
                         "beforeend",
-                        `<div class="answers-header-content" id="answerId${get_answers_id.id} " oncontextmenu="answersEdit(${get_answers_id.id}, ${e})">
+                        `<div class="answers-header-content" id="answerId${get_answers_id.id}" oncontextmenu="answersEdit(${get_answers_id.id}, ${e})">
                             <span class="material-symbols-outlined">account_circle</span>
                             <div class="answers-body-content">
                             <h4>${get_answers_userName.userName.userName}</h4>
