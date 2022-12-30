@@ -4,6 +4,7 @@ var get_ask_content;
 var get_ask_img;
 var get_ask_moment;
 
+var get_answers_id;
 var get_answers;
 var get_answers_userName;
 var get_answers_content;
@@ -28,7 +29,7 @@ async function setIdAsk(e){
             get_ask_content = data[i].content;
             get_ask_img = data[i].imageUrl;
             get_ask_moment = data[i].moment;
-            get_answers = data[i].answers
+            get_answers = data[i].answers;
 
             if(e == get_id_asks){
                 var answersContent = document.getElementById("answersContent");
@@ -41,6 +42,10 @@ async function setIdAsk(e){
                 var answerElement = document.createElement("div");
                 var answerRecent = document.createElement("p");
                 var newAnswer = document.createElement("div");
+
+                const answerContainer = document.getElementById("answersContainer");
+                const bgPreloader = document.getElementById("answerBgPreloader");
+                const preloaderCirlceCI = document.getElementById("answerPreloader");
 
                 mainAsk.appendChild(askElement);
                 askElement.insertAdjacentHTML(
@@ -55,11 +60,7 @@ async function setIdAsk(e){
                         </div>
                     </div>`
                 )
-                var getImgAsk = document.getElementById(`imgAskDisplay${i}`);
-                if(get_ask_img.imageUrl == null || get_ask_img.imageUrl == ""){
-                    getImgAsk.style.display = "none";
-                }
-
+                
                 answersContainer.appendChild(answerRecent);
                 answerRecent.insertAdjacentHTML(
                     "afterbegin",
@@ -106,9 +107,20 @@ async function setIdAsk(e){
                         image_answer_list.innerHTML = null;
                     })
                 });
+
+                bgPreloader.style.display = "flex";
+                preloaderCirlceCI.style.display = "flex";
+                answerContainer.style.overflowY = "hidden";
+
+                setTimeout(() => {
+                    bgPreloader.style.display = "none";
+                    preloaderCirlceCI.style.display = "none";
+                    answerContainer.style.overflowY = "auto";
+                }, 500);
             }
 
             for(let c = 0; c <= get_answers.length; c++){
+                get_answers_id = data[i].answers[c];
                 get_answers_userName = data[i].answers[c];
                 get_answers_content = data[i].answers[c];
                 get_answers_img = data[i].answers[c]
@@ -118,7 +130,7 @@ async function setIdAsk(e){
                     mainAnswers.appendChild(answerElement);
                     answerElement.insertAdjacentHTML(
                         "beforeend",
-                        `<div class="answers-header-content">
+                        `<div class="answers-header-content" id="answerId" oncontextmenu="answersEdit(${get_answers_id.id}, ${e})">
                             <span class="material-symbols-outlined">account_circle</span>
                             <div class="answers-body-content">
                             <h4>${get_answers_userName.userName.userName}</h4>

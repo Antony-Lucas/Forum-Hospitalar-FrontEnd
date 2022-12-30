@@ -59,7 +59,7 @@ section{
     justify-content: space-between;
 }
 
-.wrapper{
+.wrapper, .wrapperA{
     position: absolute;
     display: none;
     width: 150px;
@@ -68,7 +68,7 @@ section{
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
 }
 
-.wrapper .menu{
+.wrapper .menu, .wrapperA .menu{
     padding: 7px 5px;
 }
 

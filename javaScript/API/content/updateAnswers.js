@@ -10,6 +10,7 @@ function updateAskContent(e){
         $( "#answerChildrens" ).load(window.location.href + " #answerChildrens" );
         arr = [e].shift(); 
         console.log(arr);
+        
         await fetch("http://localhost:8080/modules/departments/asks", {
             headers: {
                 "Authorization":"Bearer " + getCookie("usr_tkn")

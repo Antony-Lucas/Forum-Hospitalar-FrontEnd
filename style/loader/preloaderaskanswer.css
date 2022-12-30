@@ -13,6 +13,22 @@
     animation: hotPreReloadBG 2s infinite linear;
 }
 
+.bg-answer-preloader{
+    z-index: 999;
+    background-color: #fefefe;
+    width: 100%;
+    height: 50vh;
+    margin-bottom: 50%;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    opacity: 1;
+    display: none;
+    -webkit-animation: hotPreReloadBG 2s infinite linear;
+    animation: hotPreReloadBG 2s infinite linear;
+}
+
+
 .bg-preloader-dep{
     z-index: 999;
     background-color: #ffffff;
@@ -51,6 +67,20 @@
     border: 2px solid #296fab;
     border-radius: 50%;
     border-top: 2px solid #f3f3f358;
+    transition: opacity 0.1s linear;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: hotPreReload 2s infinite linear;
+    animation: hotPreReload 1.5s infinite linear;
+}
+
+.answer-preloader{
+    display: none;
+    transform: opacity 1s linear;
+    border: 2px solid #296fab;
+    border-radius: 50%;
+    border-top: 2px solid #f3f3f358;
+    margin-bottom: 45px;
     transition: opacity 0.1s linear;
     width: 40px;
     height: 40px;

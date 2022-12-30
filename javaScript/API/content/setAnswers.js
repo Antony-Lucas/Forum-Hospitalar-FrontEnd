@@ -1,6 +1,5 @@
 async function setIdAnswer(e){
     const date_ = new Date();
-
     var user_id = localStorage.getItem("id_session");
     var user_name = localStorage.getItem("name_session");
     var management_id = localStorage.getItem("management_session");
@@ -11,11 +10,16 @@ async function setIdAnswer(e){
     let input_answer_file = document.getElementById("image-answer-button");
     let image_answer_list = document.getElementById("imageListAnswer");
 
-    console.log("content "+content_answer);
-    console.log("moment "+getDate);
-    console.log("Ask id "+e);
-    console.log("user id "+user_id)
-    console.log("management id "+management_id);
+    const submitAnswer = document.getElementById("submitAnswer");
+    const answerContainer = document.getElementById("answersContainer");
+
+    answerContainer.style.opacity = "0.7";
+    submitAnswer.style.backgroundColor = "#239037"
+    setTimeout(() => {
+        answerContainer.style.opacity = "1";
+        submitAnswer.style.backgroundColor = "#1b6e2a";
+        answerContainer.scrollTop = answerContainer.scrollHeight;
+    }, 3200);
 
     const formData = new FormData();
     if(setAnswerImage.files[0] != undefined){

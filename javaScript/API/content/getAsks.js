@@ -216,7 +216,7 @@ async function req(e){
                   </div>
                   <p class='ask-content'>${ask_content}</p>
                   <p class='ask-moment'>${ask_moment}</p>
-                  <a id="showModal" onclick="setIdAsk(${ask_user_id}); openAnswersModal();">
+                  <a id="showModal" onclick="setIdAsk(${ask_user_id})">
                     <div class="ask-comment">
                       <span class="material-symbols-outlined">chat</span>
                       <p>Comentar</p>

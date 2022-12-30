@@ -3,6 +3,8 @@ var mainMenu = document.getElementById("mainMenu");
 var mainModal = document.getElementById("myMainModal");
 var modalEdit = document.getElementById("myModalEdit");
 var modal = document.getElementById("myModal");
+var modalEditAnswers = document.getElementById("myModalEditAnswers");
+var modalAnswers = document.getElementById("myModalA");
 var answerModal = document.getElementById("answerModal");
 var modalAttendance = document.getElementById("myModalAttendance");
 var closeModalAtt = document.getElementById("closeModalAttendance");
@@ -32,6 +34,22 @@ function closeModalEdit(){
     modalEdit.style.display = "none";
 }
 
+function openModalAnswers(){
+    modalAnswers.style.display = "flex";
+}
+
+function closeModalAnswers(){
+    modalAnswers.style.display = "none";
+}
+
+function openModalEditAnswers(){
+    modalEditAnswers.style.display = "flex";
+}
+
+function closeModalEditAnswers(){
+    modalEditAnswers.style.display = "none";
+}
+
 function openModaModules(e){
     tabCont.innerText = e;
     modalAttendance.style.display = "block";
@@ -52,6 +70,10 @@ window.onclick = function(event){
         modal.style.display = "none";
     }
 
+    if(event.target == modalAnswers){
+        modalAnswers.style.display = "none";
+    }
+
     if(event.target == mainModal){
         mainModal.style.display = "none"
     }
@@ -62,5 +84,9 @@ window.onclick = function(event){
 
     if(event.target == modalEdit){
         modalEdit.style.display = "none"
+    }
+
+    if(event.target == modalEditAnswers){
+        modalEditAnswers.style.display = "none"
     }
 }

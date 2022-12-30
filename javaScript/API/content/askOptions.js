@@ -13,7 +13,7 @@ const name_id = localStorage.getItem("name_session");
 
 var arr = [];
 var depArr = [];
-var attArrId = []
+var attArrId = [];
 
 async function askActions(e, arg){
     const date_get = new Date();
