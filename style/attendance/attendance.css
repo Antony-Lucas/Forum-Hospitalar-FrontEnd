@@ -186,6 +186,7 @@ section{
     display: flex;
     justify-content: space-between;
     align-items: top;
+    margin-top: -5px;
 }
 
 .ask-header-container h3{

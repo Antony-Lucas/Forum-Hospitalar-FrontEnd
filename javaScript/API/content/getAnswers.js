@@ -124,12 +124,12 @@ async function setIdAsk(e){
                 }, 500);
             }
 
-            for(let c = 0; c <= get_answers.length; c++){
-                get_answers_id = data[i].answers[c];
-                get_answers_userName = data[i].answers[c];
-                get_answers_content = data[i].answers[c];
-                get_answers_img = data[i].answers[c]
-                get_answers_moment = data[i].answers[c];
+            for(let x = 0; x <= get_answers.length; x++){
+                get_answers_id = data[i].answers[x];
+                get_answers_userName = data[i].answers[x];
+                get_answers_content = data[i].answers[x];
+                get_answers_img = data[i].answers[x]
+                get_answers_moment = data[i].answers[x];
 
                 if(e == get_id_asks){        
                     mainAnswers.appendChild(answerElement);
@@ -140,17 +140,16 @@ async function setIdAsk(e){
                             <div class="answers-body-content">
                             <h4>${get_answers_userName.userName.userName}</h4>
                             <p class='ask-content'>${get_answers_content.content}</p>
-                            <img class='img-answer' id="imgDisplay${c}" src="${get_answers_img.imageUrl}">
+                            <img class='img-answer' id="imgDisplay${x}" src="${get_answers_img.imageUrl}">
                             <p class='ask-moment'>${get_answers_moment.moment}</p>
                             </div>
                         </div>`
                     )
-                    var getImg = document.getElementById(`imgDisplay${c}`);
+                    var getImg = document.getElementById(`imgDisplay${x}`);
                     if(get_answers_img.imageUrl == null || get_answers_img.imageUrl == ""){
                         getImg.style.display = "none";
                     }
-                }
-            }
+            }}
         }
     })
 }

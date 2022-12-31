@@ -105,7 +105,7 @@
             </div>
         </div>
     </header>
-    <section>
+    <section id="section">
         <div class="body-content">
             <div class="body-container" id="bodyContainerClose">
                 <div id="myMainModal" class="modal">
@@ -160,11 +160,18 @@
                 </div>
                 <div class="body-content-center">
                     <h3 class="body-content-center-title">Departamentos</h3>
-                    <div class="body-content-center-container">
-                        <ul class="body-content-list" id="departments"></ul>
+                    <div class="body-content-center-container" id="deparmentsBloc">
+                        <ul class="body-content-list" id="departmentsIntoModal"></ul>
                     </div>
                 </div>
                 <div class="body-asks" id="bodyAsks">
+                    <div class="ask-content" id="askFirstContent">
+                        <div class="ask-header">
+                            <div class="ask-header-container">
+                                <h3>Perguntas</h3>
+                            </div>
+                        </div>
+                    </div>
                     <div id="newAsks"></div>
                 </div>
                 <div class="answer-modal-content" id="bodyAnswers">
@@ -201,7 +208,6 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../../javaScript/actions/addModal.js"></script>
     <script src="../../javaScript/dates/dateNow.js"></script>
     <script src="../../javaScript/API/config.js"></script>
     <script src="../../javaScript/actions/modal.js"></script>
@@ -214,9 +220,6 @@
     <script src="../../javaScript/API/content/updateAsks.js"></script>
     <script src="../../javaScript/API/content/updateAnswers.js"></script>
     <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
-    <script type="module" src="../../javaScript/API/content/getDepartments.js"></script>
-    <script>
-        
-    </script>
+    <script src="../../javaScript/API/content/getDepartments.js"></script>
 </body>
 </html>

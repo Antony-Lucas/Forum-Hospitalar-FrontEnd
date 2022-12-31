@@ -22,10 +22,9 @@ async function askActions(e, arg){
     const date_get = new Date();
     var getTime = date_get.toLocaleString();
     arr = [e];
-    depArr = [arg-1];
-    
+    depArr = [arg];
+    console.log(arr + arg);
     context_menu.style.display = "none";
-    
     try {
         await fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
             headers: {
@@ -53,6 +52,7 @@ async function askActions(e, arg){
     }
 
     buttonUpdate.addEventListener("click", async function(){
+        console.log(arg);
         fetch(`http://localhost:8080/modules/departments/asks/${arr}`,{
             headers: {
                 "Content-Type": "application/json; charset=utf8",
@@ -63,14 +63,14 @@ async function askActions(e, arg){
             body: JSON.stringify({
                 content: textAreaEdit.value,
                 moment: getTime,
-                client: { id: depArr+1 },
+                client: { id: arg },
                 management: { id: managementId }
             })
         }).then(response => response.json())
         .then(data => {
             attArrId = [data.id];
             const nu = depArr.shift();
-            
+            console.log(nu);
             if(nu != undefined){
                 console.log(nu);
                 testGet(nu);
@@ -111,6 +111,7 @@ async function askActions(e, arg){
             setTimeout(function(){
                 removeAskInDom.remove();
             },1000)
+            document.getElementById("answersContent").style.display = "none";
         } catch (error) {
             console.log(error);
         }
