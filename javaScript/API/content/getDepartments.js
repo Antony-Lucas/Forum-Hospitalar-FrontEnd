@@ -13,7 +13,18 @@ var hospitally = window.parent.document.getElementById("hotelaria");
 var sadt = window.parent.document.getElementById("sadt");
 var supplies = window.parent.document.getElementById("suprimentos");
 
+var modal_attendance = document.getElementById("attendance");
+var modal_assistant = document.getElementById("assistant");
+var modal_support = document.getElementById("support");
+var modal_controllership = document.getElementById("controllership");
+var modal_invoicing = document.getElementById("invoicing");
+var modal_finance = document.getElementById("finance");
+var modal_management = document.getElementById("management");
+var modal_hospitally = document.getElementById("hospitally");
+var modal_sadt = document.getElementById("sadt");
+var modal_supplies = document.getElementById("supplies");
 
+var tabCont = window.parent.document.getElementById("tabContent");
 
 async function getdepartment(e){
     console.log(e);
@@ -39,7 +50,7 @@ async function getdepartment(e){
                         "afterbegin",
                         `
                         <li>
-                            <a id="showDepartment" onclick='req(${dep_id}); setAsk();' class="body-content-list-item">
+                            <a id="showDepartment${dep_id}" onclick='req(${dep_id}); setAsk();' class="body-content-list-item">
                                 <p>${dep_name}</p>
                                 <span class="material-symbols-outlined">chevron_right</span>
                             </a>
@@ -47,6 +58,50 @@ async function getdepartment(e){
                         `
                     );
                 }
+            }
+
+            switch (e) {
+                case 1:
+                    document.querySelector(`#showDepartment51`).click();
+                    break;
+            
+                case 2:
+                    document.querySelector(`#showDepartment10`).click();
+                    break;
+
+                case 3:
+                    document.querySelector(`#showDepartment18`).click();
+                    break;
+
+                case 4:
+                    document.querySelector(`#showDepartment25`).click();
+                    break;
+
+                case 5:
+                    document.querySelector(`#showDepartment30`).click();
+                    break;
+
+                case 6:
+                    document.querySelector(`#showDepartment37`).click();
+                    break;
+
+                case 7:
+                    document.querySelector(`#showDepartment44`).click();
+                    break;
+
+                case 8:
+                    document.querySelector(`#showDepartment48`).click();
+                    break;
+
+                case 9:
+                    document.querySelector(`#showDepartment1`).click();
+                    break;
+
+                case 10:
+                    document.querySelector(`#showDepartment55`).click();
+                    break;
+                default:
+                    break;
             }
         })
     } catch (error) {
@@ -59,7 +114,19 @@ attendance.addEventListener("click", function(){
     getdepartment(1)
 })
 
+modal_attendance.addEventListener("click", function(){
+    tabCont.innerText = "Atendimento";
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(1)
+})
+
 assistant.addEventListener("click", function(){
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(2)
+})
+
+modal_assistant.addEventListener("click", function(){
+    tabCont.innerText = "Assistencial";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(2)
 })
@@ -69,18 +136,41 @@ support.addEventListener("click", function(){
     getdepartment(3)
 })
 
+modal_support.addEventListener("click", function(){
+    tabCont.innerText = "Apoio";
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(3)
+})
+
 controllership.addEventListener("click", function(){
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(4)
+})
+
+modal_controllership.addEventListener("click", function(){
+    tabCont.innerText = "Controladoria";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(4)
 })
 
 invoicing.addEventListener("click", function(){
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
-    $( "#bodyAsks" ).load(window.location.href + " #bodyAsks" );
+    getdepartment(5)
+})
+
+modal_invoicing.addEventListener("click", function(){
+    tabCont.innerText = "Faturamento";
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(5)
 })
 
 finance.addEventListener("click", function(){
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(6)
+})
+
+modal_finance.addEventListener("click", function(){
+    tabCont.innerText = "Financeiro";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(6)
 })
@@ -90,7 +180,19 @@ management.addEventListener("click", function(){
     getdepartment(7)
 })
 
+modal_management.addEventListener("click", function(){
+    tabCont.innerText = "Gerencial";
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(7)
+})
+
 hospitally.addEventListener("click", function(){
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(8)
+})
+
+modal_hospitally.addEventListener("click", function(){
+    tabCont.innerText = "Hotelaria";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(8)
 })
@@ -100,13 +202,22 @@ sadt.addEventListener("click", function(){
     getdepartment(9)
 })
 
+modal_sadt.addEventListener("click", function(){
+    tabCont.innerText = "SADT";
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(9)
+})
+
 supplies.addEventListener("click", function(){
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(10)
 })
 
-
-
+modal_supplies.addEventListener("click", function(){
+    tabCont.innerText = "Suprimentos";
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    getdepartment(10)
+})
 
 function getCookie(cname) {
     let name = cname + "=";

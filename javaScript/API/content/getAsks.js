@@ -35,39 +35,37 @@ async function req(e){
           var loadAsks = document.getElementById("bodyAsks");
           loadAsks.innerHTML =
           `
+            <div class="bg-preloader" id="preloader">
+                <div class="preloader"></div>
+            </div>
             <div class="ask-content">
-                    <div class="ask-header">
-                        <div class="ask-header-container">
-                            <h3>${name_dep}</h3>
-                        </div>
-                    </div>
-                    <div class="ask-body">
-                        <div id="mainDiv" class="body-content-ask">
-                            <div class="add-ask">
-                                <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
-
-                                <label for="image-button">
-                                  <span title="Anexar imagem" id="cameraIcon" class="material-symbols-outlined" style="font-size: 20px; margin-right: 0px; margin-left: 15px;">
-                                    photo_camera
-                                  </span>
-                                </label>
-                                <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
+              <div class="ask-header">
+                  <div class="ask-header-container">
+                      <h3>${name_dep}</h3>
+                  </div>
+              </div>
+              <div class="ask-body">
+                <div id="mainDiv" class="body-content-ask">
+                  <div class="add-ask">
+                      <textarea id="askContent" cols="60" rows="1" placeholder="Faça uma pergunta..."></textarea>
+                      <label for="image-button">
+                        <span title="Anexar imagem" id="cameraIcon" class="material-symbols-outlined" style="font-size: 20px; margin-right: 0px; margin-left: 15px;">
+                          photo_camera
+                        </span>
+                      </label>
+                      <input id="image-button" class="add-ask-image" type="file" accept="image/png, image/gif, image/jpeg">                      
                                 
-                                <div class="add-ask-buttons">
-                                    <div class="add-ask-buttons-container">
-                                        <button onclick="testGet(${e});" id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="imageList"></div> 
-                              <p class="ask-body-recently">Recentes</p>
-                            <div id="newAsks">
-                              <div class="bg-preloader" id="preloader">
-                                  <div class="preloader"></div>
-                              </div>
-                            </div>
+                      <div class="add-ask-buttons">
+                        <div class="add-ask-buttons-container">
+                          <button onclick="testGet(${e});" id="submitAsk" type="button" class="add-ask-submit">Publicar</button>
                         </div>
-                    </div>
+                      </div>
+                  </div>
+                  <div id="imageList"></div> 
+                      <p class="ask-body-recently">Recentes</p>
+                      <div id="newAsks"></div>
+                  </div>
+                </div>
             </div>
           `
           const date_ = new Date();
@@ -256,6 +254,11 @@ window.onload = function(){
 
 function showOfAskFirstContent(){
   askFirstContent.style.display = "none";
+}
+
+function showOnAskFirstContent(){
+  askFirstContent.style.display = "block";
+  console.log("teste");
 }
 
 function getCookie(cname) {

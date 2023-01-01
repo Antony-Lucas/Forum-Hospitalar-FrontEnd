@@ -136,6 +136,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 3px;
+    cursor: pointer;
 }
 
 .main-modal-body a:hover{
