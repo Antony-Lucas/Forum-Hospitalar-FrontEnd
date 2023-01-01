@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../style/internalModals/delete.css">
     <link rel="stylesheet" href="../../style/internalModals/edit.css">
     <link rel="stylesheet" href="../../style/loader/preloaderaskanswer.css">
+    <link rel="stylesheet" href="../../style/SisAdm/sisadm.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0..1,-50..200" />
 </head>
@@ -158,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="body-content-center">
+                <div class="body-content-center" id="bodyDep">
                     <h3 class="body-content-center-title">Departamentos</h3>
                     <div class="body-content-center-container" id="deparmentsBloc">
                         <ul class="body-content-list" id="departmentsIntoModal"></ul>
@@ -192,6 +193,41 @@
                         </div>
                     </div>
                 </div>
+                <div class="adm-content-center" id="bodyAdm">
+                    <h3 class="adm-content-center-title">Administração do Sistema</h3>
+                    <div class="adm-content">
+                        <form class="adm-content-body">
+                            <div class="adm-content-body-container">
+                                <h3 class="adm-content-label">Nome</h3>
+                                <input type="text" class="adm-content-input">
+
+                                <h3 class="adm-content-label">Email</h3>
+                                <input type="email" class="adm-content-input">
+
+                                <h3 class="adm-content-label">Senha</h3>
+                                <input type="password" class="adm-content-input">
+
+                                <h3 class="adm-content-label">Confirmar senha</h3>
+                                <input type="password" class="adm-content-input">
+                            </div>
+                            <input type="submit" class="adm-content-submit" value="Salvar">
+                        </form>
+                    </div>
+                </div>
+                <div class="activity-content-center" id="bodyactivity">
+                    <div class="tab">
+                        <button class="tablinks" id="defaultOpen" onclick="openActivity(event, 'Perguntas')"><h4>Perguntas</h4></button>
+                        <button class="tablinks" onclick="openActivity(event, 'Respostas')"><h4>Respostas</h24></button>
+                      </div>
+                      
+                      <div id="Perguntas" class="tabcontent">
+                        <h3 class="activity-content-center-title">Minhas Perguntas</h3>
+                      </div>
+                      
+                      <div id="Respostas" class="tabcontent">
+                        <h3 class="activity-content-center-title">Minhas Respostas</h3>
+                      </div>
+                </div>
             </div>
             <div class="footer">
                 <div class="policy">
@@ -219,6 +255,7 @@
     <script src="../../javaScript/API/content/answersOptions.js"></script>
     <script src="../../javaScript/API/content/updateAsks.js"></script>
     <script src="../../javaScript/API/content/updateAnswers.js"></script>
+    <script src="../../javaScript/actions/tabs.js"></script>
     <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
     <script src="../../javaScript/API/content/getDepartments.js"></script>
 </body>

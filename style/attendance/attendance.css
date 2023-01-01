@@ -109,13 +109,11 @@ section{
     background-color: #00000003;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
 }
 
 .body-container{
     width: 100%;
-    height: 99%;
     display: flex;
     overflow: hidden;
 }
@@ -131,7 +129,7 @@ section{
 }
 
 .body-content-center-title{
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .body-content-center-container{
@@ -190,7 +188,7 @@ section{
 }
 
 .ask-header-container h3{
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .ask-header-add{

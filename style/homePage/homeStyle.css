@@ -12,8 +12,8 @@ html, body {
 
 body{
     background: linear-gradient(125deg,#081026 0,#003478 60%,#0066a1 100%);
-    background-size: auto;   
-    overflow: hidden; 
+    background-size: auto;  
+    overflow: hidden;
 }
 
 header{
@@ -107,6 +107,8 @@ section{
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    position: absolute;
+    bottom: auto;
 }
 
 .container{
@@ -221,13 +223,13 @@ section{
 }
 
 footer{
-    width: 100%;
+    width: 99%;
     display: flex;
     justify-content: space-between;
-    position: relative;
-    top: 10px;
+    position: absolute;
+    bottom: 5px;
     margin-left: 4px;
-    margin-top: 9px;
+    margin-top: 5px;
 }
 
 footer p{
@@ -254,6 +256,16 @@ footer p{
     display: flex;
     justify-content: space-evenly;
     margin-left: 5px;
+}
+
+@media only screen and (max-width: 1440px){
+    section {
+        height: 85vh;
+    }
+}
+
+@media only screen and (max-width: 1366px){
+    
 }
 
 @media only screen and (max-width: 1024px){

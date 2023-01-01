@@ -12,6 +12,8 @@ var management = window.parent.document.getElementById("gerencial");
 var hospitally = window.parent.document.getElementById("hotelaria");
 var sadt = window.parent.document.getElementById("sadt");
 var supplies = window.parent.document.getElementById("suprimentos");
+var modal_adm = window.parent.document.getElementById("showModal");
+var tabCont = window.parent.document.getElementById("tabContent");
 
 var modal_attendance = document.getElementById("attendance");
 var modal_assistant = document.getElementById("assistant");
@@ -24,7 +26,11 @@ var modal_hospitally = document.getElementById("hospitally");
 var modal_sadt = document.getElementById("sadt");
 var modal_supplies = document.getElementById("supplies");
 
-var tabCont = window.parent.document.getElementById("tabContent");
+var body_dep_of = document.getElementById("bodyDep");
+var body_asks_of = document.getElementById("bodyAsks");
+var body_answers_of = document.getElementById("bodyAnswers");
+var body_adm_of = document.getElementById("bodyAdm");
+var body_activity = document.getElementById("bodyactivity");
 
 async function getdepartment(e){
     console.log(e);
@@ -110,114 +116,156 @@ async function getdepartment(e){
 }
 
 attendance.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(1)
 })
 
 modal_attendance.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Atendimento";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(1)
 })
 
 assistant.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(2)
 })
 
 modal_assistant.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Assistencial";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(2)
 })
 
 support.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(3)
 })
 
 modal_support.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Apoio";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(3)
 })
 
 controllership.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(4)
 })
 
 modal_controllership.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Controladoria";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(4)
 })
 
 invoicing.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(5)
 })
 
 modal_invoicing.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Faturamento";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(5)
 })
 
 finance.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(6)
 })
 
 modal_finance.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Financeiro";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(6)
 })
 
 management.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(7)
 })
 
 modal_management.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Gerencial";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(7)
 })
 
 hospitally.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(8)
 })
 
 modal_hospitally.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Hotelaria";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(8)
 })
 
 sadt.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(9)
 })
 
 modal_sadt.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "SADT";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(9)
 })
 
 supplies.addEventListener("click", function(){
+    showOnBodyContent()
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(10)
 })
 
 modal_supplies.addEventListener("click", function(){
+    showOnBodyContent()
     tabCont.innerText = "Suprimentos";
     $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
     getdepartment(10)
 })
+
+modal_adm.addEventListener("click", function(){
+    showOnBodyContent()
+    $( "#deparmentsBloc" ).load(window.location.href + " #deparmentsBloc" );
+    showOfBodyContent()
+})
+
+function showOfBodyContent(){
+    body_adm_of.style.display = "block";
+    body_activity.style.display = "block";
+    body_dep_of.style.display = "none";
+    body_asks_of.style.display = "none";
+    body_answers_of.style.display = "none";
+}
+
+function showOnBodyContent(){
+    body_adm_of.style.display = "none";
+    body_activity.style.display = "none";
+    body_dep_of.style.display = "block";
+    body_asks_of.style.display = "block";
+    body_answers_of.style.display = "block";
+}
 
 function getCookie(cname) {
     let name = cname + "=";
