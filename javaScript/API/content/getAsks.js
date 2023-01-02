@@ -131,7 +131,6 @@ async function req(e){
                   body: formData
                   }).then(response => response.text())
                   .then(data => {
-                    console.log(data)
                     var imageLink = data;
                     setUrlImage = imageLink;
                     console.log("upload: "+imageLink);
@@ -199,7 +198,6 @@ async function req(e){
           });
 
           for(let c = 0; c <= data[i].asks.length; c++){
-            console.log(data[i]);
             ask_dep = data[i].id;
             ask_user_id = [data[i].asks[c].id];
             ask_user_name = [data[i].asks[c].userName.userName];
@@ -258,7 +256,6 @@ function showOfAskFirstContent(){
 
 function showOnAskFirstContent(){
   askFirstContent.style.display = "block";
-  console.log("teste");
 }
 
 function getCookie(cname) {

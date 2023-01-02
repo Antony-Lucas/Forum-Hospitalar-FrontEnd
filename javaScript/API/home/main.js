@@ -3,6 +3,7 @@ import { eraseCookie, getCookie} from "../cookie/cookies.js";
 let sign_out = document.getElementById("signOut");
 var userNameMenu = document.getElementById("myUserName");
 var name_user = localStorage.getItem("name_session");
+console.log(localStorage.getItem("id_session"));
 console.log(localStorage.getItem("name_session"));
 console.log(localStorage.getItem("management_session"))
 window.onload = function(){

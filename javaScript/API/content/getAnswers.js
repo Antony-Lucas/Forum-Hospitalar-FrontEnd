@@ -34,10 +34,10 @@ async function setIdAsk(e){
             if(e == get_id_asks){
                 var answersContent = document.getElementById("answersContent");
                 var answersContainer = document.getElementById("recentlyAnswers");
-                
+                var myModalView = document.getElementById("myModalView");
                 var mainAsk = document.getElementById("mainAskDiv");
                 var mainAnswers = document.getElementById("answerChildrens");
-
+                var showBigImage = document.getElementById("showBigImage");
                 var askElement = document.createElement("div");
                 var answerElement = document.createElement("div");
                 var answerRecent = document.createElement("p");
@@ -60,12 +60,17 @@ async function setIdAsk(e){
                         </div>
                     </div>`
                 )
-
-                var getImg = document.getElementById(`imgAskDisplay${i}`);
+                
+                var getImgAsk = document.getElementById(`imgAskDisplay${i}`);
                 if(get_ask_img == null || get_ask_img == ""){
-                    getImg.style.display = "none";
+                    getImgAsk.style.display = "none";
                 }
                 
+                getImgAsk.addEventListener("click", function(){
+                    myModalView.style.display = "flex";
+                    showBigImage.src = get_ask_img
+                })
+
                 answersContainer.appendChild(answerRecent);
                 answerRecent.insertAdjacentHTML(
                     "afterbegin",
@@ -149,7 +154,13 @@ async function setIdAsk(e){
                     if(get_answers_img.imageUrl == null || get_answers_img.imageUrl == ""){
                         getImg.style.display = "none";
                     }
-            }}
+                    
+                    getImg.addEventListener("click", function(){
+                        myModalView.style.display = "flex";
+                        showBigImage.src = data[i].answers[x].imageUrl;
+                    })
+                }   
+            }
         }
     })
 }

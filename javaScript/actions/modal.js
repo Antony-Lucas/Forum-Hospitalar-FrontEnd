@@ -9,6 +9,7 @@ var answerModal = document.getElementById("answerModal");
 var modalAttendance = document.getElementById("myModalAttendance");
 var closeModalAtt = document.getElementById("closeModalAttendance");
 var tabCont = document.getElementById("tabContent");
+var myModalView = document.getElementById("myModalView");
 
 function openMainModal(){
     mainModal.style.display = "block";
@@ -50,6 +51,14 @@ function closeModalEditAnswers(){
     modalEditAnswers.style.display = "none";
 }
 
+function openModalView(){
+    myModalView.style.display = "flex"
+}
+
+function closeModalView(){
+    myModalView.style.display = "none";
+}
+
 function openModaModules(e){
     tabCont.innerText = e;
     modalAttendance.style.display = "block";
@@ -88,5 +97,9 @@ window.onclick = function(event){
 
     if(event.target == modalEditAnswers){
         modalEditAnswers.style.display = "none"
+    }
+
+    if(event.target == myModalView){
+        myModalView.style.display = "none"
     }
 }

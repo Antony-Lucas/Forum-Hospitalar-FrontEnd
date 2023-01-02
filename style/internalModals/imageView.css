@@ -1,0 +1,24 @@
+.modal-content-view{
+    background-color: #fefefe;
+    margin: auto;
+    width: 800px;
+    height: 500px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.imgResize{
+    width: 100%;
+    height: 500px;
+}
+
+.iframe-close-view{
+    cursor: pointer;
+    font-size: 15px;
+    color: #bfbfbf;
+    padding: 3px 3px 1px 764px;
+    margin: 5px;
+    border-radius: 50%;
+    transition: 0.2s;
+    animation: closemodal 0.2s;
+    position: absolute;
+}
