@@ -61,7 +61,7 @@ function testGet(e){
                 }
             }
         });
-    }, 3000); 
+    }, 3500); 
 }
 
 function getCookie(cname) {

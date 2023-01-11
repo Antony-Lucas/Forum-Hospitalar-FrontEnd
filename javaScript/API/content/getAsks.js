@@ -109,14 +109,15 @@ async function req(e){
 
             newAsks.style.opacity = "0.7";
             document.querySelector("#submitAsk").disabled = true;
-            submit_ask.style.backgroundColor = "#239037";
+            submit_ask.style.opacity = "0.6"
+            submit_ask.style.boxShadow = "none";
             
             setTimeout(function(){
               document.querySelector("#submitAsk").disabled = false;
-              submit_ask.style.backgroundColor = "#1b6e2a";
+              submit_ask.style.opacity = "1"
               newAsks.style.opacity = "1";
               preloader.style.display = "none";
-            },3100)
+            },3600)
 
             const formData = new FormData();
             if(setImage.files[0] != undefined){

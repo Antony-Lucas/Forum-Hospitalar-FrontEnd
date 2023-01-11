@@ -14,12 +14,12 @@ async function setIdAnswer(e){
     const answerContainer = document.getElementById("answersContainer");
 
     answerContainer.style.opacity = "0.7";
-    submitAnswer.style.backgroundColor = "#239037"
+    submitAnswer.style.opacity = "0.6"
     setTimeout(() => {
         answerContainer.style.opacity = "1";
-        submitAnswer.style.backgroundColor = "#1b6e2a";
+        submitAnswer.style.opacity = "1"
         answerContainer.scrollTop = answerContainer.scrollHeight;
-    }, 3200);
+    }, 3500);
 
     const formData = new FormData();
     if(setAnswerImage.files[0] != undefined){
