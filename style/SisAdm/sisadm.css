@@ -122,9 +122,32 @@
     border-top: none;
 }
 
+.tab-content-container{
+    display: flex;
+    width: 100%;
+
+}
+
 .my-body-asks{
     width: 100%;
-    height: 100vh;
-    background-color: red;
-    padding: 80px;
+    height: 65vh;
+    padding: 15px;
+    padding-top: 0;
+    overflow: auto;
+}
+
+.my-body-asks-answers{
+    border-left: solid #ccc 10px;
+    height: 90vh;
+    padding: 15px;
+    position: relative;
+    bottom: 53px;
+    display: none;
+}
+
+.close-ba{
+    position: relative;
+    bottom: 1%;
+    left: 96%;
+    display: none;
 }

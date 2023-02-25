@@ -2,15 +2,14 @@ const askFirstContent = document.getElementById("askFirstContent");
 let catchUserName = document.getElementById("myUserName");
 var name_user = localStorage.getItem("name_session");
 var loadAsks = document.getElementById("bodyAsks");
-var ask_dep;
-var ask_user_id;
-var name_dep;
-var ask_user_name = [];
-var ask_content = [];
-var ask_img = [];
-var ask_moment = [];
-var askContentHtml;
-var askContentHtml;
+let ask_dep;
+let ask_user_id;
+let name_dep;
+let ask_user_name;
+let ask_conten;
+let ask_img;
+let ask_moment;
+let askContentHtml;
 
 async function req(e){
   showOfAskFirstContent();
