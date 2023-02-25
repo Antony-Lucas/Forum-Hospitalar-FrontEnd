@@ -1,6 +1,7 @@
 const askFirstContent = document.getElementById("askFirstContent");
 let catchUserName = document.getElementById("myUserName");
 var name_user = localStorage.getItem("name_session");
+var loadAsks = document.getElementById("bodyAsks");
 var ask_dep;
 var ask_user_id;
 var name_dep;
@@ -8,6 +9,8 @@ var ask_user_name = [];
 var ask_content = [];
 var ask_img = [];
 var ask_moment = [];
+var askContentHtml;
+var askContentHtml;
 
 async function req(e){
   showOfAskFirstContent();
@@ -32,8 +35,7 @@ async function req(e){
         if(e == data[i].id){
           console.log(e)
           name_dep = data[i].nameDepartment
-          var loadAsks = document.getElementById("bodyAsks");
-          loadAsks.innerHTML =
+          askContentHtml = 
           `
             <div class="bg-preloader" id="preloader">
                 <div class="preloader"></div>
@@ -42,6 +44,7 @@ async function req(e){
               <div class="ask-header">
                   <div class="ask-header-container">
                       <h3>${name_dep}</h3>
+                      <img id="filterIcon" src="../../../assets/filterIcon.svg">
                   </div>
               </div>
               <div class="ask-body">
@@ -68,13 +71,16 @@ async function req(e){
                 </div>
             </div>
           `
+
+          loadAsks.innerHTML = askContentHtml; 
+
           const date_ = new Date();
           var user_id = localStorage.getItem("id_session");
           const buttonExclude = document.getElementById("butonExclude");
           const buttonUpdate = document.getElementById("butonSave");
           const management_id = localStorage.getItem("management_session");
           
-          var getTime = date_.toLocaleString();
+          var getTime = date_.toLocaleString().replace(",", "");;
           var setImage = document.getElementById("image-button");
           var submit_ask = document.getElementById("submitAsk");
           var newAsks = document.getElementById("newAsks");
@@ -186,18 +192,6 @@ async function req(e){
             })
           });
 
-          fetch("http://localhost:8080/modules/departments/asks", {
-            headers: {
-              "Authorization":"Bearer " + getCookie("usr_tkn")
-            },
-            method: "GET",
-            mode: "cors"
-          })
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-          });
-
           for(let c = 0; c <= data[i].asks.length; c++){
             ask_dep = data[i].id;
             ask_user_id = [data[i].asks[c].id];
@@ -222,10 +216,10 @@ async function req(e){
                     <p class='ask-content'>${ask_content}</p>
                     <p class='ask-moment'>${ask_moment}</p>
                     <a id="showModal" onclick="setIdAsk(${ask_user_id})">
-                      <div class="ask-comment">
-                        <span class="material-symbols-outlined">chat</span>
-                        <p>Comentar</p>
-                      </div>
+                        <div class="ask-comment">
+                          <span class="material-symbols-outlined">chat</span>
+                          <p>Comentar</p>
+                        </div>
                     </a>
                   </div>
               </span>`;

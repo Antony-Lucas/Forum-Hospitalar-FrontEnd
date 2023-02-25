@@ -204,7 +204,7 @@
                 </div>
                 <div class="adm-content-center" id="bodyAdm">
                     <h3 class="adm-content-center-title">Administração do Sistema</h3>
-                    <form class="adm-content-body">
+                    <form class="adm-content-body" id="admBodyProfile">
                         <div class="adm-content-body-container">
                             <h3 class="adm-content-label">Nome Completo</h3>
                             <input type="text" class="adm-content-input" id="userNameProfile">
@@ -234,6 +234,7 @@
                       
                       <div id="Perguntas" class="tabcontent">
                         <h3 class="activity-content-center-title">Minhas Perguntas</h3>
+                        <div class="my-body-asks" id="myBodyAsks"></div>
                       </div>
                       
                       <div id="Respostas" class="tabcontent">
@@ -256,8 +257,8 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../javaScript/API/apiUrl.js"></script>
     <script src="../../javaScript/dates/dateNow.js"></script>
-    <script src="../../javaScript/API/config.js"></script>
     <script src="../../javaScript/actions/modal.js"></script>
     <script src="../../javaScript/API/home/main.js"></script>
     <script src="../../javaScript/API/content/getAsks.js"></script>
@@ -270,6 +271,7 @@
     <script src="../../javaScript/actions/tabs.js"></script>
     <script src="../../javaScript/API/adm/profile.js"></script>
     <script src="../../javaScript/API/adm/activity.js"></script>
+    <script src="../../javaScript/API/content/userAsks.js"></script>
     <script type="module" src="../../javaScript/API/cookie/cookies.js"></script>
     <script src="../../javaScript/API/content/getDepartments.js"></script>
 </body>

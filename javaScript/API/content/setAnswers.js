@@ -4,7 +4,7 @@ async function setIdAnswer(e){
     var user_name = localStorage.getItem("name_session");
     var management_id = localStorage.getItem("management_session");
     var content_answer = document.getElementById("answerContent").value;
-    var getDate = date_.toLocaleString();
+    var getDate = date_.toLocaleString().replace(",", "");;
     var setAnswerImage = document.getElementById("image-answer-button");
     var image_url = "";
     let input_answer_file = document.getElementById("image-answer-button");

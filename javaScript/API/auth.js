@@ -1,4 +1,3 @@
-import { url_api } from "./config.js";
 import { getCookie, setCookie } from "./cookie/cookies.js";
 
 let button_submit = document.getElementById('mySubmit')
@@ -31,7 +30,7 @@ button_submit.addEventListener('click', async function load(){
 
 async function mainLogin(){
     try{
-        await fetch(url_api + '/login', { 
+        await fetch(url_api.login, { 
             mode: "cors",
             method: 'POST',
             body: JSON.stringify({
@@ -64,7 +63,7 @@ async function mainLogin(){
 
 async function getManagement(){
     let bearer = getCookie("usr_tkn");
-    await fetch(url_api + "/management", {
+    await fetch(url_api.management, {
         headers:{
             "Authorization":"Bearer " + bearer
         },
@@ -94,7 +93,7 @@ async function getManagement(){
 }
 
 async function dataBinding(){
-    await fetch(url_api + '/login', { 
+    await fetch(url_api.login, { 
         mode: "cors",
         method: 'POST',
         body: JSON.stringify({

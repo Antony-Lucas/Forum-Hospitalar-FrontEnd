@@ -187,6 +187,19 @@ section{
     margin-top: -5px;
 }
 
+.ask-header-container{
+    display: flex;
+    justify-content: inherit;
+    align-items: center;
+}
+
+.ask-header-container #filterIcon{
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 15px;
+    cursor: pointer;
+}
+
 .ask-header-container h3{
     font-size: 12px;
 }

@@ -5,6 +5,7 @@ var userEmailProfile = document.getElementById("userEmailProfile");
 var userPassProfile = document.getElementById("userPassProfile");
 var userConfirmPassProfile = document.getElementById("userConfirmPassProfile");
 var submitUserProfile = document.getElementById("submitUserProfile");
+var adm_profile_data = document.getElementById("admBodyProfile");
 
 const user_id_profile = localStorage.getItem("id_session");
 
@@ -29,11 +30,14 @@ adm.addEventListener("click", function(){
 })
 
 submitUserProfile.addEventListener("click", async function(){
+    setOpacity();
     if(userPassProfile.value.length > 1 || userConfirmPassProfile.value.length > 1){
         if(userPassProfile.value != userConfirmPassProfile.value){
             console.log("As senhas digitadas não coincidem");
         }else{
             console.log("Requisição Enviada(com password)");
+            updateUserPassword(user_id_profile, userPassProfile.value)
+            updateUserData(user_id_profile, userNameProfile.value, userUserProfile.value, userEmailProfile.value);
         }
     }else{
         console.log("Campos vazios(sem password)");
@@ -64,6 +68,37 @@ async function updateUserData(userId, userName, userUser, userEmail){
     } catch (error) {
         console.log(error)
     }
+}
+
+async function updateUserPassword(userId, userPassword){
+    console.log("Requisição Enviada OUT");
+    try {
+        await fetch(`http://localhost:8080/users/${userId}/pass`, {
+            headers: {
+                "Content-Type": "application/json; charset=utf8",
+                "Authorization": "Bearer " + getCookie("usr_tkn")
+            },
+            method:"PUT",
+            mode: "cors",
+            body: JSON.stringify({
+                password: userPassword
+            })
+        })
+        .then(response => response.json())
+        .then(data =>{
+            console.log(data)
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+function setOpacity(){
+    adm_profile_data.style.opacity = "0.6";
+    setTimeout(() => {
+        updateProfile();
+        adm_profile_data.style.opacity = "1500";
+    }, 2000);
 }
 
 function getCookie(cname) {

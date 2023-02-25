@@ -165,6 +165,7 @@ async function setIdAsk(e){
     })
 }
 
+//para remover 
 function updateDiv()
 { 
     $( "#myModalAnswers" ).load(window.location.href + " #myModalAnswers" );
