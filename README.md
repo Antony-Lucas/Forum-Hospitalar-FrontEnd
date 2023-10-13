@@ -4,6 +4,12 @@ Login Screen (complete and running)
 Create User
 ![image](https://github.com/Antony-Lucas/Knowbi-FAQ-FrontEnd/assets/54651622/b38f14e5-8e36-4801-b3c9-536195442ea1)
 
+if user or password incorrect
+![image](https://github.com/Antony-Lucas/Knowbi-FAQ-FrontEnd/assets/54651622/0e24b191-6c9d-4eb3-82b4-37b0d4207097)
+
+Rocover password
+![image](https://github.com/Antony-Lucas/Knowbi-FAQ-FrontEnd/assets/54651622/082b957b-a8be-4103-a669-327e8adc5851)
+
 Home(User Authenticated)
 ![image](https://github.com/Antony-Lucas/Knowbi-FAQ-FrontEnd/assets/54651622/6f4345f5-0676-49bd-8616-9b77c581ae95)
 
@@ -30,3 +36,7 @@ Edit or exclude your answer
 
 Manage your profile and see your questions and answers
 ![image](https://github.com/Antony-Lucas/Knowbi-FAQ-FrontEnd/assets/54651622/e2fe60df-5050-49d7-bd1f-831b828a7851)
+
+Navigate between modules
+![image](https://github.com/Antony-Lucas/Knowbi-FAQ-FrontEnd/assets/54651622/f431007f-9604-4c93-b845-862d80d0cce1)
+
