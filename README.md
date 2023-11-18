@@ -1,4 +1,4 @@
-#System Features
+# System Features
 
 Login Screen (complete and running)
 ![image](https://github.com/Antony-Lucas/Knowbi-FAQ-FrontEnd/assets/54651622/c73cb6f5-79ab-4b99-9aaa-bec696e935e0)
